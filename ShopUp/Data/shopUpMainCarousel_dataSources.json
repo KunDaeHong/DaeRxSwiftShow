@@ -1,0 +1,30 @@
+[
+    {
+        "idx" : 0,
+        "title" : "이 모든 것",
+        "subTitle" : "샘플의 끝을 들여다 보다.\n모든 것을 1,090,003원에.",
+        "firstColor" : "ff427b",
+        "secondColor" : "ffad42",
+    },
+    {
+        "idx" : 1,
+        "title" : "오늘의 화장실.",
+        "subTitle" : "쾌변을 나답게 꾸미다. \n싸다. \n구리다. ₩599,000부터.",
+        "firstColor" : "ff427b",
+        "secondColor" : "ffad42",
+    },
+    {
+        "idx" : 2,
+        "title" : "너만의 끝판왕.",
+        "subTitle" : "자동으로 넘어가진 않는 Carousel. 새로운 모습.",
+        "firstColor" : "ff427b",
+        "secondColor" : "ffad42",
+    },
+    {
+        "idx" : 3,
+        "title" : "망작의 끝판 보여주다.",
+        "subTitle" : "감동도 없는 타이밍에 오랜 인상을 남기는 선물.",
+        "firstColor" : "ff427b",
+        "secondColor" : "ffad42",
+    }
+]
