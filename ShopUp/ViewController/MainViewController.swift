@@ -26,6 +26,9 @@ class MainViewController: UIViewController {
         return uiView
     }()
     
+    //mainPages Buttons View
+    @IBOutlet weak var mainPagesButtonsUiView: UIView!
+    
     /// data for View
     //carousel
     private lazy var pageCtrl: UIPageControl = {
@@ -47,6 +50,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         mainViewModel = MainCarouselViewModel(data: getJsonDataFromFile())
         mainCarouselViewSettings()
+        mainPageNavButtons()
     }
     
     // json 파일을 레퍼런스 데이터에서 직접 들고옴. (리턴타입: Data)
@@ -55,6 +59,29 @@ class MainViewController: UIViewController {
             return try! Data(contentsOf: URL(fileURLWithPath: path))
         }else {
             fatalError("Invaild Read File. Check File format or exist in Reference.")
+        }
+    }
+    
+    ///메인 네비 메뉴 View 설정
+    private func mainPageNavButtons() {
+        (mainViewModel?.mainNavPageButtonsList)!.enumerated().forEach{
+            $0.element.tag = $0.offset + 1
+            mainPagesButtonsUiView.addSubview($0.element)
+            $0.element.translatesAutoresizingMaskIntoConstraints = false
+            $0.element.centerYAnchor.constraint(equalTo: mainPagesButtonsUiView.centerYAnchor).isActive = true
+            $0.element.widthAnchor.constraint(equalToConstant: $0.element.frame.size.width).isActive = true
+            $0.element.heightAnchor.constraint(equalToConstant: $0.element.frame.size.height).isActive = true
+        }
+        for i in 0...3 {
+            if(i == 0){
+                mainPagesButtonsUiView.viewWithTag(i + 1)!.leadingAnchor.constraint(equalTo: mainPagesButtonsUiView.leadingAnchor, constant: 0).isActive = true
+            }
+            if (i < 2){
+                mainPagesButtonsUiView.viewWithTag(i + 2)!.leadingAnchor.constraint(equalTo: mainPagesButtonsUiView.viewWithTag(i + 1)!.trailingAnchor, constant: 15).isActive = true
+            }
+            if (i == 2){
+                mainPagesButtonsUiView.viewWithTag(i + 1)!.trailingAnchor.constraint(lessThanOrEqualTo: mainPagesButtonsUiView.trailingAnchor).isActive = true
+            }
         }
     }
     
@@ -75,6 +102,8 @@ class MainViewController: UIViewController {
         let pageCtrlConstraint = [
             pageCtrl.widthAnchor.constraint(equalToConstant: 150),
             pageCtrl.heightAnchor.constraint(equalToConstant: 30),
+            pageCtrl.centerYAnchor.constraint(equalTo: mainCarouselPageCtrlUiView.centerYAnchor),
+            pageCtrl.centerXAnchor.constraint(equalTo: mainCarouselPageCtrlUiView.centerXAnchor),
         ]
         NSLayoutConstraint.activate(pageCtrlConstraint)
     }

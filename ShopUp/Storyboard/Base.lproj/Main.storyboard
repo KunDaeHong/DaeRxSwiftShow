@@ -29,12 +29,20 @@
                                                     <constraint firstAttribute="width" constant="100" id="utn-vA-gq8"/>
                                                 </constraints>
                                             </imageView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ix-j3-mIR" userLabel="mainPagesButtonsView">
+                                                <rect key="frame" x="100" y="0.0" width="293" height="40"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstItem="4ix-j3-mIR" firstAttribute="top" secondItem="jnu-Lp-IFI" secondAttribute="top" id="3vH-XQ-R8D"/>
+                                            <constraint firstAttribute="bottom" secondItem="4ix-j3-mIR" secondAttribute="bottom" id="Pam-tA-2yz"/>
                                             <constraint firstItem="gIz-JB-CLs" firstAttribute="leading" secondItem="jnu-Lp-IFI" secondAttribute="leading" id="Tp7-kb-hLS"/>
+                                            <constraint firstItem="4ix-j3-mIR" firstAttribute="leading" secondItem="gIz-JB-CLs" secondAttribute="trailing" id="YgH-KC-kEb"/>
                                             <constraint firstItem="gIz-JB-CLs" firstAttribute="top" secondItem="jnu-Lp-IFI" secondAttribute="top" id="ZXk-qO-fFW"/>
                                             <constraint firstAttribute="bottom" secondItem="gIz-JB-CLs" secondAttribute="bottom" id="d0b-Ub-a17"/>
+                                            <constraint firstAttribute="trailing" secondItem="4ix-j3-mIR" secondAttribute="trailing" id="sTI-8c-HAk"/>
                                             <constraint firstAttribute="height" constant="40" id="txb-x2-uP1"/>
                                         </constraints>
                                     </view>
@@ -59,10 +67,10 @@
                                                         <cells/>
                                                     </collectionView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AlH-2W-fF0" userLabel="Main Carousel Page Controller Ui View">
-                                                        <rect key="frame" x="121.66666666666669" y="370" width="150" height="30"/>
+                                                        <rect key="frame" x="121.66666666666669" y="370" width="150" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="150" id="bhq-RZ-SMd"/>
-                                                            <constraint firstAttribute="height" constant="30" id="nlb-8o-hHY"/>
+                                                            <constraint firstAttribute="height" constant="40" id="nlb-8o-hHY"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mrx-z8-XaM" userLabel="Main Walk Status">
@@ -123,6 +131,7 @@
                         <outlet property="mainAddUserView" destination="mrx-z8-XaM" id="7RF-pM-66y"/>
                         <outlet property="mainCarouselPageCtrlUiView" destination="AlH-2W-fF0" id="len-bm-wLu"/>
                         <outlet property="mainCarouselUiView" destination="Sq5-Ms-Ypu" id="ndk-RX-Rwe"/>
+                        <outlet property="mainPagesButtonsUiView" destination="4ix-j3-mIR" id="e22-66-OP7"/>
                         <outlet property="scrollMainView" destination="Spg-uV-FwB" id="OgY-7f-G5W"/>
                     </connections>
                 </viewController>

@@ -27,6 +27,7 @@
 		68C81960294B016B007B6EC2 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C8195F294B016B007B6EC2 /* UIColor+Extensions.swift */; };
 		68C81962294B1088007B6EC2 /* MainCarouselModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C81961294B1088007B6EC2 /* MainCarouselModel.swift */; };
 		68C81964294B1FCC007B6EC2 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C81963294B1FCC007B6EC2 /* MainViewModel.swift */; };
+		68D8C6912952F04D003F2652 /* FitStringUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D8C6902952F04D003F2652 /* FitStringUIButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		68C8195F294B016B007B6EC2 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		68C81961294B1088007B6EC2 /* MainCarouselModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCarouselModel.swift; sourceTree = "<group>"; };
 		68C81963294B1FCC007B6EC2 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		68D8C6902952F04D003F2652 /* FitStringUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitStringUIButton.swift; sourceTree = "<group>"; };
 		760CD571A28424CD1AE5DE39 /* Pods_ShopUp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShopUp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A82AB45463DF95BD4C53D6C4 /* Pods-ShopUp-ShopUpUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShopUp-ShopUpUITests.release.xcconfig"; path = "Target Support Files/Pods-ShopUp-ShopUpUITests/Pods-ShopUp-ShopUpUITests.release.xcconfig"; sourceTree = "<group>"; };
 		CB2F12F116512E23A5D16AFB /* Pods_ShopUp_ShopUpUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShopUp_ShopUpUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -223,6 +225,7 @@
 			children = (
 				68C81952294AC209007B6EC2 /* CarouselUIView.swift */,
 				68C8195A294AF38F007B6EC2 /* CarouselUICell.swift */,
+				68D8C6902952F04D003F2652 /* FitStringUIButton.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -518,6 +521,7 @@
 				68C81955294AC34A007B6EC2 /* UIView+Extensions.swift in Sources */,
 				68C81964294B1FCC007B6EC2 /* MainViewModel.swift in Sources */,
 				68C819172949C04B007B6EC2 /* AppDelegate.swift in Sources */,
+				68D8C6912952F04D003F2652 /* FitStringUIButton.swift in Sources */,
 				68C81962294B1088007B6EC2 /* MainCarouselModel.swift in Sources */,
 				68C8195B294AF390007B6EC2 /* CarouselUICell.swift in Sources */,
 				68C81957294ADB51007B6EC2 /* GradientWayType.swift in Sources */,

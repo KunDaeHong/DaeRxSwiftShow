@@ -10,6 +10,13 @@ import RxSwift
 import RxCocoa
 
 class MainCarouselViewModel {
+    ///navPagesButton
+    let mainNavPageButtonsList : [FitStringUIButton] = [
+        FitStringUIButton(title: "About Me"),
+        FitStringUIButton(title: "Projects"),
+        FitStringUIButton(title: "Contact"),
+    ]
+    ///carousel
     let carouselListCount: Int!
     let carouselModelList: Observable<[MainCarouselModel]>!
     let carouselUIViewList = BehaviorRelay<[CarouselData]>(value: [])
