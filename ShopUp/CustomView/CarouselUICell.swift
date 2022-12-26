@@ -35,6 +35,15 @@ class CarouselUICell: UICollectionViewCell {
     }
     
     public func configure(view: UIView, title: String, subTitle: String){
+        //Cell View Settings
+        self.setTwoGradientUICollectionCell(
+            firstColor: AppColorType.redGradientFirstColor.rawValue,
+            secondColor: AppColorType.redGradientSecondColor.rawValue,
+            firstPosition: .LeftB,
+            secondPosition: .rightT)
+        self.clipsToBounds = true
+        self.layer.cornerRadius = 41.5
+        
         //내부 내용
         let titleUI : UILabel = UILabel(frame: frame)
         let subTitleUI: UILabel = UILabel(frame: frame)

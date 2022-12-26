@@ -1,29 +1,29 @@
 [
     {
         "idx" : 0,
-        "title" : "이 모든 것",
-        "subTitle" : "샘플의 끝을 들여다 보다.\n모든 것을 1,090,003원에.",
+        "title" : "자신만의 음식",
+        "subTitle" : "보다 더 안전하게.\n그것에 끌리다.\n요리하다. ₩0부터.",
         "firstColor" : "ff427b",
         "secondColor" : "ffad42",
     },
     {
         "idx" : 1,
-        "title" : "오늘의 화장실.",
-        "subTitle" : "쾌변을 나답게 꾸미다. \n싸다. \n구리다. ₩599,000부터.",
+        "title" : "너와 함께",
+        "subTitle" : "나답게 요리하다.\n공짜의 선물.\n새롭게 런칭 ₩0부터.",
         "firstColor" : "ff427b",
         "secondColor" : "ffad42",
     },
     {
         "idx" : 2,
-        "title" : "너만의 끝판왕.",
-        "subTitle" : "자동으로 넘어가진 않는 Carousel. 새로운 모습.",
+        "title" : "음식에 싱싱함을 남기다.",
+        "subTitle" : "음식의 알고리즘을\n더한 찰떡같은 기능.",
         "firstColor" : "ff427b",
         "secondColor" : "ffad42",
     },
     {
         "idx" : 3,
-        "title" : "망작의 끝판 보여주다.",
-        "subTitle" : "감동도 없는 타이밍에 오랜 인상을 남기는 선물.",
+        "title" : "유통기한의 소리",
+        "subTitle" : "유통기한의\n타이밍에\n가장\n필수적인 iOS앱.",
         "firstColor" : "ff427b",
         "secondColor" : "ffad42",
     }

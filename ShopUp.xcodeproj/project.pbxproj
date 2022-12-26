@@ -28,6 +28,11 @@
 		68C81962294B1088007B6EC2 /* MainCarouselModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C81961294B1088007B6EC2 /* MainCarouselModel.swift */; };
 		68C81964294B1FCC007B6EC2 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C81963294B1FCC007B6EC2 /* MainViewModel.swift */; };
 		68D8C6912952F04D003F2652 /* FitStringUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D8C6902952F04D003F2652 /* FitStringUIButton.swift */; };
+		68D8C69329556920003F2652 /* AppColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D8C69229556920003F2652 /* AppColorType.swift */; };
+		68D8C69529557DB7003F2652 /* SmallConfirmButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D8C69429557DB7003F2652 /* SmallConfirmButton.swift */; };
+		68D8C6972955B074003F2652 /* FoodInfomationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D8C6962955B074003F2652 /* FoodInfomationModel.swift */; };
+		68D8C6992959459D003F2652 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68D8C6982959459D003F2652 /* Settings.storyboard */; };
+		68D8C69B29595BA9003F2652 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D8C69A29595BA9003F2652 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +75,11 @@
 		68C81961294B1088007B6EC2 /* MainCarouselModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCarouselModel.swift; sourceTree = "<group>"; };
 		68C81963294B1FCC007B6EC2 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		68D8C6902952F04D003F2652 /* FitStringUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitStringUIButton.swift; sourceTree = "<group>"; };
+		68D8C69229556920003F2652 /* AppColorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColorType.swift; sourceTree = "<group>"; };
+		68D8C69429557DB7003F2652 /* SmallConfirmButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallConfirmButton.swift; sourceTree = "<group>"; };
+		68D8C6962955B074003F2652 /* FoodInfomationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodInfomationModel.swift; sourceTree = "<group>"; };
+		68D8C6982959459D003F2652 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		68D8C69A29595BA9003F2652 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		760CD571A28424CD1AE5DE39 /* Pods_ShopUp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShopUp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A82AB45463DF95BD4C53D6C4 /* Pods-ShopUp-ShopUpUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShopUp-ShopUpUITests.release.xcconfig"; path = "Target Support Files/Pods-ShopUp-ShopUpUITests/Pods-ShopUp-ShopUpUITests.release.xcconfig"; sourceTree = "<group>"; };
 		CB2F12F116512E23A5D16AFB /* Pods_ShopUp_ShopUpUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShopUp_ShopUpUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -182,6 +192,7 @@
 			children = (
 				68C8191C2949C04B007B6EC2 /* Main.storyboard */,
 				68C819212949C04C007B6EC2 /* LaunchScreen.storyboard */,
+				68D8C6982959459D003F2652 /* Settings.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -198,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				68C81956294ADB51007B6EC2 /* GradientWayType.swift */,
+				68D8C69229556920003F2652 /* AppColorType.swift */,
 			);
 			path = Consts;
 			sourceTree = "<group>";
@@ -216,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				68C81961294B1088007B6EC2 /* MainCarouselModel.swift */,
+				68D8C6962955B074003F2652 /* FoodInfomationModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -226,6 +239,7 @@
 				68C81952294AC209007B6EC2 /* CarouselUIView.swift */,
 				68C8195A294AF38F007B6EC2 /* CarouselUICell.swift */,
 				68D8C6902952F04D003F2652 /* FitStringUIButton.swift */,
+				68D8C69429557DB7003F2652 /* SmallConfirmButton.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -234,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				68C81950294AB30D007B6EC2 /* MainViewController.swift */,
+				68D8C69A29595BA9003F2652 /* SettingsViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -387,6 +402,7 @@
 				68C819202949C04C007B6EC2 /* Assets.xcassets in Resources */,
 				68C8195E294AFC58007B6EC2 /* shopUpMainCarousel_dataSources.json in Resources */,
 				68C8191E2949C04B007B6EC2 /* Main.storyboard in Resources */,
+				68D8C6992959459D003F2652 /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,16 +531,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				68C81953294AC209007B6EC2 /* CarouselUIView.swift in Sources */,
+				68D8C6972955B074003F2652 /* FoodInfomationModel.swift in Sources */,
 				68C81951294AB30D007B6EC2 /* MainViewController.swift in Sources */,
 				68C81959294AE818007B6EC2 /* UICollectionViewCell+Extensions.swift in Sources */,
 				68C81960294B016B007B6EC2 /* UIColor+Extensions.swift in Sources */,
 				68C81955294AC34A007B6EC2 /* UIView+Extensions.swift in Sources */,
 				68C81964294B1FCC007B6EC2 /* MainViewModel.swift in Sources */,
 				68C819172949C04B007B6EC2 /* AppDelegate.swift in Sources */,
+				68D8C69B29595BA9003F2652 /* SettingsViewController.swift in Sources */,
+				68D8C69329556920003F2652 /* AppColorType.swift in Sources */,
 				68D8C6912952F04D003F2652 /* FitStringUIButton.swift in Sources */,
 				68C81962294B1088007B6EC2 /* MainCarouselModel.swift in Sources */,
 				68C8195B294AF390007B6EC2 /* CarouselUICell.swift in Sources */,
 				68C81957294ADB51007B6EC2 /* GradientWayType.swift in Sources */,
+				68D8C69529557DB7003F2652 /* SmallConfirmButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

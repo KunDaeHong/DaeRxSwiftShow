@@ -2,7 +2,7 @@
 //  GradientWayType.swift
 //  ShopUp
 //
-//  Created by 파토스 on 2022/12/15.
+//  Created by Daehyeon Hong on 2022/12/15.
 //
 
 import Foundation

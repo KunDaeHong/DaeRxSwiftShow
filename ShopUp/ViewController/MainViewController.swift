@@ -11,25 +11,27 @@ import RxSwift
 
 class MainViewController: UIViewController {
     
-    ///View
+    
+    ///MainViewCtrl Main Views
+    
+    //mainPages Top Nav Buttons View
+    @IBOutlet weak var mainPagesButtonsUiView: UIView!
+    
     //carousel
     @IBOutlet weak var scrollMainView: UIView!
     @IBOutlet weak var mainCarouselUiView: UICollectionView!
     @IBOutlet weak var mainCarouselPageCtrlUiView: UIView!
     private let collectionViewFlowLayout = UICollectionViewFlowLayout()
-    //addDataView
-    @IBOutlet weak var mainAddUserView: UIView!
-    private let addUserInfoView: UIView = {
-        let uiView = UIView()
-        uiView.clipsToBounds = false
-        uiView.layer.cornerRadius = 41.5
-        return uiView
-    }()
     
-    //mainPages Buttons View
-    @IBOutlet weak var mainPagesButtonsUiView: UIView!
+    //recommand data view
+    @IBOutlet weak var recomandView: UIView!
     
-    /// data for View
+    
+    
+    
+    
+    /// etc small Widgets for View
+
     //carousel
     private lazy var pageCtrl: UIPageControl = {
         let pageControl = UIPageControl()
@@ -43,16 +45,26 @@ class MainViewController: UIViewController {
         }
     }
     
+    
+    ///ViewModel
     var mainViewModel: MainCarouselViewModel?
     private let disposeBag = DisposeBag()
 
+    
+    ///Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         mainViewModel = MainCarouselViewModel(data: getJsonDataFromFile())
         mainCarouselViewSettings()
-        mainPageNavButtons()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        configureRecomandView()
+    }
+    
+    
+    ///Get Data Function
     // json 파일을 레퍼런스 데이터에서 직접 들고옴. (리턴타입: Data)
     private func getJsonDataFromFile() -> Data{
         if let path = Bundle.main.path(forResource: "shopUpMainCarousel_dataSources", ofType: "json"){
@@ -62,36 +74,14 @@ class MainViewController: UIViewController {
         }
     }
     
-    ///메인 네비 메뉴 View 설정
-    private func mainPageNavButtons() {
-        (mainViewModel?.mainNavPageButtonsList)!.enumerated().forEach{
-            $0.element.tag = $0.offset + 1
-            mainPagesButtonsUiView.addSubview($0.element)
-            $0.element.translatesAutoresizingMaskIntoConstraints = false
-            $0.element.centerYAnchor.constraint(equalTo: mainPagesButtonsUiView.centerYAnchor).isActive = true
-            $0.element.widthAnchor.constraint(equalToConstant: $0.element.frame.size.width).isActive = true
-            $0.element.heightAnchor.constraint(equalToConstant: $0.element.frame.size.height).isActive = true
-        }
-        for i in 0...3 {
-            if(i == 0){
-                mainPagesButtonsUiView.viewWithTag(i + 1)!.leadingAnchor.constraint(equalTo: mainPagesButtonsUiView.leadingAnchor, constant: 0).isActive = true
-            }
-            if (i < 2){
-                mainPagesButtonsUiView.viewWithTag(i + 2)!.leadingAnchor.constraint(equalTo: mainPagesButtonsUiView.viewWithTag(i + 1)!.trailingAnchor, constant: 15).isActive = true
-            }
-            if (i == 2){
-                mainPagesButtonsUiView.viewWithTag(i + 1)!.trailingAnchor.constraint(lessThanOrEqualTo: mainPagesButtonsUiView.trailingAnchor).isActive = true
-            }
-        }
-    }
+    ///View Configuration Function
     
-    ///메인 carousel View 설정
+    
     private func mainCarouselViewSettings() {
         mainCarouselUiView.register(CarouselUICell.self, forCellWithReuseIdentifier: CarouselUICell.description())
         mainCarouselPageCtrlViewSettings()
         mainViewModel!.appendCarouselListAppend()
         configureCarouselView()
-        configureUserInfomationView()
     }
     
     private func mainCarouselPageCtrlViewSettings() {
@@ -129,32 +119,98 @@ class MainViewController: UIViewController {
         return currentPage
     }
     
-    ///메인 2nd menu
-    private func configureUserInfomationView() {
-        let title: UILabel = UILabel()
-        mainAddUserView.addSubview(title)
-        title.text = "내가 너라면"
-        title.font = .boldSystemFont(ofSize: 20)
-        title.textColor = .black
-        title.sizeToFit()
-        title.translatesAutoresizingMaskIntoConstraints = false
-        //시각차이로 인해 제목보다 아래 사각형이 더 크게 제작되었음.
-        mainAddUserView.addSubview(addUserInfoView)
-        addUserInfoView.translatesAutoresizingMaskIntoConstraints = false
-        addUserInfoView.backgroundColor = UIColor(rgb: "b6b6b6").withAlphaComponent(0.5)
+    private func configureRecomandView() {
+        recomandView.addSubview(
+            todaysRecommandPickView(
+                frame: recomandView.bounds,
+                nothing: false,
+                warning: false,
+                good: true,
+                bad: false))
+        recomandView.backgroundColor = .clear
+    }
+    
+    ///widgets
+    func todaysRecommandPickView(frame: CGRect, nothing: Bool, warning: Bool, good: Bool, bad: Bool) -> UIView{
+        let mainView : UIView = UIView(frame: frame)
         
-        let everythisConstraint = [
-            //titleView
-            title.leadingAnchor.constraint(equalTo: mainAddUserView.leadingAnchor, constant: 30),
-            title.trailingAnchor.constraint(equalTo: mainAddUserView.trailingAnchor, constant: -30),
-            title.topAnchor.constraint(equalTo: mainAddUserView.topAnchor, constant: 0),
-            //addUserInfoView
-            addUserInfoView.trailingAnchor.constraint(equalTo: title.trailingAnchor, constant: +10),
-            addUserInfoView.leadingAnchor.constraint(equalTo: title.leadingAnchor, constant: -10),
-            addUserInfoView.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 10),
-            addUserInfoView.bottomAnchor.constraint(equalTo: mainAddUserView.bottomAnchor, constant: 0)
+        mainView.clipsToBounds = true
+        mainView.layer.cornerRadius = 41.5
+        if(nothing){
+            mainView.setTwoGradientUIView(
+                firstColor: AppColorType.grayGradientFirstColor.rawValue,
+                secondColor: AppColorType.grayGradientSecondColor.rawValue,
+                firstPosition: .LeftB,
+                secondPosition: .rightT)
+        }else if (warning){
+            mainView.setTwoGradientUIView(
+                firstColor: AppColorType.orangeGradientFirstColor.rawValue,
+                secondColor: AppColorType.orangeGradientSecondColor.rawValue,
+                firstPosition: .LeftB,
+                secondPosition: .rightT)
+        }else if(bad){
+            mainView.setTwoGradientUIView(
+                firstColor: AppColorType.redGradientFirstColor.rawValue,
+                secondColor: AppColorType.redGradientSecondColor.rawValue,
+                firstPosition: .LeftB,
+                secondPosition: .rightT)
+        }else if(good){
+            mainView.setTwoGradientUIView(
+                firstColor: AppColorType.greenGradientFirstColor.rawValue,
+                secondColor: AppColorType.greenGradientSecondColor.rawValue,
+                firstPosition: .LeftB,
+                secondPosition: .rightT)
+        }
+        
+        
+        let title = UILabel()
+        let subTitle = UILabel()
+        let confirmBtn = SmallConfirmButton(
+            title: nothing == true ? "추가" : "확인", font: .systemFont(ofSize: 13, weight: .regular), color: .blackFontColor)
+        
+        if(nothing){title.text = "등록 리스트가 없네요?!"}
+        else if(warning){title.text = "기한이 끝나가는 음식이 있어요."}
+        else if(bad){title.text = "기한이 끝난 음식입니다.."}
+        else if(good){title.text = "오늘은 OOO가 어떨까요?"}
+        
+        title.textColor = AppColorType.whiteFontColor.rawValue
+        title.font = .systemFont(ofSize: 23, weight: .heavy)
+        title.translatesAutoresizingMaskIntoConstraints = false
+        title.lineBreakMode = .byTruncatingTail
+        title.numberOfLines = 0
+        title.sizeToFit()
+        
+        if(nothing){subTitle.text = "구매내역을 추가하여 더욱 확실하게 내역을 확인하고 추천을 받아보세요!\n더 나은 생활, 저희가 책임질게요."}
+        else if(warning){subTitle.text = "OOO 음식의 기한이 거의 다 되어가요.\n소비기한이 지나가기전에 한번쯤 냉장고를 확인해보는게 좋을 것 같아요."}
+        else if(bad){subTitle.text = "OOO 음식은 이미 기한을 지나버렸어요...\n아깝지만 건강과 깨끗한 지구 환경을 위해 노력해봐요!"}
+        else if(good){subTitle.text = "이 음식으로 만들 수 있는 것이\n무엇이 있을지 인터넷에 찾아보는건 어떨까요?\n여러분의 음식을 항상 지켜줄게요."}
+        subTitle.textColor = AppColorType.whiteColor.rawValue
+        subTitle.font = .systemFont(ofSize: 15, weight: .regular)
+        subTitle.lineBreakMode = .byTruncatingTail
+        subTitle.textAlignment = .natural
+        subTitle.numberOfLines = 0
+        subTitle.sizeToFit()
+        subTitle.translatesAutoresizingMaskIntoConstraints = false
+
+        mainView.addSubview(title)
+        mainView.addSubview(subTitle)
+        mainView.addSubview(confirmBtn)
+        
+        let constraintList = [
+            title.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 20),
+            title.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 25),
+            title.trailingAnchor.constraint(lessThanOrEqualTo: mainView.trailingAnchor),
+            subTitle.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 10),
+            subTitle.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 20),
+            subTitle.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -70),
+            confirmBtn.widthAnchor.constraint(equalToConstant: confirmBtn.frame.size.width),
+            confirmBtn.heightAnchor.constraint(equalToConstant: confirmBtn.frame.size.height),
+            confirmBtn.leadingAnchor.constraint(greaterThanOrEqualTo: mainView.leadingAnchor),
+            confirmBtn.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -30),
+            confirmBtn.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -25),
         ]
-        NSLayoutConstraint.activate(everythisConstraint)
+        NSLayoutConstraint.activate(constraintList)
+        return mainView
     }
 }
 
@@ -175,15 +231,6 @@ extension MainViewController: UICollectionViewDataSource {
         let viewData = mainViewModel?.carouselUIViewList.value[indexPath.row].viewData
         let title = mainViewModel?.carouselUIViewList.value[indexPath.row].title
         let subTitle = mainViewModel?.carouselUIViewList.value[indexPath.row].subTitle
-        
-        
-        cell.setTwoGradientUICollectionCell(
-            firstColor: UIColor(rgb: "f56056"),
-            secondColor: UIColor(rgb: "ffa9a3"),
-            firstPosition: .LeftB,
-            secondPosition: .rightT)
-        cell.clipsToBounds = true
-        cell.layer.cornerRadius = 41.5
         
         cell.configure(view: viewData!, title: title!, subTitle: subTitle!)
         return cell

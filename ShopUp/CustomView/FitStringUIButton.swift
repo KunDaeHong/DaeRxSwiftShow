@@ -2,7 +2,7 @@
 //  FitStringUIButton.swift
 //  ShopUp
 //
-//  Created by 파토스 on 2022/12/21.
+//  Created by Daehyeon Hong on 2022/12/21.
 //
 
 import UIKit
@@ -25,10 +25,10 @@ class FitStringUIButton: UIButton {
     private func setupUI(title : String) {
         titleLabel?.font = .systemFont(ofSize: 17, weight: .regular)
         setTitle(title, for: .normal)
-        setTitleColor(.darkGray.withAlphaComponent(0.5), for: .normal)
-        let buttonTitleSize = ((titleLabel?.text)! as NSString).size(withAttributes: [.font : UIFont.boldSystemFont(ofSize: 17 + 1)])
+        sizeToFit()
+        let buttonTitleSize = ((titleLabel?.text)! as NSString).size(withAttributes: [.font : UIFont.boldSystemFont(ofSize: 20 + 1)])
         var yPos: CGFloat = 40
-        
+
         frame.size.height = buttonTitleSize.height * 2
         frame.size.width = buttonTitleSize.width
         frame.origin.x = 30

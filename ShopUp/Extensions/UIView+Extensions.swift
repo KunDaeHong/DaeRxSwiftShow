@@ -9,14 +9,17 @@ import Foundation
 import UIKit
 
 extension UIView {
-    func setTwoGradientUIView(firstColor: UIColor, secondColor: UIColor, firstPosition: GradientWayType, secondPosition: GradientWayType) {
-        backgroundColor = .clear
-        let gradient = CAGradientLayer()
-        gradient.frame = self.bounds
-        gradient.colors = [firstColor, secondColor]
+    func setTwoGradientUIView(
+        firstColor: UIColor,
+        secondColor: UIColor,
+        firstPosition: GradientWayType,
+        secondPosition: GradientWayType) {
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.colors = [firstColor.cgColor, secondColor.cgColor]
+        gradient.locations = [0.0, 1.0]
         gradient.startPoint = firstPosition.rawValue
         gradient.endPoint = secondPosition.rawValue
-        gradient.locations = [0, 1]
-        self.layer.addSublayer(gradient)
+        gradient.frame = bounds
+        layer.addSublayer(gradient)
     }
 }

@@ -9,7 +9,11 @@ import Foundation
 import UIKit
 
 extension UICollectionViewCell {
-    func setTwoGradientUICollectionCell(firstColor: UIColor, secondColor: UIColor, firstPosition: GradientWayType, secondPosition: GradientWayType) {
+    func setTwoGradientUICollectionCell(
+        firstColor: UIColor,
+        secondColor: UIColor,
+        firstPosition: GradientWayType,
+        secondPosition: GradientWayType) {
         let gradient: CAGradientLayer = CAGradientLayer()
         gradient.colors = [firstColor.cgColor, secondColor.cgColor]
         gradient.locations = [0.0, 1.0]
