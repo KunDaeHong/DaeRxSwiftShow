@@ -1,0 +1,5 @@
+# ignore all pods
+/Pods
+
+# ignore lock files
+*.lock

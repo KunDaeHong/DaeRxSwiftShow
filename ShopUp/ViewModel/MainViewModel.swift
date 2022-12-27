@@ -14,6 +14,11 @@ class MainCarouselViewModel {
     let carouselListCount: Int!
     let carouselModelList: Observable<[MainCarouselModel]>!
     let carouselUIViewList = BehaviorRelay<[CarouselData]>(value: [])
+    
+    ///status
+    var statusListCount: Int = 0
+    let statusModelList = BehaviorRelay<[AllStatusModel]>(value: [])
+    
     var scrollToEnd: Bool = false
     var scrollToBegin: Bool = false
     

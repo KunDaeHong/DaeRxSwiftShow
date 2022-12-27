@@ -12,7 +12,7 @@ import RxSwift
 class MainViewController: UIViewController {
     
     
-    ///MainViewCtrl Main Views
+    // MARK: MainViewCtrl Main Views
     
     //mainPages Top Nav Buttons View
     @IBOutlet weak var mainPagesButtonsUiView: UIView!
@@ -26,34 +26,29 @@ class MainViewController: UIViewController {
     //recommand data view
     @IBOutlet weak var recomandView: UIView!
     
-    
-    
-    
-    
-    /// etc small Widgets for View
-
-    //carousel
-    private lazy var pageCtrl: UIPageControl = {
-        let pageControl = UIPageControl()
-        pageControl.pageIndicatorTintColor = .gray
-        pageControl.currentPageIndicatorTintColor = .white
-        return pageControl
-    }()
-    private var currentPage = 0 {
-        didSet {
-            pageCtrl.currentPage = currentPage
+    //ad view
+    @IBOutlet weak var adView: UIView!{
+        didSet{
+            self.adView.backgroundColor = .clear
+            self.adView.clipsToBounds = true
+            self.adView.layer.cornerRadius = 41.5
+            self.adView.layer.borderWidth = 2
+            self.adView.layer.borderColor = AppColorType.grayGradientFirstColor.rawValue.cgColor
         }
     }
     
     
-    ///ViewModel
+    // MARK: View Models
+    
     var mainViewModel: MainCarouselViewModel?
     private let disposeBag = DisposeBag()
-
     
-    ///Life Cycle
+    
+    // MARK: Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.interactivePopGestureRecognizer?.delegate = nil
         mainViewModel = MainCarouselViewModel(data: getJsonDataFromFile())
         mainCarouselViewSettings()
     }
@@ -64,7 +59,8 @@ class MainViewController: UIViewController {
     }
     
     
-    ///Get Data Function
+    // MARK: Get Data Function
+    
     // json 파일을 레퍼런스 데이터에서 직접 들고옴. (리턴타입: Data)
     private func getJsonDataFromFile() -> Data{
         if let path = Bundle.main.path(forResource: "shopUpMainCarousel_dataSources", ofType: "json"){
@@ -74,8 +70,13 @@ class MainViewController: UIViewController {
         }
     }
     
-    ///View Configuration Function
+    // MARK: View action
     
+    @IBAction func mainToSettings(_ sender: Any) {
+    }
+    
+    
+    // MARK: View Configuration Function
     
     private func mainCarouselViewSettings() {
         mainCarouselUiView.register(CarouselUICell.self, forCellWithReuseIdentifier: CarouselUICell.description())
@@ -103,10 +104,10 @@ class MainViewController: UIViewController {
         mainCarouselUiView.delegate = self
         mainCarouselUiView.isPagingEnabled = true
         collectionViewFlowLayout.scrollDirection = .horizontal
-        let cellPadding = (mainCarouselUiView.bounds.width - 280) / 2
-        collectionViewFlowLayout.itemSize = .init(width: 300, height: 400)
+        let cellPadding = (mainCarouselUiView.frame.width - 60)/9
+        collectionViewFlowLayout.itemSize = .init(width: mainCarouselUiView.frame.width - 60, height: 400)
         collectionViewFlowLayout.sectionInset = .init(top: 0, left: cellPadding, bottom: 0, right: cellPadding)
-        collectionViewFlowLayout.minimumLineSpacing = cellPadding * 2
+        collectionViewFlowLayout.minimumLineSpacing = (mainCarouselUiView.frame.width - 60)/4
         mainCarouselUiView.collectionViewLayout = collectionViewFlowLayout
     }
     
@@ -130,7 +131,22 @@ class MainViewController: UIViewController {
         recomandView.backgroundColor = .clear
     }
     
-    ///widgets
+    
+    // MARK: Widgets
+    
+    //carousel
+    private lazy var pageCtrl: UIPageControl = {
+        let pageControl = UIPageControl()
+        pageControl.pageIndicatorTintColor = .gray
+        pageControl.currentPageIndicatorTintColor = .white
+        return pageControl
+    }()
+    private var currentPage = 0 {
+        didSet {
+            pageCtrl.currentPage = currentPage
+        }
+    }
+    
     func todaysRecommandPickView(frame: CGRect, nothing: Bool, warning: Bool, good: Bool, bad: Bool) -> UIView{
         let mainView : UIView = UIView(frame: frame)
         

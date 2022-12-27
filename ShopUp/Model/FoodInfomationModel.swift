@@ -8,15 +8,18 @@
 import Foundation
 
 struct FoodInfomationModel {
+    let idx : Int
     let title : String
     let subscription : String
     let date: Date
     
     init(
+        idx : Int,
         title: String,
         subscription: String,
         date : Date
     ) {
+        self.idx = idx
         self.title = title
         self.subscription = subscription
         self.date = date

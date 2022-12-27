@@ -10,6 +10,10 @@
 		0C526EDEE1169027D5B457A1 /* Pods_ShopUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 760CD571A28424CD1AE5DE39 /* Pods_ShopUp.framework */; };
 		4BFB285AA26623479B5E9DD1 /* Pods_ShopUpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D10E8B005F0DBDDB98AA8AE9 /* Pods_ShopUpTests.framework */; };
 		6808A685C3490CBBD1A6F801 /* Pods_ShopUp_ShopUpUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2F12F116512E23A5D16AFB /* Pods_ShopUp_ShopUpUITests.framework */; };
+		682A5CFC29599416005AC208 /* DBMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682A5CFB29599416005AC208 /* DBMgr.swift */; };
+		682A5CFF2959999D005AC208 /* FoodInfomationDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682A5CFE2959999D005AC208 /* FoodInfomationDBModel.swift */; };
+		682A5D01295A8291005AC208 /* SmallFitCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682A5D00295A8291005AC208 /* SmallFitCollectionCell.swift */; };
+		682A5D03295ACB2E005AC208 /* AllStatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682A5D02295ACB2E005AC208 /* AllStatusModel.swift */; };
 		68C819172949C04B007B6EC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C819162949C04B007B6EC2 /* AppDelegate.swift */; };
 		68C8191E2949C04B007B6EC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68C8191C2949C04B007B6EC2 /* Main.storyboard */; };
 		68C819202949C04C007B6EC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68C8191F2949C04C007B6EC2 /* Assets.xcassets */; };
@@ -53,6 +57,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		682A5CFB29599416005AC208 /* DBMgr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBMgr.swift; sourceTree = "<group>"; };
+		682A5CFE2959999D005AC208 /* FoodInfomationDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodInfomationDBModel.swift; sourceTree = "<group>"; };
+		682A5D00295A8291005AC208 /* SmallFitCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallFitCollectionCell.swift; sourceTree = "<group>"; };
+		682A5D02295ACB2E005AC208 /* AllStatusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStatusModel.swift; sourceTree = "<group>"; };
 		68C819132949C04B007B6EC2 /* ShopUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShopUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68C819162949C04B007B6EC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68C8191D2949C04B007B6EC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -129,6 +137,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		682A5CFA295993D0005AC208 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				682A5CFB29599416005AC208 /* DBMgr.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		682A5CFD29599976005AC208 /* DBModel */ = {
+			isa = PBXGroup;
+			children = (
+				682A5CFE2959999D005AC208 /* FoodInfomationDBModel.swift */,
+			);
+			path = DBModel;
+			sourceTree = "<group>";
+		};
 		68C8190A2949C04A007B6EC2 = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +180,7 @@
 			children = (
 				68C819242949C04C007B6EC2 /* Info.plist */,
 				68C8191F2949C04C007B6EC2 /* Assets.xcassets */,
+				682A5CFA295993D0005AC208 /* Utils */,
 				68C8195C294AFC0B007B6EC2 /* Data */,
 				68C8194A2949C86F007B6EC2 /* Extensions */,
 				68C819492949C866007B6EC2 /* Consts */,
@@ -227,8 +252,10 @@
 		68C8194B2949C879007B6EC2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				682A5CFD29599976005AC208 /* DBModel */,
 				68C81961294B1088007B6EC2 /* MainCarouselModel.swift */,
 				68D8C6962955B074003F2652 /* FoodInfomationModel.swift */,
+				682A5D02295ACB2E005AC208 /* AllStatusModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -240,6 +267,7 @@
 				68C8195A294AF38F007B6EC2 /* CarouselUICell.swift */,
 				68D8C6902952F04D003F2652 /* FitStringUIButton.swift */,
 				68D8C69429557DB7003F2652 /* SmallConfirmButton.swift */,
+				682A5D00295A8291005AC208 /* SmallFitCollectionCell.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -532,6 +560,7 @@
 			files = (
 				68C81953294AC209007B6EC2 /* CarouselUIView.swift in Sources */,
 				68D8C6972955B074003F2652 /* FoodInfomationModel.swift in Sources */,
+				682A5CFC29599416005AC208 /* DBMgr.swift in Sources */,
 				68C81951294AB30D007B6EC2 /* MainViewController.swift in Sources */,
 				68C81959294AE818007B6EC2 /* UICollectionViewCell+Extensions.swift in Sources */,
 				68C81960294B016B007B6EC2 /* UIColor+Extensions.swift in Sources */,
@@ -542,7 +571,10 @@
 				68D8C69329556920003F2652 /* AppColorType.swift in Sources */,
 				68D8C6912952F04D003F2652 /* FitStringUIButton.swift in Sources */,
 				68C81962294B1088007B6EC2 /* MainCarouselModel.swift in Sources */,
+				682A5D01295A8291005AC208 /* SmallFitCollectionCell.swift in Sources */,
+				682A5CFF2959999D005AC208 /* FoodInfomationDBModel.swift in Sources */,
 				68C8195B294AF390007B6EC2 /* CarouselUICell.swift in Sources */,
+				682A5D03295ACB2E005AC208 /* AllStatusModel.swift in Sources */,
 				68C81957294ADB51007B6EC2 /* GradientWayType.swift in Sources */,
 				68D8C69529557DB7003F2652 /* SmallConfirmButton.swift in Sources */,
 			);
@@ -728,8 +760,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -758,8 +790,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

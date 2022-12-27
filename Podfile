@@ -8,6 +8,7 @@ target 'ShopUp' do
   #Rx Frameworks
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'RealmSwift'
 
   # Pods for ShopUp
 

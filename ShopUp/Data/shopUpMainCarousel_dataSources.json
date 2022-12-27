@@ -2,14 +2,14 @@
     {
         "idx" : 0,
         "title" : "자신만의 음식",
-        "subTitle" : "보다 더 안전하게.\n그것에 끌리다.\n요리하다. ₩0부터.",
+        "subTitle" : "보다 더 안전하게.\n그것에 끌리다.\n요리하다.\n\n₩0부터.",
         "firstColor" : "ff427b",
         "secondColor" : "ffad42",
     },
     {
         "idx" : 1,
         "title" : "너와 함께",
-        "subTitle" : "나답게 요리하다.\n공짜의 선물.\n새롭게 런칭 ₩0부터.",
+        "subTitle" : "나답게 요리하다.\n공짜의 선물.\n새롭게 런칭\n\n₩0부터.",
         "firstColor" : "ff427b",
         "secondColor" : "ffad42",
     },
@@ -23,7 +23,7 @@
     {
         "idx" : 3,
         "title" : "유통기한의 소리",
-        "subTitle" : "유통기한의\n타이밍에\n가장\n필수적인 iOS앱.",
+        "subTitle" : "유통기한의\n타이밍에\n가장\n필수적인\niOS앱.",
         "firstColor" : "ff427b",
         "secondColor" : "ffad42",
     }
