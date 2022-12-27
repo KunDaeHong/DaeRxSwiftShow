@@ -1,5 +1,5 @@
 # ignore all pods
-/Pods
+Pods/
 
 # ignore lock files
 *.lock
