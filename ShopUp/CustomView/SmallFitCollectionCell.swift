@@ -104,10 +104,10 @@ class SmallFitCollectionCell: UICollectionViewCell {
             shape.strokeColor = AppColorType.whiteColor.rawValue.cgColor
             shape.fillColor = AppColorType.clear.rawValue.cgColor
             DispatchQueue.main.async {
-                shape.path = getProgressPath(percentage: 100).cgPath
-                progressAnimation(percentTage: CGFloat(100))
-                shape.path = getProgressPath(percentage: PercentTage!).cgPath
-                progressAnimation(percentTage: CGFloat(PercentTage!))
+                self.shape.path = self.getProgressPath(percentage: 100).cgPath
+                self.progressAnimation(percentTage: CGFloat(100))
+                self.shape.path = self.getProgressPath(percentage: PercentTage!).cgPath
+                self.progressAnimation(percentTage: CGFloat(PercentTage!))
             }
         }
     }
