@@ -10,6 +10,8 @@ import UIKit
 
 class SmallFitCollectionCell: UICollectionViewCell {
     private let customView: UIView = UIView()
+    private let shape = CAShapeLayer()
+    private var percentTage: Int = 0
     
     static let cellId = "SmallFitCollectCell"
     
@@ -37,7 +39,7 @@ class SmallFitCollectionCell: UICollectionViewCell {
         // Use an image or icon in the background if you want to. However it will automatically render as a gradient in the background.
         ImageView: UIImageView? = nil,
         // Use a percent view in the background if you want. But see percent view if you want to see.
-        PersentTage: Int? = nil
+        PercentTage: Int? = nil
     ){
         //Cell View settings
         self.clipsToBounds = true
@@ -57,21 +59,22 @@ class SmallFitCollectionCell: UICollectionViewCell {
         // title
         let titleUI: UILabel = UILabel()
         addSubview(titleUI)
+        titleUI.text = title
         titleUI.translatesAutoresizingMaskIntoConstraints = false
         titleUI.textColor = .white
-        titleUI.font = .systemFont(ofSize: 15, weight: .bold)
+        titleUI.font = .systemFont(ofSize: 20, weight: .bold)
         titleUI.sizeToFit()
         
         let titleConstraintList: [NSLayoutConstraint] = [
-            titleUI.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            titleUI.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            titleUI.topAnchor.constraint(equalTo: topAnchor, constant: 20),
+            titleUI.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             titleUI.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor)
         ]
         NSLayoutConstraint.activate(titleConstraintList)
         
         
         // image view
-        if ImageView != nil && PersentTage == nil {
+        if ImageView != nil && PercentTage == nil {
             addSubview(ImageView!)
             ImageView?.translatesAutoresizingMaskIntoConstraints = false
             ImageView?.contentMode = .scaleAspectFit
@@ -94,43 +97,39 @@ class SmallFitCollectionCell: UICollectionViewCell {
         
         
         //percentage view
-        if PersentTage != nil && ImageView == nil {
-            //main view
-            let mainView = UIView()
-            addSubview(mainView)
-            mainView.translatesAutoresizingMaskIntoConstraints = false
-            
-            let mainViewConstraintList: [NSLayoutConstraint] = [
-                mainView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5),
-                mainView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5),
-                mainView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5),
-                mainView.heightAnchor.constraint(equalToConstant: 30),
-            ]
-            NSLayoutConstraint.activate(mainViewConstraintList)
-            
-            //half circle path
-            let halfCirclePath = UIBezierPath()
-            halfCirclePath.move(to: center)
-            halfCirclePath.addArc(withCenter: center, radius: mainView.frame.width / 2, startAngle: .pi, endAngle: 2 * .pi, clockwise: true)
-            halfCirclePath.lineCapStyle = .round
-            
-            
+        if PercentTage != nil && ImageView == nil {
             //line shape
-            let shape = CAShapeLayer()
-            shape.lineWidth = 3
-            shape.path = halfCirclePath.cgPath
+            shape.lineCap = .round
+            shape.lineWidth = 10
             shape.strokeColor = AppColorType.whiteColor.rawValue.cgColor
-            mainView.layer.addSublayer(shape)
-            
-            
-            //animation
-            let animation = CAKeyframeAnimation(keyPath: "percent")
-            animation.values = [0.0, 1.0, PersentTage!/100]
-            animation.keyTimes = [0, 0.5, 1]
-            animation.duration = 0.5
-            animation.isAdditive = true
-            shape.add(animation, forKey: "halfCirclePercent")
+            shape.fillColor = AppColorType.clear.rawValue.cgColor
+            DispatchQueue.main.async {
+                shape.path = getProgressPath(percentage: 100).cgPath
+                progressAnimation(percentTage: CGFloat(100))
+                shape.path = getProgressPath(percentage: PercentTage!).cgPath
+                progressAnimation(percentTage: CGFloat(PercentTage!))
+            }
         }
-        
     }
+    
+    public func progressAnimation(percentTage: CGFloat) {
+        //animation
+        let animation = CAKeyframeAnimation(keyPath: "strokeEnd")
+        animation.duration = 2.0
+        animation.values = [0.0, 1.0, percentTage * 0.1]
+        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        animation.repeatCount = 1
+        shape.add(animation, forKey: "ProgressStrokeEnd")
+        layer.addSublayer(shape)
+    }
+    
+    private func getProgressPath(percentage: Int) -> UIBezierPath {
+        let progressPath = UIBezierPath()
+        let viewCenter = CGPoint(x: bounds.midX, y: bounds.maxY - 30)
+        //endAngle엔 startAngle값을 더해야 endAngle에서 0으로 계산되는게 아닌 180(시작 각도)부터 계산됨.
+        progressPath.addArc(withCenter: viewCenter, radius: 33, startAngle: 180 / 180 * .pi, endAngle: ((CGFloat(percentage) / 100 * 180) + 180) / 180 * .pi, clockwise: true)
+        return progressPath
+    }
+    
+    
 }

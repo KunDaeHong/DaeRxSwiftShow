@@ -14,6 +14,9 @@ class MainViewController: UIViewController {
     
     // MARK: MainViewCtrl Main Views
     
+    //main Scroll View
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     //mainPages Top Nav Buttons View
     @IBOutlet weak var mainPagesButtonsUiView: UIView!
     
@@ -37,6 +40,10 @@ class MainViewController: UIViewController {
         }
     }
     
+    //now Status view
+    @IBOutlet weak var nowStatusCollectionView: UICollectionView!
+    private let nowStatusCollectionFlowLayout = UICollectionViewFlowLayout()
+    
     
     // MARK: View Models
     
@@ -49,8 +56,10 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.interactivePopGestureRecognizer?.delegate = nil
+        scrollView.delegate = self
         mainViewModel = MainCarouselViewModel(data: getJsonDataFromFile())
         mainCarouselViewSettings()
+        configureNowStatusView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -129,6 +138,39 @@ class MainViewController: UIViewController {
                 good: true,
                 bad: false))
         recomandView.backgroundColor = .clear
+    }
+    
+    private func configureNowStatusView() {
+        nowStatusCollectionView.register(SmallFitCollectionCell.self, forCellWithReuseIdentifier: SmallFitCollectionCell.description())
+        nowStatusCollectionView.dataSource = self
+        nowStatusCollectionView.delegate = self
+        nowStatusCollectionFlowLayout.scrollDirection = .horizontal
+        nowStatusCollectionFlowLayout.itemSize = .init(width: 120, height: nowStatusCollectionView.frame.height - 10)
+        nowStatusCollectionFlowLayout.minimumLineSpacing = 25
+        nowStatusCollectionFlowLayout.sectionInset = .init(top: 0, left: 25, bottom: 0, right: 25)
+        nowStatusCollectionView.collectionViewLayout = nowStatusCollectionFlowLayout
+        
+        let leftSideOpacityBar = UIView()
+        let rightSideOpacityBar = UIView()
+        nowStatusCollectionView.addSubview(leftSideOpacityBar)
+        nowStatusCollectionView.addSubview(rightSideOpacityBar)
+        leftSideOpacityBar.translatesAutoresizingMaskIntoConstraints = false
+        rightSideOpacityBar.translatesAutoresizingMaskIntoConstraints = false
+        leftSideOpacityBar.setTwoGradientUIView(firstColor: .white, secondColor: .clear, firstPosition: .Left, secondPosition: .right)
+        rightSideOpacityBar.setTwoGradientUIView(firstColor: .clear, secondColor: .white, firstPosition: .Left, secondPosition: .right)
+        
+        let constraintList : [NSLayoutConstraint] = [
+            leftSideOpacityBar.widthAnchor.constraint(equalToConstant: 30),
+            leftSideOpacityBar.heightAnchor.constraint(equalTo: nowStatusCollectionView.heightAnchor),
+            leftSideOpacityBar.leadingAnchor.constraint(equalTo: nowStatusCollectionView.leadingAnchor, constant: 0),
+            leftSideOpacityBar.centerYAnchor.constraint(equalTo: nowStatusCollectionView.centerYAnchor),
+            rightSideOpacityBar.widthAnchor.constraint(equalToConstant: 30),
+            rightSideOpacityBar.heightAnchor.constraint(equalTo: nowStatusCollectionView.heightAnchor),
+            rightSideOpacityBar.trailingAnchor.constraint(equalTo: nowStatusCollectionView.trailingAnchor, constant: 0),
+            rightSideOpacityBar.centerYAnchor.constraint(equalTo: nowStatusCollectionView.centerYAnchor),
+        ]
+        
+        NSLayoutConstraint.activate(constraintList)
     }
     
     
@@ -230,26 +272,41 @@ class MainViewController: UIViewController {
     }
 }
 
+extension MainViewController: UIScrollViewDelegate {
+}
+
 extension MainViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (mainViewModel?.carouselListCount)!
+        if collectionView == mainCarouselUiView {
+            return (mainViewModel?.carouselListCount)!
+        }else {
+            return 5
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CarouselUICell.description(), for: indexPath) as? CarouselUICell else {
-            return UICollectionViewCell()
+        if collectionView == mainCarouselUiView {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CarouselUICell.description(), for: indexPath) as? CarouselUICell else {
+                return UICollectionViewCell()
+            }
+            
+            let viewData = mainViewModel?.carouselUIViewList.value[indexPath.row].viewData
+            let title = mainViewModel?.carouselUIViewList.value[indexPath.row].title
+            let subTitle = mainViewModel?.carouselUIViewList.value[indexPath.row].subTitle
+            
+            cell.configure(view: viewData!, title: title!, subTitle: subTitle!)
+            return cell
+        }else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SmallFitCollectionCell.description(), for: indexPath) as? SmallFitCollectionCell else {
+                return UICollectionViewCell()
+            }
+            cell.configure(title: "테스트", firstColor: .orangeColor, PercentTage: 76)
+            return cell
         }
-        
-        let viewData = mainViewModel?.carouselUIViewList.value[indexPath.row].viewData
-        let title = mainViewModel?.carouselUIViewList.value[indexPath.row].title
-        let subTitle = mainViewModel?.carouselUIViewList.value[indexPath.row].subTitle
-        
-        cell.configure(view: viewData!, title: title!, subTitle: subTitle!)
-        return cell
     }
 }
 

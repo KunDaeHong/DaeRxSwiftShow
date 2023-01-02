@@ -177,7 +177,7 @@
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tCu-06-t93">
+                                                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tCu-06-t93">
                                                                         <rect key="frame" x="0.0" y="41" width="333" height="129"/>
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qJV-dG-bht">
@@ -268,8 +268,10 @@
                         <outlet property="mainCarouselPageCtrlUiView" destination="AlH-2W-fF0" id="len-bm-wLu"/>
                         <outlet property="mainCarouselUiView" destination="Sq5-Ms-Ypu" id="ndk-RX-Rwe"/>
                         <outlet property="mainPagesButtonsUiView" destination="4ix-j3-mIR" id="gUb-Qt-5uM"/>
+                        <outlet property="nowStatusCollectionView" destination="tCu-06-t93" id="fqL-EK-NGt"/>
                         <outlet property="recomandView" destination="tOb-Bn-np8" id="twe-ft-Tty"/>
                         <outlet property="scrollMainView" destination="Spg-uV-FwB" id="OgY-7f-G5W"/>
+                        <outlet property="scrollView" destination="AMy-Fi-TXm" id="Flw-13-IdW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
