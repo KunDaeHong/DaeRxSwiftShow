@@ -99,28 +99,53 @@ class SmallFitCollectionCell: UICollectionViewCell {
         //percentage view
         if PercentTage != nil && ImageView == nil {
             //line shape
+            let progressNumUI: UILabel = UILabel()
+            addSubview(progressNumUI)
+            progressNumUI.text = "\(PercentTage!)"
+            progressNumUI.translatesAutoresizingMaskIntoConstraints = false
+            progressNumUI.textColor = .white
+            progressNumUI.font = .systemFont(ofSize: 20, weight: .bold)
+            progressNumUI.sizeToFit()
+            
+            let progressConstraintList: [NSLayoutConstraint] = [
+                progressNumUI.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
+                progressNumUI.centerXAnchor.constraint(equalTo: centerXAnchor)
+            ]
+            NSLayoutConstraint.activate(progressConstraintList)
+            
             shape.lineCap = .round
             shape.lineWidth = 10
             shape.strokeColor = AppColorType.whiteColor.rawValue.cgColor
             shape.fillColor = AppColorType.clear.rawValue.cgColor
-            DispatchQueue.main.async {
-                self.shape.path = self.getProgressPath(percentage: 100).cgPath
-                self.progressAnimation(percentTage: CGFloat(100))
-                self.shape.path = self.getProgressPath(percentage: PercentTage!).cgPath
-                self.progressAnimation(percentTage: CGFloat(PercentTage!))
+            layer.addSublayer(shape)
+            shape.path = getProgressPath(percentage: 100).cgPath
+            progressAnimation(percentTage: CGFloat(100), first: true)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5){
+                self.progressAnimation(percentTage: CGFloat(PercentTage!), first: false)
             }
         }
     }
     
-    public func progressAnimation(percentTage: CGFloat) {
+    public func progressAnimation(percentTage: CGFloat, first: Bool) {
         //animation
-        let animation = CAKeyframeAnimation(keyPath: "strokeEnd")
-        animation.duration = 2.0
-        animation.values = [0.0, 1.0, percentTage * 0.1]
-        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-        animation.repeatCount = 1
+        var fromValue = shape.strokeEnd
+        let toValue = percentTage * 0.01
+        if let presentationLayer = shape.presentation() {
+            fromValue = presentationLayer.strokeEnd
+        }
+        let duration = first ? 1.5 : 0.5
+        
+        let animation = CABasicAnimation(keyPath: "strokeEnd")
+        animation.fromValue = first ? 0 : fromValue
+        animation.toValue = toValue
+        animation.duration = duration
+        shape.removeAnimation(forKey: "ProgressStrokeEnd")
         shape.add(animation, forKey: "ProgressStrokeEnd")
-        layer.addSublayer(shape)
+        
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)
+        shape.strokeEnd = toValue
+        CATransaction.commit()
     }
     
     private func getProgressPath(percentage: Int) -> UIBezierPath {
