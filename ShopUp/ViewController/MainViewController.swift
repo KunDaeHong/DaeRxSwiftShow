@@ -304,7 +304,13 @@ extension MainViewController: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SmallFitCollectionCell.description(), for: indexPath) as? SmallFitCollectionCell else {
                 return UICollectionViewCell()
             }
-            cell.configure(title: "테스트", firstColor: .orangeColor, PercentTage: 76)
+            cell.configure(
+                title: "테스트",
+                firstColor: .orangeGradientFirstColor,
+                secondColor: .orangeGradientSecondColor,
+                gradientFirstDirection: .LeftB,
+                gradientSecondDirection: .rightT,
+                PercentTage: 76)
             return cell
         }
     }

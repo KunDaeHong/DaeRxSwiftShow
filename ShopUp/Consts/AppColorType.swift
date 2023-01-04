@@ -76,9 +76,9 @@ enum AppColorType {
         case .redGradientSecondColor :
             return UIColor(rgb: "ffa9a3")
         case .orangeGradientFirstColor :
-            return UIColor(rgb: "e8b980")
+            return UIColor(rgb: "d66e29")
         case .orangeGradientSecondColor :
-            return UIColor(rgb: "ebc698")
+            return UIColor(rgb: "f7a46d")
         case .greenGradientFirstColor:
             return UIColor(rgb: "51c259")
         case .greenGradientSecondColor:

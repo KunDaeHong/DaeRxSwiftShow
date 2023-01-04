@@ -78,9 +78,25 @@
             filePath = "ShopUp/CustomView/SmallFitCollectionCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "progressAnimation(percentTage:first:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "985DD41A-E498-4EF2-9A33-586E7A523B4F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShopUp/CustomView/SmallFitCollectionCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "configure(title:firstColor:secondColor:gradientFirstDirection:gradientSecondDirection:ImageView:PercentTage:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

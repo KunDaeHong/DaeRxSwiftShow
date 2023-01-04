@@ -76,23 +76,36 @@ class SmallFitCollectionCell: UICollectionViewCell {
         // image view
         if ImageView != nil && PercentTage == nil {
             addSubview(ImageView!)
+            
             ImageView?.translatesAutoresizingMaskIntoConstraints = false
             ImageView?.contentMode = .scaleAspectFit
-            let gradientLayer = CAGradientLayer()
-            gradientLayer.frame = ImageView!.bounds
-            gradientLayer.colors = [UIColor.clear.cgColor, UIColor.white.withAlphaComponent(0.0).cgColor]
-            gradientLayer.startPoint = GradientWayType.LeftB.rawValue
-            gradientLayer.endPoint = GradientWayType.rightT.rawValue
-            ImageView!.layer.mask = gradientLayer
+            ImageView?.tintColor = AppColorType.clear.rawValue
+            
             
             let imageViewConstraintList: [NSLayoutConstraint] = [
-                ImageView!.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-                ImageView!.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
+                ImageView!.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+                ImageView!.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
                 ImageView!.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor),
-                ImageView!.widthAnchor.constraint(equalToConstant: 30),
-                ImageView!.heightAnchor.constraint(equalToConstant: 30),
+                ImageView!.widthAnchor.constraint(equalToConstant: 50),
+                ImageView!.heightAnchor.constraint(equalToConstant: 50),
             ]
             NSLayoutConstraint.activate(imageViewConstraintList)
+            
+            let gradientLayer = CAGradientLayer()
+            gradientLayer.colors = [AppColorType.clear.rawValue.cgColor, AppColorType.halfDarkGrayColor.rawValue.cgColor]
+            gradientLayer.startPoint = GradientWayType.LeftT.rawValue
+            gradientLayer.endPoint = GradientWayType.rightB.rawValue
+            gradientLayer.frame = ImageView!.frame
+            
+            let mask = CALayer()
+            mask.contents = ImageView?.image?.cgImage
+            mask.frame = gradientLayer.bounds
+            
+            gradientLayer.mask = mask
+            
+            ImageView?.layer.addSublayer(gradientLayer)
+            
+            
         }
         
         
