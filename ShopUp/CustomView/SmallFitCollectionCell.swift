@@ -133,7 +133,7 @@ class SmallFitCollectionCell: UICollectionViewCell {
             layer.addSublayer(shape)
             shape.path = getProgressPath(percentage: 100).cgPath
             progressAnimation(percentTage: CGFloat(100), first: true)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5){
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1){
                 self.progressAnimation(percentTage: CGFloat(PercentTage!), first: false)
             }
         }
@@ -146,12 +146,13 @@ class SmallFitCollectionCell: UICollectionViewCell {
         if let presentationLayer = shape.presentation() {
             fromValue = presentationLayer.strokeEnd
         }
-        let duration = first ? 1.5 : 0.5
+        let duration = first ? 1 : 0.5
         
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.fromValue = first ? 0 : fromValue
         animation.toValue = toValue
         animation.duration = duration
+        animation.timingFunction = CAMediaTimingFunction(name: .easeOut)
         shape.removeAnimation(forKey: "ProgressStrokeEnd")
         shape.add(animation, forKey: "ProgressStrokeEnd")
         

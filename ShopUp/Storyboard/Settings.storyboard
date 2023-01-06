@@ -129,13 +129,42 @@
                                                             <constraint firstItem="vl7-Kx-dHx" firstAttribute="leading" secondItem="i4F-GQ-yiS" secondAttribute="leading" constant="30" id="nAY-em-gmm"/>
                                                         </constraints>
                                                     </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZQQ-ra-6cJ" userLabel="Settings List View">
+                                                        <rect key="frame" x="0.0" y="200" width="393" height="830"/>
+                                                        <subviews>
+                                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2Of-XN-qzd">
+                                                                <rect key="frame" x="20" y="30" width="353" height="800"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="800" id="dBf-Xm-78x"/>
+                                                                </constraints>
+                                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="obb-7l-f9p">
+                                                                    <size key="itemSize" width="128" height="128"/>
+                                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                                </collectionViewFlowLayout>
+                                                                <cells/>
+                                                            </collectionView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstItem="2Of-XN-qzd" firstAttribute="leading" secondItem="ZQQ-ra-6cJ" secondAttribute="leading" constant="20" id="2Kq-GW-6fw"/>
+                                                            <constraint firstItem="2Of-XN-qzd" firstAttribute="top" secondItem="ZQQ-ra-6cJ" secondAttribute="top" constant="30" id="JZn-aI-wl1"/>
+                                                            <constraint firstAttribute="bottom" secondItem="2Of-XN-qzd" secondAttribute="bottom" id="QNi-2k-JKT"/>
+                                                            <constraint firstAttribute="trailing" secondItem="2Of-XN-qzd" secondAttribute="trailing" constant="20" id="qTL-cE-GBg"/>
+                                                        </constraints>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstItem="i4F-GQ-yiS" firstAttribute="top" secondItem="IaD-tL-a8T" secondAttribute="top" id="CCT-Sc-ZS9"/>
                                                     <constraint firstAttribute="trailing" secondItem="i4F-GQ-yiS" secondAttribute="trailing" id="QF2-AS-tOy"/>
                                                     <constraint firstItem="i4F-GQ-yiS" firstAttribute="leading" secondItem="IaD-tL-a8T" secondAttribute="leading" id="RKK-Ew-JmL"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ZQQ-ra-6cJ" secondAttribute="trailing" id="Rb1-Mn-eap"/>
                                                     <constraint firstAttribute="height" constant="1000" id="Vaf-mj-KBa"/>
+                                                    <constraint firstItem="ZQQ-ra-6cJ" firstAttribute="top" secondItem="i4F-GQ-yiS" secondAttribute="bottom" id="bVE-KM-551"/>
+                                                    <constraint firstItem="ZQQ-ra-6cJ" firstAttribute="leading" secondItem="IaD-tL-a8T" secondAttribute="leading" id="pj5-ki-Gkh"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -174,6 +203,7 @@
                     <navigationItem key="navigationItem" id="Anh-V1-79d"/>
                     <connections>
                         <outlet property="easySettingsCollectionView" destination="dOt-mL-nSr" id="4MG-4d-PGn"/>
+                        <outlet property="listSettingsCollectionView" destination="2Of-XN-qzd" id="Qw5-dV-rR5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7b7-iN-t5N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

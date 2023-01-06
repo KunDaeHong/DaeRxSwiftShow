@@ -47,14 +47,17 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="05i-NI-gY0">
-                                                        <rect key="frame" x="201.66666666666669" y="13.666666666666671" width="30" height="33"/>
+                                                        <rect key="frame" x="201.66666666666669" y="0.0" width="30" height="60"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" title="등록"/>
+                                                        <connections>
+                                                            <segue destination="4tf-Jk-pg3" kind="show" id="bSb-Pg-3Y9"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BTi-rc-Kqp">
-                                                        <rect key="frame" x="141.66666666666666" y="13.666666666666671" width="45" height="33"/>
+                                                        <rect key="frame" x="141.66666666666666" y="0.0" width="45" height="60"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -65,6 +68,10 @@
                                                 <constraints>
                                                     <constraint firstItem="05i-NI-gY0" firstAttribute="leading" secondItem="BTi-rc-Kqp" secondAttribute="trailing" constant="15" id="377-JY-fxH"/>
                                                     <constraint firstAttribute="bottom" secondItem="air-WD-Vgj" secondAttribute="bottom" id="3X2-gn-J1x"/>
+                                                    <constraint firstItem="BTi-rc-Kqp" firstAttribute="top" secondItem="4ix-j3-mIR" secondAttribute="top" id="5Mr-dw-fGY"/>
+                                                    <constraint firstAttribute="bottom" secondItem="05i-NI-gY0" secondAttribute="bottom" id="DSr-KG-d4U"/>
+                                                    <constraint firstItem="05i-NI-gY0" firstAttribute="top" secondItem="4ix-j3-mIR" secondAttribute="top" id="Drj-ys-5OT"/>
+                                                    <constraint firstAttribute="bottom" secondItem="BTi-rc-Kqp" secondAttribute="bottom" id="Onn-1i-niD"/>
                                                     <constraint firstAttribute="trailing" secondItem="air-WD-Vgj" secondAttribute="trailing" constant="20" id="V6F-QD-vfF"/>
                                                     <constraint firstItem="05i-NI-gY0" firstAttribute="centerY" secondItem="4ix-j3-mIR" secondAttribute="centerY" id="g33-mi-js2"/>
                                                     <constraint firstItem="BTi-rc-Kqp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4ix-j3-mIR" secondAttribute="leading" constant="121" id="hej-ij-7dg"/>
@@ -287,6 +294,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H4k-rQ-qXJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2600.7633587786258" y="-228.87323943661974"/>
+        </scene>
+        <!--AddListViewController-->
+        <scene sceneID="ll9-g1-6tZ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddList" referencedIdentifier="AddListViewController" id="4tf-Jk-pg3" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="eIA-A5-xRg"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UwR-AG-2JU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2598" y="-194"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bgu-6J-kjr">
