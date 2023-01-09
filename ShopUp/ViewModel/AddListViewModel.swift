@@ -12,14 +12,7 @@ import AVFoundation
 import Photos
 import CoreMotion
 
-protocol AddListViewModelDelegate: AnyObject{
-    func alertPresentToVc(alert: UIAlertController)
-}
-
 class AddListViewModel {
-    
-    // MARK: Delegate
-    weak public var delegate: AddListViewModelDelegate?
     
     // MARK: Views Infomation Elements
     
@@ -32,11 +25,13 @@ class AddListViewModel {
     let motionPermission = BehaviorRelay<Bool>(value: false)
     
     private let disposeBag = DisposeBag()
+    private let currentVc: UIViewController?
     
     
     // MARK: Initializer
     
-    init(){
+    init(vc: UIViewController?){
+        currentVc = vc
         Task{
             self.cameraPermission.accept((await self.chkCameraPermission()))
             self.photoLibraryPermission.accept((await self.chkPhotoLibraryPermission()))
@@ -48,6 +43,7 @@ class AddListViewModel {
     
     private func chkCameraPermission() async -> Bool{
         let mediaType = AVMediaType.video
+        await AVCaptureDevice.requestAccess(for: mediaType)
         let mediaAuthoriztionStatus = AVCaptureDevice.authorizationStatus(for: mediaType)
         switch mediaAuthoriztionStatus{
         case .authorized:
@@ -55,10 +51,11 @@ class AddListViewModel {
             return true
         case .denied, .restricted:
             print("@@@@ ShopUp Camera Permission @False")
-            self.warningAlert(title: "권한 오류", infoMativeMsg: "카메라 권한을 허용하지 않을 시 휴대폰 내 사진을 이용하여야 합니다.")
+            await self.warningAlert(title: "권한 오류", infoMativeMsg: "카메라 권한을 허용하지 않을 시 휴대폰 내 사진을 이용하여야 합니다.")
             return false
         case .notDetermined :
-            return await AVCaptureDevice.requestAccess(for: .video)
+            await self.warningAlert(title: "권한 오류", infoMativeMsg: "카메라 권한을 허용하지 않을 시 휴대폰 내 사진을 이용하여야 합니다.")
+            return false
         default:
             return false
         }
@@ -72,11 +69,11 @@ class AddListViewModel {
             return true
         case .denied:
             print("@@@@ ShopUp Photo Permission @False")
-            self.warningAlert(title: "권한 오류", infoMativeMsg: "사진 접근 권한을 허용하지 않을 시 카메라를 이용하여 사진을 분석해야합니다. 카메라, 사진 권한이 허용되지 않으면 기능 작동이 불가합니다.")
+            await self.warningAlert(title: "권한 오류", infoMativeMsg: "사진 접근 권한을 허용하지 않을 시 카메라를 이용하여 사진을 분석해야합니다. 카메라, 사진 권한이 허용되지 않으면 기능 작동이 불가합니다.")
             return false
         case .restricted, .notDetermined :
             print("@@@@ ShopUp Photo Permission @False")
-            self.warningAlert(title: "권한 오류", infoMativeMsg: "설정 > 개인정보보호 > 사진 에서 권한을 허용해주세요.")
+            await self.warningAlert(title: "권한 오류", infoMativeMsg: "설정 > 개인정보보호 > 사진 에서 권한을 허용해주세요.")
             return false
         default:
             return false
@@ -91,10 +88,10 @@ class AddListViewModel {
             return true
         case .notDetermined, .restricted :
             print("@@@@ ShopUp Photo Permission @False")
-            self.warningAlert(title: "권한 오류", infoMativeMsg: "설정 > 개인정보보호 > 동작 및 피트니스 에서 권한을 허용해주세요.")
+            await self.warningAlert(title: "권한 오류", infoMativeMsg: "설정 > 개인정보보호 > 동작 및 피트니스 에서 권한을 허용해주세요.")
             return false
         case .denied :
-            self.warningAlert(title: "권한 오류", infoMativeMsg: "휴대폰 움직임 센서 접근 권한이 없으면 분석 사진을 찍을 때 안내 추천을 할 수 없습니다. 사용을 원할 시 설정 > 개인정보보호 > 동작 및 피트니스 에서 권한을 허용해주세요.")
+            await self.warningAlert(title: "권한 오류", infoMativeMsg: "휴대폰 움직임 센서 접근 권한이 없으면 분석 사진을 찍을 때 안내 추천을 할 수 없습니다. 사용을 원할 시 설정 > 개인정보보호 > 동작 및 피트니스 에서 권한을 허용해주세요.")
             return false
         default:
             return false
@@ -103,15 +100,16 @@ class AddListViewModel {
     
     // MARK: Extensions Functions
     
-    public func warningAlert(title: String, infoMativeMsg: String, completionHandler: Void? = nil) {
-        let alert = UIAlertController(title: title, message: infoMativeMsg, preferredStyle: .alert)
+    public func warningAlert(title: String, infoMativeMsg: String, completionHandler: Void? = nil) async{
+        let alert = await UIAlertController(title: title, message: infoMativeMsg, preferredStyle: .alert)
         if completionHandler != nil {
-            let okAction = UIAlertAction(title: title, style: .default, handler: {_ in completionHandler})
-            alert.addAction(okAction)
+            let okAction = await UIAlertAction(title: "확인", style: .default, handler: {_ in completionHandler})
+            await alert.addAction(okAction)
         }else {
-            let okAction = UIAlertAction(title: "확인", style: .default)
-            alert.addAction(okAction)
+            let okAction = await UIAlertAction(title: "확인", style: .default)
+            await alert.addAction(okAction)
         }
+        await alert.present(self.currentVc!, animated: true)
     }
     
 }

@@ -71,16 +71,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "985DD41A-E498-4EF2-9A33-586E7A523B4F"
+            uuid = "43399C72-B6CC-4E7B-9A09-B6BD08EE1F34"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ShopUp/CustomView/SmallFitCollectionCell.swift"
+            filePath = "ShopUp/ViewModel/AddListViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
-            landmarkName = "configure(title:firstColor:secondColor:gradientFirstDirection:gradientSecondDirection:ImageView:PercentTage:)"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "chkCameraPermission()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EA00B6D6-AE75-4316-920A-3B4E4C76DCFF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShopUp/ViewModel/AddListViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "chkPhotoLibraryPermission()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "98A59DED-527C-45B1-9495-21BB07B43146"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShopUp/ViewModel/AddListViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "chkMotionPermission()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

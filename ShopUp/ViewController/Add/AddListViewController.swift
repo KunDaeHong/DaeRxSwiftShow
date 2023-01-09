@@ -33,8 +33,7 @@ class AddListViewController: UIViewController {
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        addListViewModel = AddListViewModel()
-        addListViewModel?.delegate = self
+        addListViewModel = AddListViewModel(vc: self)
     }
     
     // MARK: View Configuration Function
@@ -48,12 +47,4 @@ class AddListViewController: UIViewController {
 //    func getPixelColor(pos: CGPoint, image: UIImage) -> UIColor {
 //        let pixelData = CGDataProviderCopu
 //    }
-}
-
-extension AddListViewController : AddListViewModelDelegate {
-    func alertPresentToVc(alert: UIAlertController) {
-        DispatchQueue.main.async {
-            self.present(alert, animated: true)
-        }
-    }
 }
