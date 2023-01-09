@@ -129,6 +129,9 @@
                             <constraint firstItem="H88-Qs-3tM" firstAttribute="leading" secondItem="DGP-EK-ixW" secondAttribute="leadingMargin" constant="50" id="vUw-Y4-hLG"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="recommandString" destination="H88-Qs-3tM" id="yXJ-1g-hrf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9kn-F1-Pp2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

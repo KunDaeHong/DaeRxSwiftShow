@@ -71,49 +71,97 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "43399C72-B6CC-4E7B-9A09-B6BD08EE1F34"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ShopUp/ViewModel/AddListViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "chkCameraPermission()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "EA00B6D6-AE75-4316-920A-3B4E4C76DCFF"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ShopUp/ViewModel/AddListViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "chkPhotoLibraryPermission()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "98A59DED-527C-45B1-9495-21BB07B43146"
+            uuid = "4DEC0968-C35A-49B2-8B78-D87F41E71A02"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ShopUp/ViewModel/AddListViewModel.swift"
+            filePath = "ShopUp/ViewController/Add/AddListViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "chkMotionPermission()"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "configurationCameraView()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4DEC0968-C35A-49B2-8B78-D87F41E71A02 - b800843614c4c45b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ShopUp.AddListViewController.configurationCameraView() -&gt; ()"
+                  moduleName = "ShopUp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/patoseu/Desktop/project/study/ShoppingListApp/RxSwift/ShopUp/ShopUp/ViewController/Add/AddListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "96">
+               </Location>
+               <Location
+                  uuid = "4DEC0968-C35A-49B2-8B78-D87F41E71A02 - 91df02f8b8361b52"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable () async -&gt; () in ShopUp.AddListViewController.configurationCameraView() -&gt; ()"
+                  moduleName = "ShopUp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/patoseu/Desktop/project/study/ShoppingListApp/RxSwift/ShopUp/ShopUp/ViewController/Add/AddListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "0">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FF7853C1-40B2-4642-A81E-94FDE5D0D0FE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShopUp/ViewController/Add/AddListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "configurationCameraView()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "FF7853C1-40B2-4642-A81E-94FDE5D0D0FE - 2bcd29c2ec8f7208"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for closure #1 @Sendable () async -&gt; () in ShopUp.AddListViewController.configurationCameraView() -&gt; ()"
+                  moduleName = "ShopUp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/patoseu/Desktop/project/study/ShoppingListApp/RxSwift/ShopUp/ShopUp/ViewController/Add/AddListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
+                  offsetFromSymbolStart = "236">
+               </Location>
+               <Location
+                  uuid = "FF7853C1-40B2-4642-A81E-94FDE5D0D0FE - bbf73ed77c76260a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async -&gt; () in ShopUp.AddListViewController.configurationCameraView() -&gt; ()"
+                  moduleName = "ShopUp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/patoseu/Desktop/project/study/ShoppingListApp/RxSwift/ShopUp/ShopUp/ViewController/Add/AddListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
+                  offsetFromSymbolStart = "200">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

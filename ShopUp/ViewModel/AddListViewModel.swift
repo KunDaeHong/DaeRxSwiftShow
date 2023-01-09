@@ -6,11 +6,9 @@
 //
 
 import Foundation
+import UIKit
 import RxSwift
 import RxCocoa
-import AVFoundation
-import Photos
-import CoreMotion
 
 class AddListViewModel {
     
@@ -24,92 +22,43 @@ class AddListViewModel {
     let photoLibraryPermission = BehaviorRelay<Bool>(value: false)
     let motionPermission = BehaviorRelay<Bool>(value: false)
     
+    let recommandString = BehaviorRelay<String>(value: "추천할 사항이 있다면 그때 말씀드릴게요.")
+    
     private let disposeBag = DisposeBag()
-    private let currentVc: UIViewController?
     
     
     // MARK: Initializer
     
-    init(vc: UIViewController?){
-        currentVc = vc
-        Task{
-            self.cameraPermission.accept((await self.chkCameraPermission()))
-            self.photoLibraryPermission.accept((await self.chkPhotoLibraryPermission()))
-            self.motionPermission.accept((await self.chkMotionPermission()))
-        }
+    init(){}
+    
+    // MARK: Main Function Listener
+    
+    public func recommandStringListener() {
+        
     }
     
-    // MARK: Permission Check Functions
-    
-    private func chkCameraPermission() async -> Bool{
-        let mediaType = AVMediaType.video
-        await AVCaptureDevice.requestAccess(for: mediaType)
-        let mediaAuthoriztionStatus = AVCaptureDevice.authorizationStatus(for: mediaType)
-        switch mediaAuthoriztionStatus{
-        case .authorized:
-            print("@@@@ ShopUp Camera Permission @True")
-            return true
-        case .denied, .restricted:
-            print("@@@@ ShopUp Camera Permission @False")
-            await self.warningAlert(title: "권한 오류", infoMativeMsg: "카메라 권한을 허용하지 않을 시 휴대폰 내 사진을 이용하여야 합니다.")
-            return false
-        case .notDetermined :
-            await self.warningAlert(title: "권한 오류", infoMativeMsg: "카메라 권한을 허용하지 않을 시 휴대폰 내 사진을 이용하여야 합니다.")
-            return false
-        default:
-            return false
+    public func getImageMainColor(image: UIImage) -> UIColor? {
+        guard let ciImage = CIImage(image: image) else {
+            return UIColor(rgb: "000000")
         }
-    }
-    
-    private func chkPhotoLibraryPermission() async -> Bool {
-        let status = await PHPhotoLibrary.requestAuthorization(for: .readWrite)
-        switch status {
-        case .authorized:
-            print("@@@@ ShopUp Photo Permission @True")
-            return true
-        case .denied:
-            print("@@@@ ShopUp Photo Permission @False")
-            await self.warningAlert(title: "권한 오류", infoMativeMsg: "사진 접근 권한을 허용하지 않을 시 카메라를 이용하여 사진을 분석해야합니다. 카메라, 사진 권한이 허용되지 않으면 기능 작동이 불가합니다.")
-            return false
-        case .restricted, .notDetermined :
-            print("@@@@ ShopUp Photo Permission @False")
-            await self.warningAlert(title: "권한 오류", infoMativeMsg: "설정 > 개인정보보호 > 사진 에서 권한을 허용해주세요.")
-            return false
-        default:
-            return false
+        let extentVector = CIVector(x: ciImage.extent.origin.x, y: ciImage.extent.origin.y, z: ciImage.extent.size.width, w: ciImage.extent.size.height)
+        
+        guard let imageFilter = CIFilter(name: "CIAreaAverage", parameters: [kCIInputImageKey: ciImage, kCIInputExtentKey: extentVector]) else {
+            return nil
         }
-    }
-    
-    private func chkMotionPermission() async -> Bool{
-        let coreMotionGranted = CMPedometer.authorizationStatus()
-        switch coreMotionGranted {
-        case .authorized:
-            print("@@@@ ShopUp CoreMotion Permission @True")
-            return true
-        case .notDetermined, .restricted :
-            print("@@@@ ShopUp Photo Permission @False")
-            await self.warningAlert(title: "권한 오류", infoMativeMsg: "설정 > 개인정보보호 > 동작 및 피트니스 에서 권한을 허용해주세요.")
-            return false
-        case .denied :
-            await self.warningAlert(title: "권한 오류", infoMativeMsg: "휴대폰 움직임 센서 접근 권한이 없으면 분석 사진을 찍을 때 안내 추천을 할 수 없습니다. 사용을 원할 시 설정 > 개인정보보호 > 동작 및 피트니스 에서 권한을 허용해주세요.")
-            return false
-        default:
-            return false
-        }
-    }
-    
-    // MARK: Extensions Functions
-    
-    public func warningAlert(title: String, infoMativeMsg: String, completionHandler: Void? = nil) async{
-        let alert = await UIAlertController(title: title, message: infoMativeMsg, preferredStyle: .alert)
-        if completionHandler != nil {
-            let okAction = await UIAlertAction(title: "확인", style: .default, handler: {_ in completionHandler})
-            await alert.addAction(okAction)
-        }else {
-            let okAction = await UIAlertAction(title: "확인", style: .default)
-            await alert.addAction(okAction)
-        }
-        await alert.present(self.currentVc!, animated: true)
+        guard let outputImage = imageFilter.outputImage else {return nil}
+        
+        var bitmap = [UInt8](repeating: 0, count: 4)
+        let context = CIContext(options: [.workingColorSpace: kCFNull!])
+        context.render(
+            outputImage,
+            toBitmap: &bitmap,
+            rowBytes: 4,
+            bounds: CGRect(x: 0, y: 0, width: 1, height: 1),
+            format: .RGBA8,
+            colorSpace: nil)
+        
+        return UIColor(red: CGFloat(bitmap[0])/255, green: CGFloat(bitmap[1])/255, blue: CGFloat(bitmap[2])/255, alpha: CGFloat(bitmap[3]) / 255)
     }
     
 }
