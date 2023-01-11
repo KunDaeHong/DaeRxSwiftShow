@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
+import CoreMotion
 
 class AddListViewModel {
     
@@ -22,9 +23,19 @@ class AddListViewModel {
     let photoLibraryPermission = BehaviorRelay<Bool>(value: false)
     let motionPermission = BehaviorRelay<Bool>(value: false)
     
-    let recommandString = BehaviorRelay<String>(value: "추천할 사항이 있다면 그때 말씀드릴게요.")
+    private let recommandStringBehaviorRelay: BehaviorRelay<String> = BehaviorRelay<String>(value: "추천할 사항이 있다면 그때 말씀드릴게요.")
+    
+    var recommandString: Observable<String>{
+        return recommandStringBehaviorRelay.asObservable()
+    }
     
     private let disposeBag = DisposeBag()
+    
+    //CoreMotion Manager
+    let motionManager = CMMotionManager()
+    var detectShakeTimer: Timer?
+    
+    var currentAverageRotation: Double = 0.0
     
     
     // MARK: Initializer
@@ -34,8 +45,47 @@ class AddListViewModel {
     // MARK: Main Function Listener
     
     public func recommandStringListener() {
+        if motionPermission.value.self {
+            motionManager.gyroUpdateInterval = 0.5
+            
+            motionManager.startGyroUpdates(
+                to: OperationQueue.current!, withHandler: {
+                    (gyroData: CMGyroData!, error: Error!) -> Void in
+                    self.outputRotationData(gyroData.rotationRate)
+                    if error != nil {
+                        print("GYRO Data Error or Check Function")
+                    }
+            })
+        }
         
+        if detectShakeTimer == nil {
+            let timerInterval: Double = 1.0
+            detectShakeTimer = Timer.scheduledTimer(withTimeInterval: timerInterval, repeats: true){
+                [weak self] (Timer) in
+                if(self!.currentAverageRotation > 0.5){
+                    self!.recommandStringBehaviorRelay.accept(("카메라를 조금 더 고정해주세요."))
+                }else {
+                    self!.recommandStringBehaviorRelay.accept(("아주 좋아요! 이대로 찍어도 될 것 같아요."))
+                }
+//                else if
+//                RunLoop.current.add(self!.detectShakeTimer!, forMode: .common)
+            }
+        }
     }
+    
+    private func outputRotationData(_ rotation: CMRotationRate){
+        let averageRotation = sqrt(fabs(rotation.x)) + sqrt(fabs(rotation.y)) + sqrt(fabs(rotation.z))
+        
+        if currentAverageRotation != averageRotation {
+            currentAverageRotation = sqrt(averageRotation) - 0.3
+            print("@@@@ average Rotation \(currentAverageRotation)")
+        }else {
+            print("@@@@ average Rotation \(0.0)")
+        }
+    }
+    
+    
+    // MARK: Extension Main Functions
     
     public func getImageMainColor(image: UIImage) -> UIColor? {
         guard let ciImage = CIImage(image: image) else {
@@ -59,6 +109,20 @@ class AddListViewModel {
             colorSpace: nil)
         
         return UIColor(red: CGFloat(bitmap[0])/255, green: CGFloat(bitmap[1])/255, blue: CGFloat(bitmap[2])/255, alpha: CGFloat(bitmap[3]) / 255)
+    }
+    
+    public func getPercentDark(image: UIImage) -> Int{
+        guard let imageMainColor: UIColor = getImageMainColor(image: image) else {
+            return 0
+        }
+        
+        let redColor = imageMainColor.ciColor.red
+        let greenColor = imageMainColor.ciColor.green
+        let blueColor = imageMainColor.ciColor.blue
+        
+        let percentDarker: Int = Int((redColor + greenColor + blueColor)) / 255 * 100
+        
+        return percentDarker
     }
     
 }
