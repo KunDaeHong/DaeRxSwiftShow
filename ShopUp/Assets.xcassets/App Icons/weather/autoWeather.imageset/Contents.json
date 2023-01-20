@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "icons8-bot-72(@3x) 1.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}

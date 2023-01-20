@@ -37,7 +37,7 @@ class SmallFitCollectionCell: UICollectionViewCell {
         // Second gridient color direction.
         gradientSecondDirection: GradientWayType = .zero,
         // Use an image or icon in the background if you want to. However it will automatically render as a gradient in the background.
-        ImageView: UIImageView? = nil,
+        image: UIImage? = nil,
         // Use a percent view in the background if you want. But see percent view if you want to see.
         PercentTage: Int? = nil
     ){
@@ -74,43 +74,46 @@ class SmallFitCollectionCell: UICollectionViewCell {
         
         
         // image view
-        if ImageView != nil && PercentTage == nil {
-            addSubview(ImageView!)
+        if image != nil && PercentTage == nil {
+            let ImageView = UIImageView(image: image)
+            addSubview(ImageView)
             
-            ImageView?.translatesAutoresizingMaskIntoConstraints = false
-            ImageView?.contentMode = .scaleAspectFit
-            ImageView?.tintColor = AppColorType.clear.rawValue
+            ImageView.translatesAutoresizingMaskIntoConstraints = false
+            ImageView.contentMode = .scaleAspectFill
+            ImageView.tintColor = AppColorType.clear.rawValue
             
             
             let imageViewConstraintList: [NSLayoutConstraint] = [
-                ImageView!.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-                ImageView!.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
-                ImageView!.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor),
-                ImageView!.widthAnchor.constraint(equalToConstant: 50),
-                ImageView!.heightAnchor.constraint(equalToConstant: 50),
+                ImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
+                ImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
+                ImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
+                ImageView.topAnchor.constraint(equalTo: topAnchor, constant: 60),
             ]
             NSLayoutConstraint.activate(imageViewConstraintList)
             
             let gradientLayer = CAGradientLayer()
-            gradientLayer.colors = [AppColorType.clear.rawValue.cgColor, AppColorType.halfDarkGrayColor.rawValue.cgColor]
+            gradientLayer.colors = [AppColorType.clear.rawValue.cgColor, UIColor.init(red: 0, green: 0, blue: 0, alpha: 1.0).cgColor]
             gradientLayer.startPoint = GradientWayType.LeftT.rawValue
             gradientLayer.endPoint = GradientWayType.rightB.rawValue
-            gradientLayer.frame = ImageView!.frame
+            gradientLayer.locations = [0.0, 0.2, 1.0]
+            gradientLayer.frame = ImageView.frame
             
-            let mask = CALayer()
-            mask.contents = ImageView?.image?.cgImage
-            mask.frame = gradientLayer.bounds
+            ImageView.layer.mask = gradientLayer
             
-            gradientLayer.mask = mask
-            
-            ImageView?.layer.addSublayer(gradientLayer)
-            
-            
+            if(image!.isSymbolImage){
+                gradientLayer.locations = [0.0, 0.8, 1.0]
+                gradientLayer.colors = [AppColorType.clear.rawValue.cgColor, AppColorType.halfDarkGrayColor.rawValue.cgColor]
+                let mask = CALayer()
+                mask.contents = ImageView.image?.cgImage
+                mask.frame = gradientLayer.bounds
+                gradientLayer.mask = mask
+                ImageView.layer.addSublayer(gradientLayer)
+            }
         }
         
         
         //percentage view
-        if PercentTage != nil && ImageView == nil {
+        if PercentTage != nil && image == nil {
             //line shape
             let progressNumUI: UILabel = UILabel()
             addSubview(progressNumUI)

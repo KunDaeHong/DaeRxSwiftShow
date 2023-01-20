@@ -2,14 +2,18 @@
 //  opencvWrapper.h
 //  ShopUp
 //
-//  Created by 파토스 on 2023/01/13.
+//  Created by Daehyeon Hong on 2023/01/13.
 //
 
 #import <Foundation/Foundation.h>
+#import "opencvWrapper.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface opencvWrapper : NSObject
+
+- (void)processMotion:(CGImage *)image;
++ (NSString *)openCVVersion;
 
 @end
 

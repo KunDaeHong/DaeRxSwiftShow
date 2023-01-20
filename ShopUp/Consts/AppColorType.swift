@@ -18,6 +18,8 @@ enum AppColorType {
     case orangeColor
     case halfBlackColor
     case halfDarkGrayColor
+    case darkBlue
+    case nightBlue
     
     //gradientColor
     case redGradientFirstColor
@@ -28,6 +30,10 @@ enum AppColorType {
     case greenGradientSecondColor
     case grayGradientFirstColor
     case grayGradientSecondColor
+    case skyBlueGradientFirstColor
+    case skyBlueGradientSecondColor
+    case limeYellowGradientFirstColor
+    case limeYellowGradientSecondColor
     
     //fontColor
     case halfWhiteFontColor
@@ -69,6 +75,10 @@ enum AppColorType {
             return .black.withAlphaComponent(0.6)
         case .halfDarkGrayColor :
             return UIColor(rgb: "35363a").withAlphaComponent(0.6)
+        case .darkBlue :
+            return UIColor(rgb: "11112e")
+        case .nightBlue :
+            return UIColor(rgb: "1b1b66")
             
         //GradientColor
         case .redGradientFirstColor :
@@ -87,6 +97,15 @@ enum AppColorType {
             return UIColor(rgb: "8c8c8c")
         case .grayGradientSecondColor :
             return UIColor(rgb: "a6a6a6")
+        case .skyBlueGradientFirstColor :
+            return UIColor(rgb: "39b1ed")
+        case .skyBlueGradientSecondColor :
+            return UIColor(rgb: "86d1f7")
+        case .limeYellowGradientFirstColor :
+            return UIColor(rgb: "e3dd39")
+        case .limeYellowGradientSecondColor :
+            return UIColor(rgb: "f5f067")
+            
             
         //Font Color
         case .halfWhiteFontColor:

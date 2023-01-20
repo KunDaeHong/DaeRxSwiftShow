@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class SettingsViewController: UIViewController {
 
@@ -19,9 +21,14 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var listSettingsCollectionView: UICollectionView!
     private let listSettingsCollectionFlowLayout = UICollectionViewFlowLayout()
     
+    private let disposeBag = DisposeBag()
+    private var settingsViewModel: SettingsViewModel?
+    
+    
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        settingsViewModel = SettingsViewModel()
         configureEasySettingsView()
     }
     
@@ -68,9 +75,9 @@ class SettingsViewController: UIViewController {
 extension SettingsViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == easySettingsCollectionView {
-            return 4
+            return settingsViewModel!.easySettingsList.value.count
         }else if collectionView == listSettingsCollectionView {
-            return 10
+            return settingsViewModel!.settingsList.count
         }else {
             return 1
         }
@@ -88,14 +95,20 @@ extension SettingsViewController: UICollectionViewDataSource{
             
             let largeConfig = UIImage.SymbolConfiguration(pointSize: 50, weight: .bold, scale: .large)
             
-            cell.configure(
-                title: "샘플 설정",
-                firstColor: .greenGradientFirstColor,
-                secondColor: .greenGradientSecondColor,
-                gradientFirstDirection: .LeftB,
-                gradientSecondDirection: .rightT,
-                ImageView: UIImageView(image: UIImage(systemName: "gearshape.fill", withConfiguration: largeConfig))
+            
+            settingsViewModel!.easySettingsList.bind(onNext: {
+                element in
+                
+                cell.configure(
+                    title: element[indexPath.row].title,
+                    firstColor: element[indexPath.row].firstColor,
+                    secondColor: element[indexPath.row].secondColor,
+                    gradientFirstDirection: .LeftB,
+                    gradientSecondDirection: .rightT,
+                    image: element[indexPath.row].image ?? UIImage(systemName: "gearshape.fill", withConfiguration: largeConfig)
                 )
+            }).disposed(by: disposeBag)
+            
             return cell
         }else if collectionView == listSettingsCollectionView {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionListCell.description(), for: indexPath) as? CollectionListCell else {
@@ -105,7 +118,7 @@ extension SettingsViewController: UICollectionViewDataSource{
             cell.configureCell(
                 title: "화면 설정",
                 indexPath: indexPath,
-                lastIndex: 9,
+                lastIndex: 6,
                 border: true,
                 borderWidth: 1
             )
