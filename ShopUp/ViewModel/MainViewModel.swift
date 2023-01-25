@@ -11,8 +11,8 @@ import RxCocoa
 
 class MainCarouselViewModel {
     ///carousel
-    let carouselListCount: Int!
-    let carouselModelList: Observable<[MainCarouselModel]>!
+    let carouselListCount = BehaviorRelay<Int>(value: 0)
+    let carouselModelList = BehaviorRelay<[MainCarouselModel]>(value: [])
     let carouselUIViewList = BehaviorRelay<[CarouselData]>(value: [])
     
     ///status
@@ -25,9 +25,11 @@ class MainCarouselViewModel {
     private let disposeBag = DisposeBag()
     
     init(data: Data){
-        let carouselModel = try! JSONDecoder().decode([MainCarouselModel].self, from: data)
-        carouselListCount = carouselModel.count
-        carouselModelList = Observable<[MainCarouselModel]>.just(carouselModel)
+        var carouselModel = try! JSONDecoder().decode([MainCarouselModel].self, from: data)
+        carouselListCount.accept(carouselModel.count)
+        carouselModel.insert(carouselModel.last!, at: 0)
+        carouselModel.append(carouselModel[1])
+        carouselModelList.accept(carouselModel)
     }
     
     //메인 carousel View에 추가될 리스트들 안에 있는 View 설정

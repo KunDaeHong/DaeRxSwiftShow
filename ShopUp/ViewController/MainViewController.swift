@@ -65,6 +65,9 @@ class MainViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         configureRecomandView()
+        mainCarouselUiView.scrollToItem(at: IndexPath(row: 1, section: .zero), at: .centeredHorizontally, animated: false)
+        mainCarouselUiView.setContentOffset(mainCarouselUiView.contentOffset, animated: false)
+        currentPage = 0
     }
     
     
@@ -96,7 +99,7 @@ class MainViewController: UIViewController {
     
     private func mainCarouselPageCtrlViewSettings() {
         mainCarouselPageCtrlUiView.addSubview(pageCtrl)
-        pageCtrl.numberOfPages = (mainViewModel?.carouselListCount)!
+        pageCtrl.numberOfPages = (mainViewModel?.carouselListCount)!.value
         pageCtrl.backgroundColor = .clear
         pageCtrl.translatesAutoresizingMaskIntoConstraints = false
         let pageCtrlConstraint = [
@@ -282,7 +285,12 @@ extension MainViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == mainCarouselUiView {
-            return (mainViewModel?.carouselListCount)!
+            var listCount = 0
+            mainViewModel!.carouselModelList.subscribe(onNext: {
+                count in
+                listCount = count.count
+            }).disposed(by: disposeBag)
+            return listCount
         }else {
             return 5
         }
@@ -317,36 +325,18 @@ extension MainViewController: UICollectionViewDataSource {
 }
 
 extension MainViewController: UICollectionViewDelegate {
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        let endOffset = scrollView.contentSize.width - mainCarouselUiView.frame.width
-        
-        if scrollView.contentOffset.x < .zero && velocity.x < .zero {
-            mainViewModel?.scrollToEnd = true
-           
-        } else if scrollView.contentOffset.x > endOffset && velocity.x > .zero {
-            mainViewModel?.scrollToBegin = true
-        }
-    }
-    
-    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
-        if (mainViewModel?.scrollToEnd)! {
-            mainViewModel?.scrollToEnd.toggle()
-            mainCarouselUiView.scrollToItem(at: IndexPath(row: (mainViewModel?.carouselListCount)! - 1, section: .zero), at: .centeredHorizontally, animated: true)
-        } else if (mainViewModel?.scrollToBegin)! {
-            mainViewModel?.scrollToBegin.toggle()
-            mainCarouselUiView.scrollToItem(at: IndexPath(row: .zero, section: .zero), at: .centeredHorizontally, animated: true)
-        }
-    }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        currentPage = getCarouselCurrentPage()
-    }
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        currentPage = getCarouselCurrentPage()
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        currentPage = getCarouselCurrentPage()
+        let endOffset = scrollView.contentSize.width - mainCarouselUiView.bounds.width
+        
+        if scrollView.contentOffset.x == 0 {
+            self.mainCarouselUiView.scrollToItem(at: IndexPath(row: self.mainViewModel!.carouselListCount.value, section: .zero), at: .left, animated: false)
+            self.currentPage = self.mainViewModel!.carouselListCount.value
+        } else if endOffset - scrollView.contentOffset.x < 15  {
+            self.mainCarouselUiView.scrollToItem(at: IndexPath(row: 1, section: .zero), at: .centeredHorizontally, animated: false)
+            self.currentPage = 0
+        }else {
+            currentPage = getCarouselCurrentPage() - 1
+        }
     }
 }

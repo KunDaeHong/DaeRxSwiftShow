@@ -40,11 +40,11 @@ class SettingsViewModel {
         
         if AppSettings.shared.weather_auto{
             var update = easySettingsList.value
-            let autoLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 400, height: 100))
+            let autoLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 160, height: 200))
             autoLabel.text = "AUTO"
-            autoLabel.textAlignment = .right
+            autoLabel.textAlignment = .center
             autoLabel.textColor = .white
-            autoLabel.font = .systemFont(ofSize: 80, weight: .bold)
+            autoLabel.font = .systemFont(ofSize: 30, weight: .bold)
             UIGraphicsBeginImageContext(autoLabel.frame.size)
             if let currentContext = UIGraphicsGetCurrentContext() {
                 autoLabel.layer.render(in: currentContext)
