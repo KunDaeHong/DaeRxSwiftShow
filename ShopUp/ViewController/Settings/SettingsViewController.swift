@@ -116,11 +116,17 @@ extension SettingsViewController: UICollectionViewDataSource{
             }
             
             cell.configureCell(
-                title: "화면 설정",
+                title: settingsViewModel!.settingsList[indexPath.row],
                 indexPath: indexPath,
-                lastIndex: 6,
+                lastIndex: settingsViewModel!.settingsList.count,
                 border: true,
-                borderWidth: 1
+                borderWidth: 1,
+                completionHandler: {
+                    let sb: UIStoryboard = UIStoryboard(name: "Settings", bundle: nil)
+                    let vc = sb.instantiateViewController(withIdentifier: "SettingsInsideVC") as! SettingsInsideViewController
+                    vc.titleString = self.settingsViewModel!.settingsList[indexPath.row]
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
             )
             
             return cell

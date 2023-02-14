@@ -330,7 +330,7 @@ extension MainViewController: UICollectionViewDelegate {
         let endOffset = scrollView.contentSize.width - mainCarouselUiView.bounds.width
         
         if scrollView.contentOffset.x == 0 {
-            self.mainCarouselUiView.scrollToItem(at: IndexPath(row: self.mainViewModel!.carouselListCount.value, section: .zero), at: .left, animated: false)
+            self.mainCarouselUiView.scrollToItem(at: IndexPath(row: self.mainViewModel!.carouselListCount.value, section: .zero), at: .centeredHorizontally, animated: false)
             self.currentPage = self.mainViewModel!.carouselListCount.value
         } else if endOffset - scrollView.contentOffset.x < 15  {
             self.mainCarouselUiView.scrollToItem(at: IndexPath(row: 1, section: .zero), at: .centeredHorizontally, animated: false)

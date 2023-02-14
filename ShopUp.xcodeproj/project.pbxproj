@@ -15,6 +15,10 @@
 		682A5D01295A8291005AC208 /* SmallFitCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682A5D00295A8291005AC208 /* SmallFitCollectionCell.swift */; };
 		682A5D03295ACB2E005AC208 /* AllStatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682A5D02295ACB2E005AC208 /* AllStatusModel.swift */; };
 		684D120B29657510002B28BB /* CollectionListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684D120A29657510002B28BB /* CollectionListCell.swift */; };
+		688D36772991F0F9004B0DD3 /* UserSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688D36762991F0F9004B0DD3 /* UserSettingsView.swift */; };
+		688D367B29949AFE004B0DD3 /* SettingsCellStuffModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688D367A29949AFE004B0DD3 /* SettingsCellStuffModel.swift */; };
+		688D367D2994B31F004B0DD3 /* SettingsCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688D367C2994B31F004B0DD3 /* SettingsCellCollectionViewCell.swift */; };
+		688D367F2994F5CC004B0DD3 /* PreviewImgCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688D367E2994F5CC004B0DD3 /* PreviewImgCollectionViewCell.swift */; };
 		6899F18A297917DA00E130FE /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6899F189297917DA00E130FE /* AppSettings.swift */; };
 		68A274CC2976742200D599C5 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A274CB2976742200D599C5 /* SettingsViewModel.swift */; };
 		68A274CE297676CB00D599C5 /* AppSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A274CD297676CB00D599C5 /* AppSettingsModel.swift */; };
@@ -23,6 +27,8 @@
 		68AAD1852967F2680032E281 /* AddListInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AAD1842967F2680032E281 /* AddListInfoViewController.swift */; };
 		68AAD1862967F3B50032E281 /* AddListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AAD1802967BE510032E281 /* AddListViewModel.swift */; };
 		68AAD1872967F50E0032E281 /* AddList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68AAD17F2967AB380032E281 /* AddList.storyboard */; };
+		68B7FF0829823F0E00ED1D2C /* SettingsInsideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B7FF0729823F0E00ED1D2C /* SettingsInsideViewController.swift */; };
+		68B7FF0A29824B1C00ED1D2C /* TitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B7FF0929824B1C00ED1D2C /* TitleCollectionViewCell.swift */; };
 		68C1B987297644D900022935 /* AppSettingsDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C1B986297644D900022935 /* AppSettingsDBModel.swift */; };
 		68C1B98929766A8D00022935 /* appSettings_default.json in Resources */ = {isa = PBXBuildFile; fileRef = 68C1B98829766A8D00022935 /* appSettings_default.json */; };
 		68C819172949C04B007B6EC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C819162949C04B007B6EC2 /* AppDelegate.swift */; };
@@ -73,6 +79,10 @@
 		682A5D00295A8291005AC208 /* SmallFitCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallFitCollectionCell.swift; sourceTree = "<group>"; };
 		682A5D02295ACB2E005AC208 /* AllStatusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStatusModel.swift; sourceTree = "<group>"; };
 		684D120A29657510002B28BB /* CollectionListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionListCell.swift; sourceTree = "<group>"; };
+		688D36762991F0F9004B0DD3 /* UserSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsView.swift; sourceTree = "<group>"; };
+		688D367A29949AFE004B0DD3 /* SettingsCellStuffModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCellStuffModel.swift; sourceTree = "<group>"; };
+		688D367C2994B31F004B0DD3 /* SettingsCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCellCollectionViewCell.swift; sourceTree = "<group>"; };
+		688D367E2994F5CC004B0DD3 /* PreviewImgCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewImgCollectionViewCell.swift; sourceTree = "<group>"; };
 		6899F189297917DA00E130FE /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		68A274CB2976742200D599C5 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		68A274CD297676CB00D599C5 /* AppSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsModel.swift; sourceTree = "<group>"; };
@@ -81,6 +91,8 @@
 		68AAD17F2967AB380032E281 /* AddList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddList.storyboard; sourceTree = "<group>"; };
 		68AAD1802967BE510032E281 /* AddListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListViewModel.swift; sourceTree = "<group>"; };
 		68AAD1842967F2680032E281 /* AddListInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListInfoViewController.swift; sourceTree = "<group>"; };
+		68B7FF0729823F0E00ED1D2C /* SettingsInsideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInsideViewController.swift; sourceTree = "<group>"; };
+		68B7FF0929824B1C00ED1D2C /* TitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCollectionViewCell.swift; sourceTree = "<group>"; };
 		68C1B986297644D900022935 /* AppSettingsDBModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSettingsDBModel.swift; sourceTree = "<group>"; };
 		68C1B98829766A8D00022935 /* appSettings_default.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = appSettings_default.json; sourceTree = "<group>"; };
 		68C819132949C04B007B6EC2 /* ShopUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShopUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -176,6 +188,34 @@
 			path = DBModel;
 			sourceTree = "<group>";
 		};
+		688D36752991F0CE004B0DD3 /* SettingsViewLists */ = {
+			isa = PBXGroup;
+			children = (
+				688D36762991F0F9004B0DD3 /* UserSettingsView.swift */,
+			);
+			path = SettingsViewLists;
+			sourceTree = "<group>";
+		};
+		688D367829949A89004B0DD3 /* mainPage */ = {
+			isa = PBXGroup;
+			children = (
+				68C81961294B1088007B6EC2 /* MainCarouselModel.swift */,
+				68D8C6962955B074003F2652 /* FoodInfomationModel.swift */,
+				682A5D02295ACB2E005AC208 /* AllStatusModel.swift */,
+			);
+			path = mainPage;
+			sourceTree = "<group>";
+		};
+		688D367929949A9A004B0DD3 /* settingsPage */ = {
+			isa = PBXGroup;
+			children = (
+				68A274CD297676CB00D599C5 /* AppSettingsModel.swift */,
+				68A274CF29767B6300D599C5 /* AppSettingsJsonModel.swift */,
+				688D367A29949AFE004B0DD3 /* SettingsCellStuffModel.swift */,
+			);
+			path = settingsPage;
+			sourceTree = "<group>";
+		};
 		68AAD1822967EDC40032E281 /* Add */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,7 +228,9 @@
 		68AAD1832967EDDE0032E281 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				688D36752991F0CE004B0DD3 /* SettingsViewLists */,
 				68D8C69A29595BA9003F2652 /* SettingsViewController.swift */,
+				68B7FF0729823F0E00ED1D2C /* SettingsInsideViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -294,12 +336,9 @@
 		68C8194B2949C879007B6EC2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				688D367929949A9A004B0DD3 /* settingsPage */,
+				688D367829949A89004B0DD3 /* mainPage */,
 				682A5CFD29599976005AC208 /* DBModel */,
-				68C81961294B1088007B6EC2 /* MainCarouselModel.swift */,
-				68D8C6962955B074003F2652 /* FoodInfomationModel.swift */,
-				682A5D02295ACB2E005AC208 /* AllStatusModel.swift */,
-				68A274CD297676CB00D599C5 /* AppSettingsModel.swift */,
-				68A274CF29767B6300D599C5 /* AppSettingsJsonModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -313,6 +352,9 @@
 				68D8C69429557DB7003F2652 /* SmallConfirmButton.swift */,
 				682A5D00295A8291005AC208 /* SmallFitCollectionCell.swift */,
 				684D120A29657510002B28BB /* CollectionListCell.swift */,
+				68B7FF0929824B1C00ED1D2C /* TitleCollectionViewCell.swift */,
+				688D367C2994B31F004B0DD3 /* SettingsCellCollectionViewCell.swift */,
+				688D367E2994F5CC004B0DD3 /* PreviewImgCollectionViewCell.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -610,16 +652,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				68C81953294AC209007B6EC2 /* CarouselUIView.swift in Sources */,
+				688D367B29949AFE004B0DD3 /* SettingsCellStuffModel.swift in Sources */,
 				68D8C6972955B074003F2652 /* FoodInfomationModel.swift in Sources */,
+				688D367D2994B31F004B0DD3 /* SettingsCellCollectionViewCell.swift in Sources */,
 				6899F18A297917DA00E130FE /* AppSettings.swift in Sources */,
 				682A5CFC29599416005AC208 /* DBMgr.swift in Sources */,
 				68AAD1862967F3B50032E281 /* AddListViewModel.swift in Sources */,
+				68B7FF0829823F0E00ED1D2C /* SettingsInsideViewController.swift in Sources */,
 				68C1B987297644D900022935 /* AppSettingsDBModel.swift in Sources */,
 				68A274D029767B6300D599C5 /* AppSettingsJsonModel.swift in Sources */,
 				68C81951294AB30D007B6EC2 /* MainViewController.swift in Sources */,
+				688D367F2994F5CC004B0DD3 /* PreviewImgCollectionViewCell.swift in Sources */,
 				68A274CE297676CB00D599C5 /* AppSettingsModel.swift in Sources */,
 				68C81959294AE818007B6EC2 /* UICollectionViewCell+Extensions.swift in Sources */,
 				68C81960294B016B007B6EC2 /* UIColor+Extensions.swift in Sources */,
+				688D36772991F0F9004B0DD3 /* UserSettingsView.swift in Sources */,
 				68C81955294AC34A007B6EC2 /* UIView+Extensions.swift in Sources */,
 				68C81964294B1FCC007B6EC2 /* MainViewModel.swift in Sources */,
 				68A274CC2976742200D599C5 /* SettingsViewModel.swift in Sources */,
@@ -635,6 +682,7 @@
 				682A5D03295ACB2E005AC208 /* AllStatusModel.swift in Sources */,
 				68C81957294ADB51007B6EC2 /* GradientWayType.swift in Sources */,
 				68D8C69529557DB7003F2652 /* SmallConfirmButton.swift in Sources */,
+				68B7FF0A29824B1C00ED1D2C /* TitleCollectionViewCell.swift in Sources */,
 				68AAD1852967F2680032E281 /* AddListInfoViewController.swift in Sources */,
 				684D120B29657510002B28BB /* CollectionListCell.swift in Sources */,
 			);

@@ -21,6 +21,35 @@ class SettingsViewModel {
         EasySettingsModel(title: "알림 진동", firstColor: .limeYellowGradientFirstColor, secondColor: .limeYellowGradientSecondColor, toggle: true, value: "")
     ])
     
+    let userSettingsList : [SettingsCellStuffModel] = [
+        SettingsCellStuffModel(
+            title: "이름",
+            subTitleOption: true,
+            subTitle: "내 이름",
+            modifiedOption: true
+        ),
+        SettingsCellStuffModel(
+            title: "나이",
+            subTitleOption: true,
+            subTitle: "55",
+            modifiedOption: true
+        )
+    ]
+    
+    let weatherSettingsList: [SettingsCellStuffModel] = [
+        SettingsCellStuffModel(title: "봄", imageCell: true, image: UIImage()),
+        SettingsCellStuffModel(title: "봄", decideOption: true, checkMark: true),
+        SettingsCellStuffModel(title: "여름", decideOption: true, checkMark: false),
+        SettingsCellStuffModel(title: "가을", decideOption: true, checkMark: false),
+        SettingsCellStuffModel(title: "겨울", decideOption: true, checkMark: false),
+    ]
+    
+    let alramSettingsList: [SettingsCellStuffModel] = [
+        SettingsCellStuffModel(title: "끔, 켬", decideOption: true, checkMark: true),
+        SettingsCellStuffModel(title: "알림 소리", decideOption: true, checkMark: true),
+        SettingsCellStuffModel(title: "알림 진동", decideOption: true, checkMark: true),
+    ]
+    
     init() {
         bringAppSettings()
     }
