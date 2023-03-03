@@ -38,6 +38,7 @@ class SettingsViewModel {
     
     let weatherSettingsList: [SettingsCellStuffModel] = [
         SettingsCellStuffModel(title: "봄", imageCell: true, image: UIImage()),
+        SettingsCellStuffModel(title: "자동", decideOption: true, checkMark: false),
         SettingsCellStuffModel(title: "봄", decideOption: true, checkMark: true),
         SettingsCellStuffModel(title: "여름", decideOption: true, checkMark: false),
         SettingsCellStuffModel(title: "가을", decideOption: true, checkMark: false),
@@ -45,9 +46,19 @@ class SettingsViewModel {
     ]
     
     let alramSettingsList: [SettingsCellStuffModel] = [
-        SettingsCellStuffModel(title: "끔, 켬", decideOption: true, checkMark: true),
+        SettingsCellStuffModel(title: "알림", decideOption: true, checkMark: true),
         SettingsCellStuffModel(title: "알림 소리", decideOption: true, checkMark: true),
         SettingsCellStuffModel(title: "알림 진동", decideOption: true, checkMark: true),
+    ]
+    
+    let colletingErrorsSettingsList: [SettingsCellStuffModel] = [
+        SettingsCellStuffModel(title: "에러를 수집하여 앱 개선에 도움", decideOption: true, checkMark: AppSettings.shared.app_collect_errors)
+    ]
+    
+    let appVersionList: [SettingsCellStuffModel] = [
+        SettingsCellStuffModel(title: "버전", subTitle: AppSettings.shared.app_version),
+        SettingsCellStuffModel(title: "리소스 파일 버전", subTitle: AppSettings.shared.app_resources_version),
+        SettingsCellStuffModel(title: "현재 버전의 보증", subTitle: AppSettings.shared.app_version_warranty ? "제한 보증 가능" : "불가능")
     ]
     
     init() {

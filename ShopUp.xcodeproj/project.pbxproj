@@ -28,7 +28,6 @@
 		68AAD1862967F3B50032E281 /* AddListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AAD1802967BE510032E281 /* AddListViewModel.swift */; };
 		68AAD1872967F50E0032E281 /* AddList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68AAD17F2967AB380032E281 /* AddList.storyboard */; };
 		68B7FF0829823F0E00ED1D2C /* SettingsInsideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B7FF0729823F0E00ED1D2C /* SettingsInsideViewController.swift */; };
-		68B7FF0A29824B1C00ED1D2C /* TitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B7FF0929824B1C00ED1D2C /* TitleCollectionViewCell.swift */; };
 		68C1B987297644D900022935 /* AppSettingsDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C1B986297644D900022935 /* AppSettingsDBModel.swift */; };
 		68C1B98929766A8D00022935 /* appSettings_default.json in Resources */ = {isa = PBXBuildFile; fileRef = 68C1B98829766A8D00022935 /* appSettings_default.json */; };
 		68C819172949C04B007B6EC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C819162949C04B007B6EC2 /* AppDelegate.swift */; };
@@ -92,7 +91,6 @@
 		68AAD1802967BE510032E281 /* AddListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListViewModel.swift; sourceTree = "<group>"; };
 		68AAD1842967F2680032E281 /* AddListInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListInfoViewController.swift; sourceTree = "<group>"; };
 		68B7FF0729823F0E00ED1D2C /* SettingsInsideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInsideViewController.swift; sourceTree = "<group>"; };
-		68B7FF0929824B1C00ED1D2C /* TitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCollectionViewCell.swift; sourceTree = "<group>"; };
 		68C1B986297644D900022935 /* AppSettingsDBModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSettingsDBModel.swift; sourceTree = "<group>"; };
 		68C1B98829766A8D00022935 /* appSettings_default.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = appSettings_default.json; sourceTree = "<group>"; };
 		68C819132949C04B007B6EC2 /* ShopUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShopUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -352,7 +350,6 @@
 				68D8C69429557DB7003F2652 /* SmallConfirmButton.swift */,
 				682A5D00295A8291005AC208 /* SmallFitCollectionCell.swift */,
 				684D120A29657510002B28BB /* CollectionListCell.swift */,
-				68B7FF0929824B1C00ED1D2C /* TitleCollectionViewCell.swift */,
 				688D367C2994B31F004B0DD3 /* SettingsCellCollectionViewCell.swift */,
 				688D367E2994F5CC004B0DD3 /* PreviewImgCollectionViewCell.swift */,
 			);
@@ -682,7 +679,6 @@
 				682A5D03295ACB2E005AC208 /* AllStatusModel.swift in Sources */,
 				68C81957294ADB51007B6EC2 /* GradientWayType.swift in Sources */,
 				68D8C69529557DB7003F2652 /* SmallConfirmButton.swift in Sources */,
-				68B7FF0A29824B1C00ED1D2C /* TitleCollectionViewCell.swift in Sources */,
 				68AAD1852967F2680032E281 /* AddListInfoViewController.swift in Sources */,
 				684D120B29657510002B28BB /* CollectionListCell.swift in Sources */,
 			);

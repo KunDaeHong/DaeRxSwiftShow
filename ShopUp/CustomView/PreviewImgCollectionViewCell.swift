@@ -24,11 +24,32 @@ class PreviewImgCollectionViewCell: UICollectionViewCell {
         imageView.layer.cornerRadius = 41.5
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
+        let titleLabel: UILabel = UILabel()
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.textColor = AppColorType.whiteFontColor.rawValue
+        titleLabel.font = .systemFont(ofSize: 17, weight: .bold)
+        titleLabel.text = title
+        
+        let subTitleLabel: UILabel = UILabel()
+        subTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        subTitleLabel.textColor = AppColorType.whiteColor.rawValue
+        subTitleLabel.font = .systemFont(ofSize: 13, weight: .regular)
+        subTitleLabel.text = subTitle
+        
         let constraintList: [NSLayoutConstraint] = [
+            //이미지부분 오토레이아웃 부분
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
             imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
             imageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -15),
-            imageView.topAnchor.constraint(equalTo: topAnchor, constant: 15)
+            imageView.topAnchor.constraint(equalTo: topAnchor, constant: 15),
+            //제목 부분 오토레이아웃 부분
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
+            //서브 제목 부분 오토레이아웃 부분
+            subTitleLabel.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor),
+            subTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            subTitleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
         ]
         NSLayoutConstraint.activate(constraintList)
         

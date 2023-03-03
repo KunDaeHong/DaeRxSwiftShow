@@ -259,9 +259,26 @@
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="epR-4L-QE2" userLabel="ContentView">
                                                 <rect key="frame" x="0.0" y="0.0" width="393" height="600"/>
+                                                <subviews>
+                                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xMg-6O-vAl">
+                                                        <rect key="frame" x="0.0" y="0.0" width="393" height="600"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pyL-uu-RKd">
+                                                            <size key="itemSize" width="128" height="128"/>
+                                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        </collectionViewFlowLayout>
+                                                        <cells/>
+                                                    </collectionView>
+                                                </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="xMg-6O-vAl" secondAttribute="bottom" id="8px-up-dHS"/>
                                                     <constraint firstAttribute="height" constant="600" id="bDG-Qz-Kgq"/>
+                                                    <constraint firstItem="xMg-6O-vAl" firstAttribute="leading" secondItem="epR-4L-QE2" secondAttribute="leading" id="cEV-CE-REf"/>
+                                                    <constraint firstItem="xMg-6O-vAl" firstAttribute="top" secondItem="epR-4L-QE2" secondAttribute="top" id="egU-pm-GZc"/>
+                                                    <constraint firstAttribute="trailing" secondItem="xMg-6O-vAl" secondAttribute="trailing" id="mTI-Zn-e4f"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -299,6 +316,7 @@
                     </view>
                     <connections>
                         <outlet property="mainTitle" destination="qiS-HJ-2dH" id="wNv-t3-1Hy"/>
+                        <outlet property="settingsInsideCollectionView" destination="xMg-6O-vAl" id="chd-te-fQN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zZQ-cf-hla" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

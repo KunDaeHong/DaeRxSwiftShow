@@ -12,7 +12,10 @@ struct AppSettings {
     public static let shared = AppSettings()
     
     //MARK: User With App Infomation
-    var app_version: String = ""
+    var app_version: String = "0.0.2"
+    var app_resources_version: String = "0.0.1"
+    var app_version_warranty: Bool = true
+    
     var user_name: String = ""
     var user_birthday: String = ""
     
@@ -27,6 +30,9 @@ struct AppSettings {
     var alert_vib: Bool = true
     var alert_sound: Bool = true
     var security_app_analytics: Bool = true
+    
+    //MARK: App Error Analytics
+    var app_collect_errors: Bool = true
     
     //MARK: Caution! Developer Mode
     var developer_mode: Bool = false
