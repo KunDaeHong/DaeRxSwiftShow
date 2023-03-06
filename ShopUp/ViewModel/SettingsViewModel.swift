@@ -98,7 +98,7 @@ class SettingsViewModel {
             update[1].image = UIImage(named: "autoWeather")
             easySettingsList.accept(update)
         }
-        
+        // 앱설정을 들고와야 하는 코드가 필요. 단 이부분으로 부터 시작. 지금 시작.
     }
 }
 
