@@ -18,7 +18,7 @@ struct SettingsCellStuffModel {
     let secondSubTitle: String
     let handler: Void?
     let imageCell: Bool
-    let image: UIImage
+    var image: UIImage
     
     init(title: String, subTitleOption: Bool = true, subTitle: String = "", modifiedOption: Bool = false, decideOption: Bool = false,
          checkMark: Bool = false, secondSubTitleOption: Bool = false, secondSubTitle: String = "", handler: Void? = nil, imageCell: Bool = false, image: UIImage = UIImage()) {

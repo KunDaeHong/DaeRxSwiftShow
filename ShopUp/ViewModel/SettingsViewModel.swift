@@ -36,7 +36,7 @@ class SettingsViewModel {
         )
     ]
     
-    let weatherSettingsList: [SettingsCellStuffModel] = [
+    var weatherSettingsList: [SettingsCellStuffModel] = [
         SettingsCellStuffModel(title: "봄", imageCell: true, image: UIImage()),
         SettingsCellStuffModel(title: "자동", decideOption: true, checkMark: false),
         SettingsCellStuffModel(title: "봄", decideOption: true, checkMark: true),
@@ -89,10 +89,23 @@ class SettingsViewModel {
             if let currentContext = UIGraphicsGetCurrentContext() {
                 autoLabel.layer.render(in: currentContext)
             }
+            
             let labelImg = UIGraphicsGetImageFromCurrentImageContext()
             update[1].title = "계절 설정"
             update[1].image = labelImg
             easySettingsList.accept(update)
+            
+            let currentMonth = Calendar.current.component(.month, from: Date())
+            switch(currentMonth){
+            case 12, 1, 2:
+                weatherSettingsList[0].image = UIImage(named: "winterBanner")!
+            case 3, 4, 5:
+                weatherSettingsList[0].image = UIImage(named: "spring(ver2)Banner")!
+            case 6, 7, 8:
+                weatherSettingsList[0].image = UIImage(named: "summerBanner")!
+            default :
+                weatherSettingsList[0].image = UIImage(named: "autumnBanner")!
+            }
         }else{
             var update = easySettingsList.value
             update[1].image = UIImage(named: "autoWeather")

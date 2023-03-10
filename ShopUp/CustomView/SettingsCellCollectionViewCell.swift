@@ -22,11 +22,28 @@ class SettingsCellCollectionViewCell: UICollectionViewCell {
         //sender.completion!()
     }
     
-    public func configureView(model: SettingsCellStuffModel, indexPath: IndexPath, lastIndex: Int){
+    public func configureView(model: SettingsCellStuffModel, indexPath: IndexPath, lastIndex: Int, mainWidthSize: CGFloat){
         
-        var constraintList: [NSLayoutConstraint] = []
+        var constraintList: [NSLayoutConstraint] = [widthAnchor.constraint(equalToConstant: mainWidthSize)]
         
-        if model.imageCell == false {
+        if model.imageCell{
+            //Banner UI
+            let topBanner: UIImageView = UIImageView(image: model.image)
+            topBanner.translatesAutoresizingMaskIntoConstraints = false
+            topBanner.contentMode = .scaleAspectFill
+            topBanner.layer.cornerRadius = 41.5
+            topBanner.layer.masksToBounds = true
+            addSubview(topBanner)
+            let tbConstraintList: [NSLayoutConstraint] = [
+                topBanner.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+                topBanner.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+                topBanner.heightAnchor.constraint(equalToConstant: 300),
+                topBanner.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -70),
+                heightAnchor.constraint(equalToConstant: 370),
+            ]
+            constraintList.append(contentsOf: tbConstraintList)
+        }else{
+            
             //Title UI
             let title: UILabel = UILabel(frame: frame)
             title.translatesAutoresizingMaskIntoConstraints = false
@@ -37,8 +54,8 @@ class SettingsCellCollectionViewCell: UICollectionViewCell {
             let titleConstraintList: [NSLayoutConstraint] = [
                 title.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
                 title.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
-                title.centerYAnchor.constraint(equalTo: centerYAnchor)
-                
+                title.centerYAnchor.constraint(equalTo: centerYAnchor),
+                heightAnchor.constraint(equalToConstant: 50),
             ]
             constraintList.append(contentsOf: titleConstraintList)
             
@@ -53,8 +70,7 @@ class SettingsCellCollectionViewCell: UICollectionViewCell {
                 let titleConstraintList: [NSLayoutConstraint] = [
                     subTitle.leadingAnchor.constraint(equalTo: title.trailingAnchor, constant: 20),
                     subTitle.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
-                    subTitle.centerYAnchor.constraint(equalTo: centerYAnchor)
-                    
+                    subTitle.centerYAnchor.constraint(equalTo: centerYAnchor),
                 ]
                 constraintList.append(contentsOf: titleConstraintList)
             }
@@ -69,7 +85,7 @@ class SettingsCellCollectionViewCell: UICollectionViewCell {
                 addSubview(modiUIImage)
                 let modiConstraintList : [NSLayoutConstraint] = [
                     modiUIImage.centerYAnchor.constraint(equalTo: centerYAnchor),
-                    modiUIImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
+                    modiUIImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
                 ]
                 constraintList.append(contentsOf: modiConstraintList)
             }
@@ -86,7 +102,7 @@ class SettingsCellCollectionViewCell: UICollectionViewCell {
                 addSubview(decideUIImage)
                 let decideConstraintList : [NSLayoutConstraint] = [
                     decideUIImage.centerYAnchor.constraint(equalTo: centerYAnchor),
-                    decideUIImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
+                    decideUIImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
                 ]
                 constraintList.append(contentsOf: decideConstraintList)
             }
@@ -101,8 +117,7 @@ class SettingsCellCollectionViewCell: UICollectionViewCell {
                 let titleConstraintList: [NSLayoutConstraint] = [
                     secondSubTitle.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor),
                     secondSubTitle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-                    secondSubTitle.centerYAnchor.constraint(equalTo: centerYAnchor)
-                    
+                    secondSubTitle.centerYAnchor.constraint(equalTo: centerYAnchor),
                 ]
                 constraintList.append(contentsOf: titleConstraintList)
             }
@@ -117,22 +132,21 @@ class SettingsCellCollectionViewCell: UICollectionViewCell {
                 let uiBtnConstraintList: [NSLayoutConstraint] = [
                     uiBtn.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor),
                     uiBtn.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-                    uiBtn.centerYAnchor.constraint(equalTo: centerYAnchor)
-                    
+                    uiBtn.centerYAnchor.constraint(equalTo: centerYAnchor),
                 ]
                 constraintList.append(contentsOf: uiBtnConstraintList)
             }
             
             
             //모든 border는 이 형식으로...
-            if indexPath.row != lastIndex - 1 {
+            if indexPath.row + 1 != lastIndex {
                 let border = CALayer()
                 border.backgroundColor = AppColorType.darkGrayColor.rawValue.withAlphaComponent(0.2).cgColor
-                border.frame = CGRectMake(20, self.frame.height - CGFloat(2) , self.frame.width - 40, CGFloat(1))
+                border.frame = CGRectMake(20, self.frame.height - CGFloat(2) , mainWidthSize - 40, CGFloat(1))
                 self.layer.addSublayer(border)
             }
             
-            NSLayoutConstraint.activate(constraintList)
         }
+        NSLayoutConstraint.activate(constraintList)
     }
 }

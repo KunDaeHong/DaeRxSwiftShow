@@ -52,7 +52,7 @@ class SettingsInsideViewController: UIViewController {
         settingsInsideCollectionView.register(SettingsCellCollectionViewCell.self, forCellWithReuseIdentifier: SettingsCellCollectionViewCell.description())
         settingsInsideCollectionView.dataSource = self
         settingsCollectionFlowLayout.scrollDirection = .vertical
-        settingsCollectionFlowLayout.itemSize = .init(width: settingsInsideCollectionView.bounds.size.width, height: 50)
+        settingsCollectionFlowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         settingsCollectionFlowLayout.minimumLineSpacing = 0
         settingsCollectionFlowLayout.sectionInset = .init(top: 0, left: 0, bottom: 0, right: 0)
         settingsInsideCollectionView.collectionViewLayout = settingsCollectionFlowLayout
@@ -87,15 +87,15 @@ extension SettingsInsideViewController: UICollectionViewDataSource {
             }
             
             if titleString == "사용자 설정"{
-                cell.configureView(model: settingsViewModel!.userSettingsList[indexPath.row], indexPath: indexPath, lastIndex: settingsViewModel!.userSettingsList.count)
+                cell.configureView(model: settingsViewModel!.userSettingsList[indexPath.row], indexPath: indexPath, lastIndex: settingsViewModel!.userSettingsList.count, mainWidthSize: collectionView.bounds.size.width)
             }else if titleString == "계절 설정" {
-                cell.configureView(model: settingsViewModel!.weatherSettingsList[indexPath.row], indexPath: indexPath, lastIndex: settingsViewModel!.userSettingsList.count)
+                cell.configureView(model: settingsViewModel!.weatherSettingsList[indexPath.row], indexPath: indexPath, lastIndex: settingsViewModel!.weatherSettingsList.count, mainWidthSize: collectionView.bounds.size.width)
             }else if titleString == "알림 설정" {
-                cell.configureView(model: settingsViewModel!.alramSettingsList[indexPath.row], indexPath: indexPath, lastIndex: settingsViewModel!.userSettingsList.count)
+                cell.configureView(model: settingsViewModel!.alramSettingsList[indexPath.row], indexPath: indexPath, lastIndex: settingsViewModel!.alramSettingsList.count, mainWidthSize: collectionView.bounds.size.width)
             }else if titleString == "오류 수집 설정"{
-                cell.configureView(model: settingsViewModel!.colletingErrorsSettingsList[indexPath.row], indexPath: indexPath, lastIndex: settingsViewModel!.userSettingsList.count)
+                cell.configureView(model: settingsViewModel!.colletingErrorsSettingsList[indexPath.row], indexPath: indexPath, lastIndex: settingsViewModel!.colletingErrorsSettingsList.count, mainWidthSize: collectionView.bounds.size.width)
             }else{
-                cell.configureView(model: settingsViewModel!.appVersionList[indexPath.row], indexPath: indexPath, lastIndex: settingsViewModel!.userSettingsList.count)
+                cell.configureView(model: settingsViewModel!.appVersionList[indexPath.row], indexPath: indexPath, lastIndex: settingsViewModel!.appVersionList.count, mainWidthSize: collectionView.bounds.size.width)
             }
             
             return cell

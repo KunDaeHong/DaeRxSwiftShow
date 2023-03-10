@@ -222,7 +222,7 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U38-lQ-EYH" userLabel="MainNavView">
-                                        <rect key="frame" x="30" y="0.0" width="333" height="120"/>
+                                        <rect key="frame" x="30" y="0.0" width="333" height="80"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ClY-iE-5BP" userLabel="backBtn">
                                                 <rect key="frame" x="0.0" y="17" width="35" height="35"/>
@@ -251,17 +251,17 @@
                                             <constraint firstItem="qiS-HJ-2dH" firstAttribute="leading" secondItem="ClY-iE-5BP" secondAttribute="trailing" constant="15" id="378-2n-WKg"/>
                                             <constraint firstItem="ClY-iE-5BP" firstAttribute="centerY" secondItem="qiS-HJ-2dH" secondAttribute="centerY" id="Sa9-1m-fGd"/>
                                             <constraint firstItem="qiS-HJ-2dH" firstAttribute="top" secondItem="U38-lQ-EYH" secondAttribute="top" constant="20" id="evv-HQ-ziQ"/>
-                                            <constraint firstAttribute="height" constant="120" id="yrx-YM-t4G"/>
+                                            <constraint firstAttribute="height" constant="80" id="yrx-YM-t4G"/>
                                         </constraints>
                                     </view>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XyM-qQ-1O5">
-                                        <rect key="frame" x="0.0" y="120" width="393" height="639"/>
+                                        <rect key="frame" x="0.0" y="80" width="393" height="679"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="epR-4L-QE2" userLabel="ContentView">
-                                                <rect key="frame" x="0.0" y="0.0" width="393" height="600"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="393" height="700"/>
                                                 <subviews>
-                                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xMg-6O-vAl">
-                                                        <rect key="frame" x="0.0" y="0.0" width="393" height="600"/>
+                                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xMg-6O-vAl">
+                                                        <rect key="frame" x="0.0" y="0.0" width="393" height="700"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pyL-uu-RKd">
                                                             <size key="itemSize" width="128" height="128"/>
@@ -275,7 +275,7 @@
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="xMg-6O-vAl" secondAttribute="bottom" id="8px-up-dHS"/>
-                                                    <constraint firstAttribute="height" constant="600" id="bDG-Qz-Kgq"/>
+                                                    <constraint firstAttribute="height" constant="700" id="bDG-Qz-Kgq"/>
                                                     <constraint firstItem="xMg-6O-vAl" firstAttribute="leading" secondItem="epR-4L-QE2" secondAttribute="leading" id="cEV-CE-REf"/>
                                                     <constraint firstItem="xMg-6O-vAl" firstAttribute="top" secondItem="epR-4L-QE2" secondAttribute="top" id="egU-pm-GZc"/>
                                                     <constraint firstAttribute="trailing" secondItem="xMg-6O-vAl" secondAttribute="trailing" id="mTI-Zn-e4f"/>
