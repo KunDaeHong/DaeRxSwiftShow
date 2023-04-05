@@ -27,7 +27,7 @@ class SettingsViewModel {
     ])
     
     let weatherSettingsList = BehaviorRelay<[SettingsCellStuffModel]>(value: [
-        SettingsCellStuffModel(title: "봄", imageCell: true, image: UIImage()),
+        SettingsCellStuffModel(title: "겨울", imageCell: true, image: UIImage(named: "winterBanner")!),
         SettingsCellStuffModel(title: "자동", decideOption: true, checkMark: false),
         SettingsCellStuffModel(title: "봄", decideOption: true, checkMark: true),
         SettingsCellStuffModel(title: "여름", decideOption: true, checkMark: false),
@@ -80,26 +80,23 @@ class SettingsViewModel {
     
     func changeWeatherSettings(type: String) {
         var newValue = weatherSettingsList.value
-        var newModel = SettingsCellStuffModel(title: "일반", imageCell: true, image: UIImage(named: "winterBanner")!);
         switch(type) {
         case "겨울":
-            newModel = SettingsCellStuffModel(title: "겨울", imageCell: true, image: UIImage(named: "winterBanner")!)
+            newValue[0] = SettingsCellStuffModel(title: "겨울", imageCell: true, image: UIImage(named: "winterBanner")!)
             break;
         case "봄":
-            newModel = SettingsCellStuffModel(title: "봄", imageCell: true, image: UIImage(named: "spring(ver2)Banner")!)
+            newValue[0] = SettingsCellStuffModel(title: "봄", imageCell: true, image: UIImage(named: "spring(ver2)Banner")!)
             break;
         case "여름":
-            newModel = SettingsCellStuffModel(title: "여름", imageCell: true, image: UIImage(named: "summerBanner")!)
+            newValue[0] = SettingsCellStuffModel(title: "여름", imageCell: true, image: UIImage(named: "summerBanner")!)
             break;
         case "자동":
             automaticWeatherSettings()
             break;
         default :
-            newModel = SettingsCellStuffModel(title: "가을", imageCell: true, image: UIImage(named: "autumnBanner")!)
+            newValue[0] = SettingsCellStuffModel(title: "가을", imageCell: true, image: UIImage(named: "autumnBanner")!)
             break;
         }
-        newValue.remove(at: 0)
-        newValue.insert(newModel, at: 0)
         weatherSettingsList.accept(newValue)
     }
     

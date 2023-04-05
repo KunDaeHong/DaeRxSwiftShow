@@ -105,7 +105,7 @@ class SettingsInsideViewController: UIViewController {
             }.disposed(by: disposeBag)
             break;
         case "버전 정보" :
-            settingsViewModel!.colletingErrorsSettingsList.bind(
+            settingsViewModel!.appVersionList.bind(
                 to: settingsInsideCollectionView.rx.items(
                     cellIdentifier: SettingsCellCollectionViewCell.description(),
                     cellType: SettingsCellCollectionViewCell.self))
