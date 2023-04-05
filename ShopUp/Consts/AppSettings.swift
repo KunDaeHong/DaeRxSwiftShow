@@ -38,3 +38,11 @@ struct AppSettings {
     var developer_mode: Bool = false
     
 }
+
+enum weather_enum : Int32{
+    case winter = 0
+    case spring = 1
+    case summer = 2
+    case autumn = 3
+    case nothing = 4
+}

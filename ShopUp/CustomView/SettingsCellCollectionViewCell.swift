@@ -18,13 +18,27 @@ class SettingsCellCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @objc func handleTap(sender: UITapGestureRecognizer){
-        //sender.completion!()
+    var tapHandler: (() -> Void)?
+    
+    @objc private func handleTap(_ sender: UITapGestureRecognizer){
+        tapHandler!()
     }
     
-    public func configureView(model: SettingsCellStuffModel, indexPath: IndexPath, lastIndex: Int, mainWidthSize: CGFloat){
+    public func configureView(
+        model: SettingsCellStuffModel,
+        indexPath: IndexPath,
+        lastIndex: Int,
+        mainWidthSize: CGFloat,
+        completionHandler: (() -> Void)? = nil
+    ){
         
         var constraintList: [NSLayoutConstraint] = [widthAnchor.constraint(equalToConstant: mainWidthSize)]
+        
+        if let touchUp = completionHandler {
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_ :)))
+            addGestureRecognizer(tapGesture)
+            tapHandler = {touchUp()}
+        }
         
         if model.imageCell{
             //Banner UI

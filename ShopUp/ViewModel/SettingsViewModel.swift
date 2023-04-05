@@ -21,45 +21,35 @@ class SettingsViewModel {
         EasySettingsModel(title: "알림 진동", firstColor: .limeYellowGradientFirstColor, secondColor: .limeYellowGradientSecondColor, toggle: true, value: "")
     ])
     
-    let userSettingsList : [SettingsCellStuffModel] = [
-        SettingsCellStuffModel(
-            title: "이름",
-            subTitleOption: true,
-            subTitle: "내 이름",
-            modifiedOption: true
-        ),
-        SettingsCellStuffModel(
-            title: "나이",
-            subTitleOption: true,
-            subTitle: "55",
-            modifiedOption: true
-        )
-    ]
+    let userSettingsList = BehaviorRelay<[SettingsCellStuffModel]>(value: [
+        SettingsCellStuffModel(title: "이름", subTitleOption: true, subTitle: "내 이름", modifiedOption: true),
+        SettingsCellStuffModel(title: "나이", subTitleOption: true, subTitle: "55", modifiedOption: true)
+    ])
     
-    var weatherSettingsList: [SettingsCellStuffModel] = [
+    let weatherSettingsList = BehaviorRelay<[SettingsCellStuffModel]>(value: [
         SettingsCellStuffModel(title: "봄", imageCell: true, image: UIImage()),
         SettingsCellStuffModel(title: "자동", decideOption: true, checkMark: false),
         SettingsCellStuffModel(title: "봄", decideOption: true, checkMark: true),
         SettingsCellStuffModel(title: "여름", decideOption: true, checkMark: false),
         SettingsCellStuffModel(title: "가을", decideOption: true, checkMark: false),
         SettingsCellStuffModel(title: "겨울", decideOption: true, checkMark: false),
-    ]
+    ])
     
-    let alramSettingsList: [SettingsCellStuffModel] = [
+    let alramSettingsList = BehaviorRelay<[SettingsCellStuffModel]>(value: [
         SettingsCellStuffModel(title: "알림", decideOption: true, checkMark: true),
         SettingsCellStuffModel(title: "알림 소리", decideOption: true, checkMark: true),
-        SettingsCellStuffModel(title: "알림 진동", decideOption: true, checkMark: true),
-    ]
+        SettingsCellStuffModel(title: "알림 진동", decideOption: true, checkMark: true)
+    ])
     
-    let colletingErrorsSettingsList: [SettingsCellStuffModel] = [
+    let colletingErrorsSettingsList = BehaviorRelay<[SettingsCellStuffModel]>(value: [
         SettingsCellStuffModel(title: "에러를 수집하여 앱 개선에 도움", decideOption: true, checkMark: AppSettings.shared.app_collect_errors)
-    ]
+    ])
     
-    let appVersionList: [SettingsCellStuffModel] = [
+    let appVersionList = BehaviorRelay<[SettingsCellStuffModel]>(value: [
         SettingsCellStuffModel(title: "버전", subTitle: AppSettings.shared.app_version),
         SettingsCellStuffModel(title: "리소스 파일 버전", subTitle: AppSettings.shared.app_resources_version),
         SettingsCellStuffModel(title: "현재 버전의 보증", subTitle: AppSettings.shared.app_version_warranty ? "제한 보증 가능" : "불가능")
-    ]
+    ])
     
     init() {
         bringAppSettings()
@@ -79,39 +69,73 @@ class SettingsViewModel {
         }
         
         if AppSettings.shared.weather_auto{
-            var update = easySettingsList.value
-            let autoLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 160, height: 200))
-            autoLabel.text = "AUTO"
-            autoLabel.textAlignment = .center
-            autoLabel.textColor = .white
-            autoLabel.font = .systemFont(ofSize: 30, weight: .bold)
-            UIGraphicsBeginImageContext(autoLabel.frame.size)
-            if let currentContext = UIGraphicsGetCurrentContext() {
-                autoLabel.layer.render(in: currentContext)
-            }
-            
-            let labelImg = UIGraphicsGetImageFromCurrentImageContext()
-            update[1].title = "계절 설정"
-            update[1].image = labelImg
-            easySettingsList.accept(update)
-            
-            let currentMonth = Calendar.current.component(.month, from: Date())
-            switch(currentMonth){
-            case 12, 1, 2:
-                weatherSettingsList[0].image = UIImage(named: "winterBanner")!
-            case 3, 4, 5:
-                weatherSettingsList[0].image = UIImage(named: "spring(ver2)Banner")!
-            case 6, 7, 8:
-                weatherSettingsList[0].image = UIImage(named: "summerBanner")!
-            default :
-                weatherSettingsList[0].image = UIImage(named: "autumnBanner")!
-            }
+            automaticWeatherSettings()
         }else{
             var update = easySettingsList.value
             update[1].image = UIImage(named: "autoWeather")
             easySettingsList.accept(update)
         }
         // 앱설정을 들고와야 하는 코드가 필요. 단 이부분으로 부터 시작. 지금 시작.
+    }
+    
+    func changeWeatherSettings(type: String) {
+        var newValue = weatherSettingsList.value
+        var newModel = SettingsCellStuffModel(title: "일반", imageCell: true, image: UIImage(named: "winterBanner")!);
+        switch(type) {
+        case "겨울":
+            newModel = SettingsCellStuffModel(title: "겨울", imageCell: true, image: UIImage(named: "winterBanner")!)
+            break;
+        case "봄":
+            newModel = SettingsCellStuffModel(title: "봄", imageCell: true, image: UIImage(named: "spring(ver2)Banner")!)
+            break;
+        case "여름":
+            newModel = SettingsCellStuffModel(title: "여름", imageCell: true, image: UIImage(named: "summerBanner")!)
+            break;
+        case "자동":
+            automaticWeatherSettings()
+            break;
+        default :
+            newModel = SettingsCellStuffModel(title: "가을", imageCell: true, image: UIImage(named: "autumnBanner")!)
+            break;
+        }
+        newValue.remove(at: 0)
+        newValue.insert(newModel, at: 0)
+        weatherSettingsList.accept(newValue)
+    }
+    
+    private func automaticWeatherSettings(){
+        var update = easySettingsList.value
+        let autoLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 160, height: 200))
+        autoLabel.text = "AUTO"
+        autoLabel.textAlignment = .center
+        autoLabel.textColor = .white
+        autoLabel.font = .systemFont(ofSize: 30, weight: .bold)
+        UIGraphicsBeginImageContext(autoLabel.frame.size)
+        if let currentContext = UIGraphicsGetCurrentContext() {
+            autoLabel.layer.render(in: currentContext)
+        }
+        
+        let labelImg = UIGraphicsGetImageFromCurrentImageContext()
+        update[1].title = "계절 설정"
+        update[1].image = labelImg
+        easySettingsList.accept(update)
+        
+        let currentMonth = Calendar.current.component(.month, from: Date())
+        var updateWeather = weatherSettingsList.value
+        switch(currentMonth){
+        case 12, 1, 2:
+            updateWeather[0].image = UIImage(named: "winterBanner")!
+            weatherSettingsList.accept(updateWeather)
+        case 3, 4, 5:
+            updateWeather[0].image = UIImage(named: "spring(ver2)Banner")!
+            weatherSettingsList.accept(updateWeather)
+        case 6, 7, 8:
+            updateWeather[0].image = UIImage(named: "summerBanner")!
+            weatherSettingsList.accept(updateWeather)
+        default :
+            updateWeather[0].image = UIImage(named: "autumnBanner")!
+            weatherSettingsList.accept(updateWeather)
+        }
     }
 }
 

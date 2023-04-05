@@ -30,6 +30,7 @@ class SettingsInsideViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configurationView()
+        bind()
     }
     
     // MARK: View action
@@ -50,57 +51,71 @@ class SettingsInsideViewController: UIViewController {
     
     private func configurationCollectionView() {
         settingsInsideCollectionView.register(SettingsCellCollectionViewCell.self, forCellWithReuseIdentifier: SettingsCellCollectionViewCell.description())
-        settingsInsideCollectionView.dataSource = self
         settingsCollectionFlowLayout.scrollDirection = .vertical
         settingsCollectionFlowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         settingsCollectionFlowLayout.minimumLineSpacing = 0
         settingsCollectionFlowLayout.sectionInset = .init(top: 0, left: 0, bottom: 0, right: 0)
         settingsInsideCollectionView.collectionViewLayout = settingsCollectionFlowLayout
     }
-}
-
-extension SettingsInsideViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if titleString == "사용자 설정"{
-            return settingsViewModel!.userSettingsList.count
-        }else if titleString == "계절 설정" {
-            return settingsViewModel!.weatherSettingsList.count
-        }else if titleString == "알림 설정" {
-            return settingsViewModel!.alramSettingsList.count
-        }else if titleString == "오류 수집 설정"{
-            return settingsViewModel!.colletingErrorsSettingsList.count
-        }else if titleString == "버전 정보"{
-            return settingsViewModel!.appVersionList.count
-        }else {
-            return 0
-        }
-    }
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView == settingsInsideCollectionView {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SettingsCellCollectionViewCell.description(), for: indexPath) as? SettingsCellCollectionViewCell else {
-                return UICollectionViewCell()
-            }
-            
-            if titleString == "사용자 설정"{
-                cell.configureView(model: settingsViewModel!.userSettingsList[indexPath.row], indexPath: indexPath, lastIndex: settingsViewModel!.userSettingsList.count, mainWidthSize: collectionView.bounds.size.width)
-            }else if titleString == "계절 설정" {
-                cell.configureView(model: settingsViewModel!.weatherSettingsList[indexPath.row], indexPath: indexPath, lastIndex: settingsViewModel!.weatherSettingsList.count, mainWidthSize: collectionView.bounds.size.width)
-            }else if titleString == "알림 설정" {
-                cell.configureView(model: settingsViewModel!.alramSettingsList[indexPath.row], indexPath: indexPath, lastIndex: settingsViewModel!.alramSettingsList.count, mainWidthSize: collectionView.bounds.size.width)
-            }else if titleString == "오류 수집 설정"{
-                cell.configureView(model: settingsViewModel!.colletingErrorsSettingsList[indexPath.row], indexPath: indexPath, lastIndex: settingsViewModel!.colletingErrorsSettingsList.count, mainWidthSize: collectionView.bounds.size.width)
-            }else{
-                cell.configureView(model: settingsViewModel!.appVersionList[indexPath.row], indexPath: indexPath, lastIndex: settingsViewModel!.appVersionList.count, mainWidthSize: collectionView.bounds.size.width)
-            }
-            
-            return cell
-        }else {
-            return UICollectionViewCell()
+    private func bind() {
+        switch(titleString){
+        case "사용자 설정" :
+            settingsViewModel!.userSettingsList.bind(
+                to: settingsInsideCollectionView.rx.items(
+                    cellIdentifier: SettingsCellCollectionViewCell.description(),
+                    cellType: SettingsCellCollectionViewCell.self))
+            {
+                (index, model, cell) in
+                let indexPath = IndexPath(row: index, section: 0)
+                cell.configureView(model: model, indexPath: indexPath, lastIndex: self.settingsViewModel!.userSettingsList.value.count, mainWidthSize: self.settingsInsideCollectionView.bounds.size.width)
+            }.disposed(by: disposeBag)
+            break;
+        case "계절 설정" :
+            settingsViewModel!.weatherSettingsList.bind(
+                to: settingsInsideCollectionView.rx.items(
+                    cellIdentifier: SettingsCellCollectionViewCell.description(),
+                    cellType: SettingsCellCollectionViewCell.self))
+            {
+                (index, model, cell) in
+                let indexPath = IndexPath(row: index, section: 0)
+                cell.configureView(model: model, indexPath: indexPath, lastIndex: self.settingsViewModel!.weatherSettingsList.value.count, mainWidthSize: self.settingsInsideCollectionView.bounds.size.width, completionHandler: {self.settingsViewModel!.changeWeatherSettings(type: model.title)})
+            }.disposed(by: disposeBag)
+            break;
+        case "알림 설정" :
+            settingsViewModel!.alramSettingsList.bind(
+                to: settingsInsideCollectionView.rx.items(
+                    cellIdentifier: SettingsCellCollectionViewCell.description(),
+                    cellType: SettingsCellCollectionViewCell.self))
+            {
+                (index, model, cell) in
+                let indexPath = IndexPath(row: index, section: 0)
+                cell.configureView(model: model, indexPath: indexPath, lastIndex: self.settingsViewModel!.alramSettingsList.value.count, mainWidthSize: self.settingsInsideCollectionView.bounds.size.width)
+            }.disposed(by: disposeBag)
+            break;
+        case "오류 수집 설정" :
+            settingsViewModel!.colletingErrorsSettingsList.bind(
+                to: settingsInsideCollectionView.rx.items(
+                    cellIdentifier: SettingsCellCollectionViewCell.description(),
+                    cellType: SettingsCellCollectionViewCell.self))
+            {
+                (index, model, cell) in
+                let indexPath = IndexPath(row: index, section: 0)
+                cell.configureView(model: model, indexPath: indexPath, lastIndex: self.settingsViewModel!.colletingErrorsSettingsList.value.count, mainWidthSize: self.settingsInsideCollectionView.bounds.size.width)
+            }.disposed(by: disposeBag)
+            break;
+        case "버전 정보" :
+            settingsViewModel!.colletingErrorsSettingsList.bind(
+                to: settingsInsideCollectionView.rx.items(
+                    cellIdentifier: SettingsCellCollectionViewCell.description(),
+                    cellType: SettingsCellCollectionViewCell.self))
+            {
+                (index, model, cell) in
+                let indexPath = IndexPath(row: index, section: 0)
+                cell.configureView(model: model, indexPath: indexPath, lastIndex: self.settingsViewModel!.appVersionList.value.count, mainWidthSize: self.settingsInsideCollectionView.bounds.size.width)
+            }.disposed(by: disposeBag)
+            break;
+        default: break;
         }
     }
 }
