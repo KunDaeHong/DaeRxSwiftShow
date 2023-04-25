@@ -27,7 +27,7 @@ class SettingsViewModel {
     ])
     
     let weatherSettingsList = BehaviorRelay<[SettingsCellStuffModel]>(value: [
-        SettingsCellStuffModel(title: "겨울", imageCell: true, image: UIImage(named: "winterBanner")!),
+        SettingsCellStuffModel(title: "", imageCell: true, image: UIImage(named: "winterBanner")!),
         SettingsCellStuffModel(title: "자동", decideOption: true, checkMark: false),
         SettingsCellStuffModel(title: "봄", decideOption: true, checkMark: true),
         SettingsCellStuffModel(title: "여름", decideOption: true, checkMark: false),
@@ -80,21 +80,28 @@ class SettingsViewModel {
     
     func changeWeatherSettings(type: String) {
         var newValue = weatherSettingsList.value
+        if let resetIndex = newValue.firstIndex(where: {$0.checkMark == true}){
+            newValue[resetIndex] = SettingsCellStuffModel(title: newValue[resetIndex].title, decideOption: true, checkMark: false)
+        }
+        if let changeIndex = newValue.firstIndex(where: {$0.title == type}){
+            newValue[changeIndex] = SettingsCellStuffModel(title: type, decideOption: true, checkMark: true)
+        }
+        
         switch(type) {
         case "겨울":
-            newValue[0] = SettingsCellStuffModel(title: "겨울", imageCell: true, image: UIImage(named: "winterBanner")!)
+            newValue[0] = SettingsCellStuffModel(title: "", imageCell: true, image: UIImage(named: "winterBanner")!)
             break;
         case "봄":
-            newValue[0] = SettingsCellStuffModel(title: "봄", imageCell: true, image: UIImage(named: "spring(ver2)Banner")!)
+            newValue[0] = SettingsCellStuffModel(title: "", imageCell: true, image: UIImage(named: "spring(ver2)Banner")!)
             break;
         case "여름":
-            newValue[0] = SettingsCellStuffModel(title: "여름", imageCell: true, image: UIImage(named: "summerBanner")!)
+            newValue[0] = SettingsCellStuffModel(title: "", imageCell: true, image: UIImage(named: "summerBanner")!)
             break;
         case "자동":
             automaticWeatherSettings()
             break;
         default :
-            newValue[0] = SettingsCellStuffModel(title: "가을", imageCell: true, image: UIImage(named: "autumnBanner")!)
+            newValue[0] = SettingsCellStuffModel(title: "", imageCell: true, image: UIImage(named: "autumnBanner")!)
             break;
         }
         weatherSettingsList.accept(newValue)

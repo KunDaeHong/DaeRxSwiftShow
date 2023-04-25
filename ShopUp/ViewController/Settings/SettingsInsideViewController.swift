@@ -22,6 +22,7 @@ class SettingsInsideViewController: UIViewController {
     // MARK: Views Data
     var titleString : String = ""
     var dataModel: SettingsCellStuffModel?
+    var loaded = false
     
     private let disposeBag = DisposeBag()
     private var settingsViewModel: SettingsViewModel?
@@ -31,6 +32,11 @@ class SettingsInsideViewController: UIViewController {
         super.viewDidLoad()
         configurationView()
         bind()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        loaded = true
     }
     
     // MARK: View action
@@ -52,10 +58,9 @@ class SettingsInsideViewController: UIViewController {
     private func configurationCollectionView() {
         settingsInsideCollectionView.register(SettingsCellCollectionViewCell.self, forCellWithReuseIdentifier: SettingsCellCollectionViewCell.description())
         settingsCollectionFlowLayout.scrollDirection = .vertical
-        settingsCollectionFlowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        settingsCollectionFlowLayout.minimumLineSpacing = 0
-        settingsCollectionFlowLayout.sectionInset = .init(top: 0, left: 0, bottom: 0, right: 0)
-        settingsInsideCollectionView.collectionViewLayout = settingsCollectionFlowLayout
+        if let collectionViewLayout = settingsInsideCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            collectionViewLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        }
     }
     
     private func bind() {
@@ -68,7 +73,11 @@ class SettingsInsideViewController: UIViewController {
             {
                 (index, model, cell) in
                 let indexPath = IndexPath(row: index, section: 0)
-                cell.configureView(model: model, indexPath: indexPath, lastIndex: self.settingsViewModel!.userSettingsList.value.count, mainWidthSize: self.settingsInsideCollectionView.bounds.size.width)
+                if self.loaded {
+                    cell.updateView(model: model)
+                }else{
+                    cell.configureView(model: model, indexPath: indexPath, lastIndex: self.settingsViewModel!.userSettingsList.value.count, mainWidthSize: self.settingsInsideCollectionView.bounds.size.width)
+                }
             }.disposed(by: disposeBag)
             break;
         case "계절 설정" :
@@ -77,9 +86,13 @@ class SettingsInsideViewController: UIViewController {
                     cellIdentifier: SettingsCellCollectionViewCell.description(),
                     cellType: SettingsCellCollectionViewCell.self))
             {
-                (index, model, cell) in
+                index, model, cell in
                 let indexPath = IndexPath(row: index, section: 0)
-                cell.configureView(model: model, indexPath: indexPath, lastIndex: self.settingsViewModel!.weatherSettingsList.value.count, mainWidthSize: self.settingsInsideCollectionView.bounds.size.width, completionHandler: {self.settingsViewModel!.changeWeatherSettings(type: model.title)})
+                if self.loaded {
+                    cell.updateView(model: model)
+                }else{
+                    cell.configureView(model: model, indexPath: indexPath, lastIndex: self.settingsViewModel!.weatherSettingsList.value.count, mainWidthSize: self.settingsInsideCollectionView.bounds.size.width, completionHandler: {self.settingsViewModel!.changeWeatherSettings(type: model.title)})
+                }
             }.disposed(by: disposeBag)
             break;
         case "알림 설정" :
@@ -90,7 +103,11 @@ class SettingsInsideViewController: UIViewController {
             {
                 (index, model, cell) in
                 let indexPath = IndexPath(row: index, section: 0)
-                cell.configureView(model: model, indexPath: indexPath, lastIndex: self.settingsViewModel!.alramSettingsList.value.count, mainWidthSize: self.settingsInsideCollectionView.bounds.size.width)
+                if self.loaded {
+                    //cell.updateView(model: model)
+                }else{
+                    cell.configureView(model: model, indexPath: indexPath, lastIndex: self.settingsViewModel!.alramSettingsList.value.count, mainWidthSize: self.settingsInsideCollectionView.bounds.size.width)
+                }
             }.disposed(by: disposeBag)
             break;
         case "오류 수집 설정" :
@@ -101,7 +118,11 @@ class SettingsInsideViewController: UIViewController {
             {
                 (index, model, cell) in
                 let indexPath = IndexPath(row: index, section: 0)
-                cell.configureView(model: model, indexPath: indexPath, lastIndex: self.settingsViewModel!.colletingErrorsSettingsList.value.count, mainWidthSize: self.settingsInsideCollectionView.bounds.size.width)
+                if self.loaded {
+                    cell.updateView(model: model)
+                }else{
+                    cell.configureView(model: model, indexPath: indexPath, lastIndex: self.settingsViewModel!.colletingErrorsSettingsList.value.count, mainWidthSize: self.settingsInsideCollectionView.bounds.size.width)
+                }
             }.disposed(by: disposeBag)
             break;
         case "버전 정보" :
@@ -112,7 +133,11 @@ class SettingsInsideViewController: UIViewController {
             {
                 (index, model, cell) in
                 let indexPath = IndexPath(row: index, section: 0)
-                cell.configureView(model: model, indexPath: indexPath, lastIndex: self.settingsViewModel!.appVersionList.value.count, mainWidthSize: self.settingsInsideCollectionView.bounds.size.width)
+                if self.loaded {
+                    cell.updateView(model: model)
+                }else{
+                    cell.configureView(model: model, indexPath: indexPath, lastIndex: self.settingsViewModel!.appVersionList.value.count, mainWidthSize: self.settingsInsideCollectionView.bounds.size.width)
+                }
             }.disposed(by: disposeBag)
             break;
         default: break;
