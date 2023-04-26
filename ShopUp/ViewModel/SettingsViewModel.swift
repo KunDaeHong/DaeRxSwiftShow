@@ -88,8 +88,8 @@ class SettingsViewModel {
         }
         
         switch(type) {
-        case "겨울":
-            newValue[0] = SettingsCellStuffModel(title: "", imageCell: true, image: UIImage(named: "winterBanner")!)
+        case "자동":
+            automaticWeatherSettings()
             break;
         case "봄":
             newValue[0] = SettingsCellStuffModel(title: "", imageCell: true, image: UIImage(named: "spring(ver2)Banner")!)
@@ -97,13 +97,15 @@ class SettingsViewModel {
         case "여름":
             newValue[0] = SettingsCellStuffModel(title: "", imageCell: true, image: UIImage(named: "summerBanner")!)
             break;
-        case "자동":
-            automaticWeatherSettings()
+        case "겨울":
+            newValue[0] = SettingsCellStuffModel(title: "", imageCell: true, image: UIImage(named: "winterBanner")!)
             break;
         default :
             newValue[0] = SettingsCellStuffModel(title: "", imageCell: true, image: UIImage(named: "autumnBanner")!)
             break;
         }
+        
+        
         weatherSettingsList.accept(newValue)
     }
     

@@ -230,12 +230,13 @@ class MainViewController: UIViewController {
             title: nothing == true ? "추가" : "확인", font: .systemFont(ofSize: 13, weight: .regular), color: .blackFontColor)
         
         if(nothing){title.text = "등록 리스트가 없네요?!"}
-        else if(warning){title.text = "기한이 끝나가는 음식이 있어요."}
-        else if(bad){title.text = "기한이 끝난 음식입니다.."}
-        else if(good){title.text = "오늘은 OOO가 어떨까요?"}
+        else if(warning){title.text = "씀씀이가 조금 헤프네요.\n노력해야합니다."}
+        else if(bad){title.text = "통장이 응급실을 요구합니다."}
+        else if(good){title.text = "씀씀이가 굉장히 좋네요!\n이대로 가볼까요?"}
         
         title.textColor = AppColorType.whiteFontColor.rawValue
-        title.font = .systemFont(ofSize: 23, weight: .heavy)
+        title.font = .systemFont(ofSize: 20, weight: .heavy)
+        title.minimumScaleFactor = 0.5
         title.translatesAutoresizingMaskIntoConstraints = false
         title.lineBreakMode = .byTruncatingTail
         title.numberOfLines = 0

@@ -190,44 +190,42 @@ class SettingsCellCollectionViewCell: UICollectionViewCell {
             //Banner UI
             topBanner = UIImageView(image: model.image)
             topBanner!.contentMode = .scaleAspectFill
-        }else{
-            //Title UI
-            title!.textColor = AppColorType.darkGrayFontColor.rawValue
-            title!.font = .systemFont(ofSize: 17, weight: .regular)
-            title!.text = model.title
-            
-            //subTitle UI
-            if(model.subTitleOption){
-                subTitle = UILabel(frame: self.frame)
-                subTitle!.textColor = AppColorType.darkGrayFontColor.rawValue
-                subTitle!.font = .systemFont(ofSize: 17, weight: .regular)
-                subTitle!.text = model.subTitle
+        }
+        //Title UI
+        title!.textColor = AppColorType.darkGrayFontColor.rawValue
+        title!.font = .systemFont(ofSize: 17, weight: .regular)
+        title!.text = model.title
+        
+        //subTitle UI
+        if(model.subTitleOption){
+            subTitle = UILabel(frame: self.frame)
+            subTitle!.textColor = AppColorType.darkGrayFontColor.rawValue
+            subTitle!.font = .systemFont(ofSize: 17, weight: .regular)
+            subTitle!.text = model.subTitle
+        }
+        
+        //modi, decide, second sub title UI
+        if model.modifiedOption {
+            modiUIImage!.tintColor = AppColorType.darkGrayColor.rawValue
+        }
+        
+        if model.decideOption {
+            decideUIImage!.tintColor = AppColorType.redGradientSecondColor.rawValue
+            if model.checkMark {
+                decideUIImage!.tintColor = AppColorType.greenColor.rawValue
             }
-            
-            //modi, decide, second sub title UI
-            if model.modifiedOption {
-                modiUIImage!.tintColor = AppColorType.darkGrayColor.rawValue
-            }
-            
-            if model.decideOption {
-                decideUIImage!.tintColor = AppColorType.redGradientSecondColor.rawValue
-                if model.checkMark {
-                    decideUIImage!.tintColor = AppColorType.greenColor.rawValue
-                }
-            }
-            
-            if model.secondSubTitleOption {
-                secondSubTitle!.textColor = AppColorType.darkGrayFontColor.rawValue
-                secondSubTitle!.font = .systemFont(ofSize: 17, weight: .regular)
-                secondSubTitle!.text = model.secondSubTitle
-            }
-            
-            if model.handler != nil {
-                uiBtn!.titleLabel?.text = "확인"
-                uiBtn!.titleLabel?.textColor = AppColorType.greenColor.rawValue
-                uiBtn!.titleLabel?.font = .systemFont(ofSize: 17, weight: .regular)
-            }
-            
+        }
+        
+        if model.secondSubTitleOption {
+            secondSubTitle!.textColor = AppColorType.darkGrayFontColor.rawValue
+            secondSubTitle!.font = .systemFont(ofSize: 17, weight: .regular)
+            secondSubTitle!.text = model.secondSubTitle
+        }
+        
+        if model.handler != nil {
+            uiBtn!.titleLabel?.text = "확인"
+            uiBtn!.titleLabel?.textColor = AppColorType.greenColor.rawValue
+            uiBtn!.titleLabel?.font = .systemFont(ofSize: 17, weight: .regular)
         }
     }
 //    func generate(_ numRows: Int) -> [[Int]] {

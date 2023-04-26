@@ -64,6 +64,8 @@ class SettingsInsideViewController: UIViewController {
     }
     
     private func bind() {
+        settingsInsideCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
+        
         switch(titleString){
         case "사용자 설정" :
             settingsViewModel!.userSettingsList.bind(
@@ -87,10 +89,12 @@ class SettingsInsideViewController: UIViewController {
                     cellType: SettingsCellCollectionViewCell.self))
             {
                 index, model, cell in
-                let indexPath = IndexPath(row: index, section: 0)
+                //cell이 겨울 순서부터 나오고 있음. 그래서 ui 에러가 발생됨.
+                //cell이 0부터 다시 초기화 되어야 함.
                 if self.loaded {
                     cell.updateView(model: model)
                 }else{
+                    let indexPath = IndexPath(row: index, section: 0)
                     cell.configureView(model: model, indexPath: indexPath, lastIndex: self.settingsViewModel!.weatherSettingsList.value.count, mainWidthSize: self.settingsInsideCollectionView.bounds.size.width, completionHandler: {self.settingsViewModel!.changeWeatherSettings(type: model.title)})
                 }
             }.disposed(by: disposeBag)

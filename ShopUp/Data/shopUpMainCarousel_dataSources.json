@@ -1,29 +1,29 @@
 [
     {
         "idx" : 0,
-        "title" : "자신만의 음식",
-        "subTitle" : "보다 더 안전하게.\n그것에 끌리다.\n요리하다.\n\n₩0부터.",
+        "title" : "돈은 쓰기 나름",
+        "subTitle" : "보다 더 아끼게.\n내일을 위한 나\n₩1000부터 아끼는 마음.",
         "firstColor" : "ff427b",
         "secondColor" : "ffad42",
     },
     {
         "idx" : 1,
-        "title" : "너와 함께",
-        "subTitle" : "나답게 요리하다.\n공짜의 선물.\n새롭게 런칭\n\n₩0부터.",
+        "title" : "이거 살빠엔",
+        "subTitle" : "10번 더 고민.\n내일을 위해.\n미련 없는 생각\n\n₩0부터 시작.",
         "firstColor" : "ff427b",
         "secondColor" : "ffad42",
     },
     {
         "idx" : 2,
-        "title" : "음식에 싱싱함을 남기다.",
-        "subTitle" : "음식의 알고리즘을\n더한 찰떡같은 기능.",
+        "title" : "통장에 싱싱함을 남기다.",
+        "subTitle" : "돈 씀씀이에\n알고리즘을 더한 기능.",
         "firstColor" : "ff427b",
         "secondColor" : "ffad42",
     },
     {
         "idx" : 3,
-        "title" : "유통기한의 소리",
-        "subTitle" : "유통기한의\n타이밍에\n가장\n필수적인\niOS앱.",
+        "title" : "지갑의 비명 소리",
+        "subTitle" : "카드의\n결제에\n가장\n필수적인\niOS앱.",
         "firstColor" : "ff427b",
         "secondColor" : "ffad42",
     }
