@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0C526EDEE1169027D5B457A1 /* Pods_ShopUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 760CD571A28424CD1AE5DE39 /* Pods_ShopUp.framework */; };
-		4BFB285AA26623479B5E9DD1 /* Pods_ShopUpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D10E8B005F0DBDDB98AA8AE9 /* Pods_ShopUpTests.framework */; };
-		6808A685C3490CBBD1A6F801 /* Pods_ShopUp_ShopUpUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2F12F116512E23A5D16AFB /* Pods_ShopUp_ShopUpUITests.framework */; };
 		682A5CFC29599416005AC208 /* DBMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682A5CFB29599416005AC208 /* DBMgr.swift */; };
 		682A5CFF2959999D005AC208 /* FoodInfomationDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682A5CFE2959999D005AC208 /* FoodInfomationDBModel.swift */; };
 		682A5D01295A8291005AC208 /* SmallFitCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682A5D00295A8291005AC208 /* SmallFitCollectionCell.swift */; };
@@ -53,6 +50,11 @@
 		68D8C6972955B074003F2652 /* FoodInfomationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D8C6962955B074003F2652 /* FoodInfomationModel.swift */; };
 		68D8C6992959459D003F2652 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68D8C6982959459D003F2652 /* Settings.storyboard */; };
 		68D8C69B29595BA9003F2652 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D8C69A29595BA9003F2652 /* SettingsViewController.swift */; };
+		DE7922C72A58FD6B0034CB0B /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = DE7922C62A58FD6B0034CB0B /* RxCocoa */; };
+		DE7922C92A58FD6B0034CB0B /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = DE7922C82A58FD6B0034CB0B /* RxRelay */; };
+		DE7922CB2A58FD6B0034CB0B /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DE7922CA2A58FD6B0034CB0B /* RxSwift */; };
+		DE7922CE2A58FDF20034CB0B /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = DE7922CD2A58FDF20034CB0B /* Realm */; };
+		DE7922D02A58FDF20034CB0B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DE7922CF2A58FDF20034CB0B /* RealmSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,15 +122,6 @@
 		68D8C6962955B074003F2652 /* FoodInfomationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodInfomationModel.swift; sourceTree = "<group>"; };
 		68D8C6982959459D003F2652 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		68D8C69A29595BA9003F2652 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		760CD571A28424CD1AE5DE39 /* Pods_ShopUp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShopUp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A82AB45463DF95BD4C53D6C4 /* Pods-ShopUp-ShopUpUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShopUp-ShopUpUITests.release.xcconfig"; path = "Target Support Files/Pods-ShopUp-ShopUpUITests/Pods-ShopUp-ShopUpUITests.release.xcconfig"; sourceTree = "<group>"; };
-		CB2F12F116512E23A5D16AFB /* Pods_ShopUp_ShopUpUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShopUp_ShopUpUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D10E8B005F0DBDDB98AA8AE9 /* Pods_ShopUpTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShopUpTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E2C6B84D971EB80E3BE03F0C /* Pods-ShopUp-ShopUpUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShopUp-ShopUpUITests.debug.xcconfig"; path = "Target Support Files/Pods-ShopUp-ShopUpUITests/Pods-ShopUp-ShopUpUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		E90AA482DB5C35CC8D294D66 /* Pods-ShopUp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShopUp.release.xcconfig"; path = "Target Support Files/Pods-ShopUp/Pods-ShopUp.release.xcconfig"; sourceTree = "<group>"; };
-		ED4A0160848F6A5D896597EB /* Pods-ShopUpTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShopUpTests.debug.xcconfig"; path = "Target Support Files/Pods-ShopUpTests/Pods-ShopUpTests.debug.xcconfig"; sourceTree = "<group>"; };
-		EED032AC80714B712FB2F51C /* Pods-ShopUpTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShopUpTests.release.xcconfig"; path = "Target Support Files/Pods-ShopUpTests/Pods-ShopUpTests.release.xcconfig"; sourceTree = "<group>"; };
-		FEB0F29928B97DBD843F6606 /* Pods-ShopUp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShopUp.debug.xcconfig"; path = "Target Support Files/Pods-ShopUp/Pods-ShopUp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,7 +129,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C526EDEE1169027D5B457A1 /* Pods_ShopUp.framework in Frameworks */,
+				DE7922CB2A58FD6B0034CB0B /* RxSwift in Frameworks */,
+				DE7922C92A58FD6B0034CB0B /* RxRelay in Frameworks */,
+				DE7922CE2A58FDF20034CB0B /* Realm in Frameworks */,
+				DE7922D02A58FDF20034CB0B /* RealmSwift in Frameworks */,
+				DE7922C72A58FD6B0034CB0B /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,7 +141,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4BFB285AA26623479B5E9DD1 /* Pods_ShopUpTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,23 +148,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6808A685C3490CBBD1A6F801 /* Pods_ShopUp_ShopUpUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4D39A470E28D9D0C6F8911FD /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				760CD571A28424CD1AE5DE39 /* Pods_ShopUp.framework */,
-				CB2F12F116512E23A5D16AFB /* Pods_ShopUp_ShopUpUITests.framework */,
-				D10E8B005F0DBDDB98AA8AE9 /* Pods_ShopUpTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		682A5CFA295993D0005AC208 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -240,8 +225,6 @@
 				68C8192C2949C04D007B6EC2 /* ShopUpTests */,
 				68C819362949C04D007B6EC2 /* ShopUpUITests */,
 				68C819142949C04B007B6EC2 /* Products */,
-				A1D9E812C931BBEDA749B4B4 /* Pods */,
-				4D39A470E28D9D0C6F8911FD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -392,19 +375,6 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
-		A1D9E812C931BBEDA749B4B4 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				FEB0F29928B97DBD843F6606 /* Pods-ShopUp.debug.xcconfig */,
-				E90AA482DB5C35CC8D294D66 /* Pods-ShopUp.release.xcconfig */,
-				E2C6B84D971EB80E3BE03F0C /* Pods-ShopUp-ShopUpUITests.debug.xcconfig */,
-				A82AB45463DF95BD4C53D6C4 /* Pods-ShopUp-ShopUpUITests.release.xcconfig */,
-				ED4A0160848F6A5D896597EB /* Pods-ShopUpTests.debug.xcconfig */,
-				EED032AC80714B712FB2F51C /* Pods-ShopUpTests.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -412,17 +382,22 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 68C8193D2949C04D007B6EC2 /* Build configuration list for PBXNativeTarget "ShopUp" */;
 			buildPhases = (
-				F7187613159B75A6FB6A9B24 /* [CP] Check Pods Manifest.lock */,
 				68C8190F2949C04B007B6EC2 /* Sources */,
 				68C819102949C04B007B6EC2 /* Frameworks */,
 				68C819112949C04B007B6EC2 /* Resources */,
-				C6B7915ECA5CFD7BAE21E920 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = ShopUp;
+			packageProductDependencies = (
+				DE7922C62A58FD6B0034CB0B /* RxCocoa */,
+				DE7922C82A58FD6B0034CB0B /* RxRelay */,
+				DE7922CA2A58FD6B0034CB0B /* RxSwift */,
+				DE7922CD2A58FDF20034CB0B /* Realm */,
+				DE7922CF2A58FDF20034CB0B /* RealmSwift */,
+			);
 			productName = ShopUp;
 			productReference = 68C819132949C04B007B6EC2 /* ShopUp.app */;
 			productType = "com.apple.product-type.application";
@@ -431,7 +406,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 68C819402949C04D007B6EC2 /* Build configuration list for PBXNativeTarget "ShopUpTests" */;
 			buildPhases = (
-				28F3D2337EAF382E65C73ED7 /* [CP] Check Pods Manifest.lock */,
 				68C819252949C04D007B6EC2 /* Sources */,
 				68C819262949C04D007B6EC2 /* Frameworks */,
 				68C819272949C04D007B6EC2 /* Resources */,
@@ -450,11 +424,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 68C819432949C04D007B6EC2 /* Build configuration list for PBXNativeTarget "ShopUpUITests" */;
 			buildPhases = (
-				8F11B7E6FA57AD934903F315 /* [CP] Check Pods Manifest.lock */,
 				68C8192F2949C04D007B6EC2 /* Sources */,
 				68C819302949C04D007B6EC2 /* Frameworks */,
 				68C819312949C04D007B6EC2 /* Resources */,
-				B5BF8A2867E509C606213EF8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -498,6 +470,10 @@
 				Base,
 			);
 			mainGroup = 68C8190A2949C04A007B6EC2;
+			packageReferences = (
+				DE7922C52A58FD6B0034CB0B /* XCRemoteSwiftPackageReference "RxSwift" */,
+				DE7922CC2A58FDF20034CB0B /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = 68C819142949C04B007B6EC2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -539,109 +515,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		28F3D2337EAF382E65C73ED7 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ShopUpTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8F11B7E6FA57AD934903F315 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ShopUp-ShopUpUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B5BF8A2867E509C606213EF8 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ShopUp-ShopUpUITests/Pods-ShopUp-ShopUpUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ShopUp-ShopUpUITests/Pods-ShopUp-ShopUpUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ShopUp-ShopUpUITests/Pods-ShopUp-ShopUpUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C6B7915ECA5CFD7BAE21E920 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ShopUp/Pods-ShopUp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ShopUp/Pods-ShopUp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ShopUp/Pods-ShopUp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F7187613159B75A6FB6A9B24 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ShopUp-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		68C8190F2949C04B007B6EC2 /* Sources */ = {
@@ -852,7 +725,6 @@
 		};
 		68C8193E2949C04D007B6EC2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FEB0F29928B97DBD843F6606 /* Pods-ShopUp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -887,7 +759,6 @@
 		};
 		68C8193F2949C04D007B6EC2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E90AA482DB5C35CC8D294D66 /* Pods-ShopUp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -922,7 +793,6 @@
 		};
 		68C819412949C04D007B6EC2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ED4A0160848F6A5D896597EB /* Pods-ShopUpTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -943,7 +813,6 @@
 		};
 		68C819422949C04D007B6EC2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EED032AC80714B712FB2F51C /* Pods-ShopUpTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -964,7 +833,6 @@
 		};
 		68C819442949C04D007B6EC2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E2C6B84D971EB80E3BE03F0C /* Pods-ShopUp-ShopUpUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -983,7 +851,6 @@
 		};
 		68C819452949C04D007B6EC2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A82AB45463DF95BD4C53D6C4 /* Pods-ShopUp-ShopUpUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1040,6 +907,53 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DE7922C52A58FD6B0034CB0B /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+		DE7922CC2A58FDF20034CB0B /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DE7922C62A58FD6B0034CB0B /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE7922C52A58FD6B0034CB0B /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		DE7922C82A58FD6B0034CB0B /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE7922C52A58FD6B0034CB0B /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		DE7922CA2A58FD6B0034CB0B /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE7922C52A58FD6B0034CB0B /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		DE7922CD2A58FDF20034CB0B /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE7922CC2A58FDF20034CB0B /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		DE7922CF2A58FDF20034CB0B /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE7922CC2A58FDF20034CB0B /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 68C8190B2949C04A007B6EC2 /* Project object */;
 }
