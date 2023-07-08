@@ -115,11 +115,15 @@ class MainViewController: UIViewController {
         mainCarouselUiView.dataSource = self
         mainCarouselUiView.delegate = self
         mainCarouselUiView.isPagingEnabled = true
-        collectionViewFlowLayout.scrollDirection = .horizontal
-        let cellPadding = (mainCarouselUiView.frame.width - 60)/9
-        collectionViewFlowLayout.itemSize = .init(width: mainCarouselUiView.frame.width - 60, height: 400)
-        collectionViewFlowLayout.sectionInset = .init(top: 0, left: cellPadding, bottom: 0, right: cellPadding)
-        collectionViewFlowLayout.minimumLineSpacing = (mainCarouselUiView.frame.width - 60)/4
+        let layout = collectionViewFlowLayout
+        //let carouselCount = mainViewModel!.carouselModelList.value.count
+        let carouselWidth = UIScreen.main.bounds.width - 100
+        let carouselPadding = (UIScreen.main.bounds.width - carouselWidth) / 2
+        layout.scrollDirection = .horizontal
+        layout.itemSize = .init(width: carouselWidth, height: 400)
+        layout.sectionInset = .init(top: 0, left: carouselPadding, bottom: 0, right: carouselPadding)
+        layout.minimumLineSpacing = UIScreen.main.bounds.width - carouselWidth
+        layout.minimumInteritemSpacing = .zero
         mainCarouselUiView.collectionViewLayout = collectionViewFlowLayout
     }
     
