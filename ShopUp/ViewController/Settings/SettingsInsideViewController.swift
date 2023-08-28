@@ -92,12 +92,17 @@ class SettingsInsideViewController: UIViewController {
                 //cell이 겨울 순서부터 나오고 있음. 그래서 ui 에러가 발생됨.
                 //cell이 0부터 다시 초기화 되어야 함.
                 if self.loaded {
-                    if let modifyIndex = self.settingsViewModel!
-                        .weatherSettingsList
-                        .value
-                        .firstIndex(where: {$0.title == cell.title?.text}){
-                        cell.updateView(model: self.settingsViewModel!.weatherSettingsList.value[modifyIndex])
-                    }
+//                    if cell.topBanner. != nil {
+//                        cell.updateView(model: self.settingsViewModel?.weatherSettingsList.value[0]!)
+//                    }else{
+//                        if let modifyIndex = self.settingsViewModel!
+//                                                .weatherSettingsList
+//                                                .value
+//                                                .firstIndex(where: {$0.title == cell.title?.text}){
+//                                                cell.updateView(model: self.settingsViewModel!.weatherSettingsList.value[modifyIndex])
+//                                            }
+//                    }
+                    self.settingsInsideCollectionView.reloadData()
                 }else{
                     let indexPath = IndexPath(row: index, section: 0)
                     cell.configureView(model: model, indexPath: indexPath, lastIndex: self.settingsViewModel!.weatherSettingsList.value.count, mainWidthSize: self.settingsInsideCollectionView.bounds.size.width, completionHandler: {

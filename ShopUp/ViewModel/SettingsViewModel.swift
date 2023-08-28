@@ -80,16 +80,18 @@ class SettingsViewModel {
     
     func changeWeatherSettings(type: String) {
         var newValue = weatherSettingsList.value
+        
         if let resetIndex = newValue.firstIndex(where: {$0.checkMark == true}){
             newValue[resetIndex] = SettingsCellStuffModel(title: newValue[resetIndex].title, decideOption: true, checkMark: false)
         }
+        
         if let changeIndex = newValue.firstIndex(where: {$0.title == type}){
             newValue[changeIndex] = SettingsCellStuffModel(title: type, decideOption: true, checkMark: true)
         }
         
         switch(type) {
         case "자동":
-            automaticWeatherSettings()
+            self.automaticWeatherSettings()
             break;
         case "봄":
             newValue[0] = SettingsCellStuffModel(title: "", imageCell: true, image: UIImage(named: "spring(ver2)Banner")!)
@@ -105,8 +107,7 @@ class SettingsViewModel {
             break;
         }
         
-        
-        weatherSettingsList.accept(newValue)
+        self.weatherSettingsList.accept(newValue)
     }
     
     private func automaticWeatherSettings(){

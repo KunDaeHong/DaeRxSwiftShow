@@ -22,6 +22,8 @@ class SettingsCellCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        bag = DisposeBag()
+        
     }
     
     var tapHandler: (() -> Void)?
@@ -34,6 +36,9 @@ class SettingsCellCollectionViewCell: UICollectionViewCell {
     var decideUIImage: UIImageView?
     var secondSubTitle: UILabel?
     var uiBtn: UIButton?
+    
+    //Rx
+    var bag = DisposeBag()
     
     
     
@@ -185,11 +190,12 @@ class SettingsCellCollectionViewCell: UICollectionViewCell {
     }
     
     public func updateView(model: SettingsCellStuffModel){
-        print("현재 제목 체크 \(title!.text!)")
         if model.imageCell{
             //Banner UI
             topBanner = UIImageView(image: model.image)
             topBanner!.contentMode = .scaleAspectFill
+            
+            return
         }
         //Title UI
         title!.textColor = AppColorType.darkGrayFontColor.rawValue

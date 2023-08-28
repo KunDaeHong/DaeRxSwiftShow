@@ -8,16 +8,16 @@
 import UIKit
 
 struct SettingsCellStuffModel {
-    let title: String
-    let subTitleOption: Bool
-    let subTitle: String
-    let modifiedOption: Bool
-    let decideOption: Bool
-    let checkMark: Bool
-    let secondSubTitleOption: Bool
-    let secondSubTitle: String
-    let handler: Void?
-    let imageCell: Bool
+    var title: String
+    var subTitleOption: Bool
+    var subTitle: String
+    var modifiedOption: Bool
+    var decideOption: Bool
+    var checkMark: Bool
+    var secondSubTitleOption: Bool
+    var secondSubTitle: String
+    var handler: Void?
+    var imageCell: Bool
     var image: UIImage
     
     init(title: String, subTitleOption: Bool = true, subTitle: String = "", modifiedOption: Bool = false, decideOption: Bool = false,
