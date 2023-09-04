@@ -57,6 +57,8 @@
 		DE7922D02A58FDF20034CB0B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DE7922CF2A58FDF20034CB0B /* RealmSwift */; };
 		DED249272A9C93D1008EB3E8 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED249262A9C93D1008EB3E8 /* SettingsService.swift */; };
 		DED2492A2A9C9DC9008EB3E8 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = DED249292A9C9DC9008EB3E8 /* Alamofire */; };
+		DED2492E2AA5B98A008EB3E8 /* ExcuteApp+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED2492D2AA5B98A008EB3E8 /* ExcuteApp+Extensions.swift */; };
+		DED249302AA5C1BF008EB3E8 /* WarningAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED2492F2AA5C1BF008EB3E8 /* WarningAlert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +127,8 @@
 		68D8C6982959459D003F2652 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		68D8C69A29595BA9003F2652 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		DED249262A9C93D1008EB3E8 /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
+		DED2492D2AA5B98A008EB3E8 /* ExcuteApp+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExcuteApp+Extensions.swift"; sourceTree = "<group>"; };
+		DED2492F2AA5C1BF008EB3E8 /* WarningAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningAlert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -314,6 +318,7 @@
 				68C81954294AC34A007B6EC2 /* UIView+Extensions.swift */,
 				68C81958294AE818007B6EC2 /* UICollectionViewCell+Extensions.swift */,
 				68C8195F294B016B007B6EC2 /* UIColor+Extensions.swift */,
+				DED2492D2AA5B98A008EB3E8 /* ExcuteApp+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -339,6 +344,7 @@
 				684D120A29657510002B28BB /* CollectionListCell.swift */,
 				688D367C2994B31F004B0DD3 /* SettingsCellCollectionViewCell.swift */,
 				688D367E2994F5CC004B0DD3 /* PreviewImgCollectionViewCell.swift */,
+				DED2492F2AA5C1BF008EB3E8 /* WarningAlert.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -547,6 +553,8 @@
 				68C1B987297644D900022935 /* AppSettingsDBModel.swift in Sources */,
 				68A274D029767B6300D599C5 /* AppSettingsJsonModel.swift in Sources */,
 				68C81951294AB30D007B6EC2 /* MainViewController.swift in Sources */,
+				DED249302AA5C1BF008EB3E8 /* WarningAlert.swift in Sources */,
+				DED2492E2AA5B98A008EB3E8 /* ExcuteApp+Extensions.swift in Sources */,
 				688D367F2994F5CC004B0DD3 /* PreviewImgCollectionViewCell.swift in Sources */,
 				68A274CE297676CB00D599C5 /* AppSettingsModel.swift in Sources */,
 				68C81959294AE818007B6EC2 /* UICollectionViewCell+Extensions.swift in Sources */,
@@ -749,6 +757,8 @@
 				DEVELOPMENT_TEAM = BMKUX76LZW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShopUp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ShopUp;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSCameraUsageDescription = "카메라를 이용하여 사진을 분석하기 위해 카메라 접근 권한이 필요합니다.";
 				INFOPLIST_KEY_NSMotionUsageDescription = "모션인식을 통해 사진을 더욱 안정적으로 찍기 위해 모션 인식 접근 권한이 필요합니다.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "사진첩에 있는 사진을 이용하여 사진을 분석하기 위해 갤러리 접근 권한이 필요합니다.";
@@ -783,6 +793,8 @@
 				DEVELOPMENT_TEAM = BMKUX76LZW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShopUp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ShopUp;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSCameraUsageDescription = "카메라를 이용하여 사진을 분석하기 위해 카메라 접근 권한이 필요합니다.";
 				INFOPLIST_KEY_NSMotionUsageDescription = "모션인식을 통해 사진을 더욱 안정적으로 찍기 위해 모션 인식 접근 권한이 필요합니다.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "사진첩에 있는 사진을 이용하여 사진을 분석하기 위해 갤러리 접근 권한이 필요합니다.";

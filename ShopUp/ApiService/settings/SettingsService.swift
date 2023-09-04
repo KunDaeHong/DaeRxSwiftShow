@@ -7,11 +7,21 @@
 
 import Foundation
 import MessageUI
+import UIKit
 
-class SettingsService: NSObject, MFMailComposeViewControllerDelegate {
+class SettingsService: NSObject, MFMailComposeViewControllerDelegate, WarningAlertFunctionDelegate{
     public static let shared = SettingsService()
+    private var vc: UIViewController?
     
-    static func sendMail(json: Dictionary<String, String>, vc: UIViewController) {
+    func excuteConfirmFunc(sender: UIButton) {
+        if let navCtrl = vc!.navigationController {
+            navCtrl.popViewController(animated: true)
+        }
+    }
+    
+    public static func sendMail(json: Dictionary<String, String>, vc: UIViewController) {
+        self.shared.vc = vc
+        
         if MFMailComposeViewController.canSendMail() {
             let mailSendVC = MFMailComposeViewController()
             mailSendVC.mailComposeDelegate = self.shared
@@ -21,6 +31,12 @@ class SettingsService: NSObject, MFMailComposeViewControllerDelegate {
             mailSendVC.setMessageBody("content", isHTML: false)
             
             vc.present(mailSendVC, animated: true, completion: nil)
+        }else {
+            print("mail error")
+            let alertMgr = WarningAlert(title: "에러", description: "테스트", confirmBtn: true)
+            alertMgr.delegate = Self.shared
+            alertMgr.frame = vc.view.frame
+            vc.view.addSubview(alertMgr)
         }
     }
 }

@@ -28,12 +28,12 @@ class SettingsViewController: UIViewController {
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        settingsViewModel = SettingsViewModel()
-        configureEasySettingsView()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    override func loadView() {
+        super.loadView()
+        settingsViewModel = SettingsViewModel()
+        configureEasySettingsView()
         configureListSettingsView()
     }
     
@@ -46,6 +46,11 @@ class SettingsViewController: UIViewController {
             navCtrl.popViewController(animated: true)
         }
     }
+    
+    @IBAction func sendBug(_ sender: Any) {
+        SettingsService.sendMail(json: ["": ""], vc: SettingsViewController())
+    }
+    
     
     // MARK: View Configuration Function
     
