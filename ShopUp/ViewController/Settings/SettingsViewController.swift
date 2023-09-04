@@ -48,7 +48,12 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func sendBug(_ sender: Any) {
-        SettingsService.sendMail(json: ["": ""], vc: SettingsViewController())
+        //SettingsService.sendMail(json: ["": ""], vc: SettingsViewController())
+        DispatchQueue.main.async {
+            let alertMgr = WarningAlert(title: "에러", description: "테스트", confirmBtn: true)
+            alertMgr.frame = self.view.frame
+            self.view.addSubview(alertMgr)
+        }
     }
     
     

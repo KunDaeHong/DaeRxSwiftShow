@@ -38,23 +38,29 @@ class WarningAlert: UIView {
     }
     
     private func viewSettings(title: String, description: String, confirmBtn: Bool) {
-        let mainAlertView = UIView(frame: CGRect(x: 0, y: 0, width: Int(self.frame.width/2), height: Int(self.frame.height/3)))
+        let mainAlertView = UIView()
         let confirmBtn = SmallConfirmButton(title: "확인", font: .systemFont(ofSize: 20.0, weight: .bold), color: .whiteFontColor)
-        
-        
-        self.addSubview(mainAlertView)
-        mainAlertView.addSubview(confirmBtn)
         
         mainAlertView.translatesAutoresizingMaskIntoConstraints = false
         mainAlertView.clipsToBounds = true
         mainAlertView.layer.cornerRadius = 41.5
         mainAlertView.backgroundColor = AppColorType.whiteColor.rawValue
         
-        confirmBtn.addTarget(self, action: #selector(pressed), for: .touchUpInside)
         
+        self.addSubview(mainAlertView)
+        mainAlertView.addSubview(confirmBtn)
+    
+        
+        confirmBtn.addTarget(self, action: #selector(pressed), for: .touchUpInside)
+
         let constraintList: [NSLayoutConstraint] = [
+            mainAlertView.heightAnchor.constraint(equalToConstant: 400),
+            mainAlertView.widthAnchor.constraint(equalToConstant: 300),
+            mainAlertView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            mainAlertView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             confirmBtn.leadingAnchor.constraint(equalTo: mainAlertView.leadingAnchor, constant: 30),
             confirmBtn.trailingAnchor.constraint(equalTo: mainAlertView.trailingAnchor, constant: -30),
+            confirmBtn.bottomAnchor.constraint(equalTo: mainAlertView.bottomAnchor, constant: -20),
             confirmBtn.heightAnchor.constraint(equalToConstant: 41.5)
         ]
 

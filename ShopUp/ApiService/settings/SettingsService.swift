@@ -33,10 +33,12 @@ class SettingsService: NSObject, MFMailComposeViewControllerDelegate, WarningAle
             vc.present(mailSendVC, animated: true, completion: nil)
         }else {
             print("mail error")
-            let alertMgr = WarningAlert(title: "에러", description: "테스트", confirmBtn: true)
-            alertMgr.delegate = Self.shared
-            alertMgr.frame = vc.view.frame
-            vc.view.addSubview(alertMgr)
+            DispatchQueue.main.async {
+                let alertMgr = WarningAlert(title: "에러", description: "테스트", confirmBtn: true)
+                alertMgr.delegate = Self.shared
+                alertMgr.frame = vc.view.frame
+                UIApplication.shared.windows.first?.addSubview(alertMgr)
+            }
         }
     }
 }
