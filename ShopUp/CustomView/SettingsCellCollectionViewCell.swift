@@ -58,11 +58,22 @@ class SettingsCellCollectionViewCell: UICollectionViewCell {
             widthAnchor.constraint(equalToConstant: mainWidthSize),
         ]
         
-        if let touchUp = completionHandler {
-            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_ :)))
-            addGestureRecognizer(tapGesture)
-            tapHandler = {touchUp()}
+        // 재로딩 할 떄
+        if subviews.count > 0 {
+            for view in subviews {
+                removeConstraints(view.constraints)
+                view.removeFromSuperview()
+                view.layer.sublayers?.forEach({$0.removeFromSuperlayer()})
+            }
         }
+        
+//        터치 제스쳐가 cell안에 있으면 rxcocoa로 밖에서 itemselected로 인식 시 itemselected는 모든 제스쳐를 인식하므로
+//        2손가락 이상부터 인식이 되는 이유. 1손가락은 cell 터치로 막힘.
+//        if let touchUp = completionHandler {
+//            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_ :)))
+//            addGestureRecognizer(tapGesture)
+//            tapHandler = {touchUp()}
+//        }
         
         //Banner UI
         if model.imageCell{

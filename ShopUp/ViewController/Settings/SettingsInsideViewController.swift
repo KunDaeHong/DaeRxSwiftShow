@@ -8,30 +8,25 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import RxDataSources
 
 class SettingsInsideViewController: UIViewController {
     
     // MARK: SettingsInsideViewController Main Views
-    
     @IBOutlet weak var mainTitle: UILabel!
-    
-    //list Settings view
     @IBOutlet weak var settingsInsideCollectionView: UICollectionView!
     private let settingsCollectionFlowLayout = UICollectionViewFlowLayout()
     
     // MARK: Views Data
     var titleString : String = ""
-    var dataModel: SettingsCellStuffModel?
     var loaded = false
-    
-    private var disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
     private var settingsViewModel: SettingsViewModel?
     
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configurationView()
-        bind()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -40,7 +35,6 @@ class SettingsInsideViewController: UIViewController {
     }
     
     // MARK: View action
-    
     @IBAction func backBtn(_ sender: Any) {
         if let navCtrl = self.navigationController {
             navCtrl.popViewController(animated: true)
@@ -53,6 +47,7 @@ class SettingsInsideViewController: UIViewController {
         mainTitle.text = titleString
         settingsViewModel = SettingsViewModel()
         configurationCollectionView()
+        bind()
     }
     
     private func configurationCollectionView() {
@@ -64,8 +59,6 @@ class SettingsInsideViewController: UIViewController {
     }
     
     private func bind() {
-        settingsInsideCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
-        
         switch(titleString){
         case "사용자 설정" :
             settingsViewModel!.userSettingsList.bind(
@@ -83,33 +76,28 @@ class SettingsInsideViewController: UIViewController {
             }.disposed(by: disposeBag)
             break;
         case "계절 설정" :
-            settingsViewModel!.weatherSettingsList.bind(
-                to: settingsInsideCollectionView.rx.items(
-                    cellIdentifier: SettingsCellCollectionViewCell.description(),
-                    cellType: SettingsCellCollectionViewCell.self))
-            {
-                index, model, cell in
-                //cell이 겨울 순서부터 나오고 있음. 그래서 ui 에러가 발생됨.
-                //cell이 0부터 다시 초기화 되어야 함.
-                if self.loaded {
-//                    if cell.topBanner. != nil {
-//                        cell.updateView(model: self.settingsViewModel?.weatherSettingsList.value[0]!)
-//                    }else{
-//                        if let modifyIndex = self.settingsViewModel!
-//                                                .weatherSettingsList
-//                                                .value
-//                                                .firstIndex(where: {$0.title == cell.title?.text}){
-//                                                cell.updateView(model: self.settingsViewModel!.weatherSettingsList.value[modifyIndex])
-//                                            }
-//                    }
-                    self.settingsInsideCollectionView.reloadData()
-                }else{
-                    let indexPath = IndexPath(row: index, section: 0)
-                    cell.configureView(model: model, indexPath: indexPath, lastIndex: self.settingsViewModel!.weatherSettingsList.value.count, mainWidthSize: self.settingsInsideCollectionView.bounds.size.width, completionHandler: {
-                        self.settingsViewModel!.changeWeatherSettings(type: model.title)
-                    })
-                }
-            }.disposed(by: disposeBag)
+//            settingsViewModel!.weatherSettingsList.bind(
+//                to: settingsInsideCollectionView.rx.items(
+//                    cellIdentifier: SettingsCellCollectionViewCell.description(),
+//                    cellType: SettingsCellCollectionViewCell.self
+//                )){
+//                    index, model, cell in
+//                    let indexPath = IndexPath(row: index, section: 0)
+//                    cell.configureView(
+//                        model: model,
+//                        indexPath: indexPath,
+//                        lastIndex: self.settingsViewModel!.weatherSettingsList.value.count,
+//                        mainWidthSize: self.settingsInsideCollectionView.bounds.size.width
+//                    )
+//                }.disposed(by: disposeBag)
+//
+//            settingsInsideCollectionView.rx.itemSelected.subscribe(onNext: {
+//                index in
+//                let currentIndex = IndexPath(row: index.row, section: 0).row
+//                print("item selected \(currentIndex)")
+//                self.settingsViewModel!.changeWeatherSettings(type: currentIndex)
+//            }).disposed(by: disposeBag)
+            
             break;
         case "알림 설정" :
             settingsViewModel!.alramSettingsList.bind(

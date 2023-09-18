@@ -78,32 +78,37 @@ class SettingsViewModel {
         // 앱설정을 들고와야 하는 코드가 필요. 단 이부분으로 부터 시작. 지금 시작.
     }
     
-    func changeWeatherSettings(type: String) {
+    func changeWeatherSettings(type: Int) {
         var newValue = weatherSettingsList.value
         
         if let resetIndex = newValue.firstIndex(where: {$0.checkMark == true}){
             newValue[resetIndex] = SettingsCellStuffModel(title: newValue[resetIndex].title, decideOption: true, checkMark: false)
         }
         
-        if let changeIndex = newValue.firstIndex(where: {$0.title == type}){
-            newValue[changeIndex] = SettingsCellStuffModel(title: type, decideOption: true, checkMark: true)
-        }
+//        if let changeIndex = newValue.firstIndex(where: {$0.title == type}){
+//            newValue[changeIndex] = SettingsCellStuffModel(title: type, decideOption: true, checkMark: true)
+//        }
         
         switch(type) {
-        case "자동":
+        case 1:
             self.automaticWeatherSettings()
+            newValue[type] = SettingsCellStuffModel(title: "자동", decideOption: true, checkMark: true)
             break;
-        case "봄":
-            newValue[0] = SettingsCellStuffModel(title: "", imageCell: true, image: UIImage(named: "spring(ver2)Banner")!)
+        case 2:
+            newValue[0].image = UIImage(named: "spring(ver2)Banner")!
+            newValue[type] = SettingsCellStuffModel(title: "봄", decideOption: true, checkMark: true)
             break;
-        case "여름":
-            newValue[0] = SettingsCellStuffModel(title: "", imageCell: true, image: UIImage(named: "summerBanner")!)
+        case 3:
+            newValue[0].image = UIImage(named: "summerBanner")!
+            newValue[type] = SettingsCellStuffModel(title: "여름", decideOption: true, checkMark: true)
             break;
-        case "겨울":
-            newValue[0] = SettingsCellStuffModel(title: "", imageCell: true, image: UIImage(named: "winterBanner")!)
+        case 4:
+            newValue[0].image = UIImage(named: "winterBanner")!
+            newValue[type] = SettingsCellStuffModel(title: "겨울", decideOption: true, checkMark: true)
             break;
         default :
-            newValue[0] = SettingsCellStuffModel(title: "", imageCell: true, image: UIImage(named: "autumnBanner")!)
+            newValue[0].image = UIImage(named: "autumnBanner")!
+            newValue[type] = SettingsCellStuffModel(title: "가울", decideOption: true, checkMark: true)
             break;
         }
         

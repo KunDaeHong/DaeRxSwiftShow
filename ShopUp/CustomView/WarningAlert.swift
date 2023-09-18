@@ -39,7 +39,7 @@ class WarningAlert: UIView {
     
     private func viewSettings(title: String, description: String, confirmBtn: Bool) {
         let mainAlertView = UIView()
-        let confirmBtn = SmallConfirmButton(title: "확인", font: .systemFont(ofSize: 20.0, weight: .bold), color: .whiteFontColor)
+        let confirmBtn = SmallConfirmButton(title: "확인", font: .systemFont(ofSize: 20.0, weight: .bold), color: .darkGrayColor)
         
         mainAlertView.translatesAutoresizingMaskIntoConstraints = false
         mainAlertView.clipsToBounds = true

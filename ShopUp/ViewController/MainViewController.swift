@@ -67,7 +67,6 @@ class MainViewController: UIViewController {
         configureRecomandView()
         mainCarouselUiView.scrollToItem(at: IndexPath(row: 1, section: .zero), at: .centeredHorizontally, animated: false)
         mainCarouselUiView.setContentOffset(mainCarouselUiView.contentOffset, animated: false)
-        currentPage = 0
     }
     
     
@@ -127,15 +126,6 @@ class MainViewController: UIViewController {
         mainCarouselUiView.collectionViewLayout = collectionViewFlowLayout
     }
     
-    private func getCarouselCurrentPage() -> Int {
-        let visibleRect = CGRect(origin: mainCarouselUiView.contentOffset, size: mainCarouselUiView.bounds.size)
-        let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
-        if let visibleIndexPath = mainCarouselUiView.indexPathForItem(at: visiblePoint) {
-            return visibleIndexPath.row
-        }
-        return currentPage
-    }
-    
     private func configureRecomandView() {
         recomandView.addSubview(
             todaysRecommandPickView(
@@ -190,11 +180,7 @@ class MainViewController: UIViewController {
         pageControl.currentPageIndicatorTintColor = .white
         return pageControl
     }()
-    private var currentPage = 0 {
-        didSet {
-            pageCtrl.currentPage = currentPage
-        }
-    }
+    private var previousCarouselPosition: Int = 0
     
     func todaysRecommandPickView(frame: CGRect, nothing: Bool, warning: Bool, good: Bool, bad: Bool) -> UIView{
         let mainView : UIView = UIView(frame: frame)
@@ -333,16 +319,24 @@ extension MainViewController: UICollectionViewDelegate {
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let endOffset = scrollView.contentSize.width - mainCarouselUiView.bounds.width
-        
+        let currentCarouselPosition = Int(scrollView.contentOffset.x)
+
         if scrollView.contentOffset.x == 0 {
             self.mainCarouselUiView.scrollToItem(at: IndexPath(row: self.mainViewModel!.carouselListCount.value, section: .zero), at: .centeredHorizontally, animated: false)
-            //self.currentPage = self.mainViewModel!.carouselListCount.value
+            pageCtrl.currentPage = mainViewModel!.carouselListCount.value
+            previousCarouselPosition = Int(endOffset)
             return
         } else if endOffset - scrollView.contentOffset.x < 15  {
             self.mainCarouselUiView.scrollToItem(at: IndexPath(row: 1, section: .zero), at: .centeredHorizontally, animated: false)
-            self.currentPage = 0
-        }else {
-            currentPage = getCarouselCurrentPage() - 1
+            pageCtrl.currentPage = 0
+            previousCarouselPosition = 0
+            return
+        } else if currentCarouselPosition > previousCarouselPosition {
+            pageCtrl.currentPage += 1
+        } else {
+            pageCtrl.currentPage -= 1
         }
+        
+        previousCarouselPosition = currentCarouselPosition
     }
 }

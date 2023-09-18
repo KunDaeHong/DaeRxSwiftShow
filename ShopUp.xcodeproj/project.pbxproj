@@ -59,6 +59,7 @@
 		DED2492A2A9C9DC9008EB3E8 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = DED249292A9C9DC9008EB3E8 /* Alamofire */; };
 		DED2492E2AA5B98A008EB3E8 /* ExcuteApp+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED2492D2AA5B98A008EB3E8 /* ExcuteApp+Extensions.swift */; };
 		DED249302AA5C1BF008EB3E8 /* WarningAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED2492F2AA5C1BF008EB3E8 /* WarningAlert.swift */; };
+		DED249492AB2CE21008EB3E8 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = DED249482AB2CE21008EB3E8 /* RxDataSources */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,6 +141,7 @@
 				DE7922C92A58FD6B0034CB0B /* RxRelay in Frameworks */,
 				DE7922CE2A58FDF20034CB0B /* Realm in Frameworks */,
 				DED2492A2A9C9DC9008EB3E8 /* Alamofire in Frameworks */,
+				DED249492AB2CE21008EB3E8 /* RxDataSources in Frameworks */,
 				DE7922D02A58FDF20034CB0B /* RealmSwift in Frameworks */,
 				DE7922C72A58FD6B0034CB0B /* RxCocoa in Frameworks */,
 			);
@@ -231,7 +233,6 @@
 			children = (
 				68C819152949C04B007B6EC2 /* ShopUp */,
 				68C8192C2949C04D007B6EC2 /* ShopUpTests */,
-				68C819362949C04D007B6EC2 /* ShopUpUITests */,
 				68C819142949C04B007B6EC2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -338,6 +339,7 @@
 			children = (
 				68C81952294AC209007B6EC2 /* CarouselUIView.swift */,
 				68C8195A294AF38F007B6EC2 /* CarouselUICell.swift */,
+				68C819362949C04D007B6EC2 /* ShopUpUITests */,
 				68D8C6902952F04D003F2652 /* FitStringUIButton.swift */,
 				68D8C69429557DB7003F2652 /* SmallConfirmButton.swift */,
 				682A5D00295A8291005AC208 /* SmallFitCollectionCell.swift */,
@@ -417,6 +419,7 @@
 				DE7922CD2A58FDF20034CB0B /* Realm */,
 				DE7922CF2A58FDF20034CB0B /* RealmSwift */,
 				DED249292A9C9DC9008EB3E8 /* Alamofire */,
+				DED249482AB2CE21008EB3E8 /* RxDataSources */,
 			);
 			productName = ShopUp;
 			productReference = 68C819132949C04B007B6EC2 /* ShopUp.app */;
@@ -494,6 +497,7 @@
 				DE7922C52A58FD6B0034CB0B /* XCRemoteSwiftPackageReference "RxSwift" */,
 				DE7922CC2A58FDF20034CB0B /* XCRemoteSwiftPackageReference "realm-swift" */,
 				DED249282A9C9DC9008EB3E8 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				DED249472AB2CE20008EB3E8 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 			);
 			productRefGroup = 68C819142949C04B007B6EC2 /* Products */;
 			projectDirPath = "";
@@ -961,6 +965,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		DED249472AB2CE20008EB3E8 /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -993,6 +1005,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DED249282A9C9DC9008EB3E8 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		DED249482AB2CE21008EB3E8 /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DED249472AB2CE20008EB3E8 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
